@@ -1,0 +1,17 @@
+<!ELEMENT provider-descriptor (display-name, component-name, description?, major-version, minor-version, micro-version, provider-name, group-name?, references?, jars)>
+<!ELEMENT display-name (#PCDATA)>
+<!ELEMENT component-name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT major-version (#PCDATA)>
+<!ELEMENT minor-version (#PCDATA)>
+<!ELEMENT micro-version (#PCDATA)>
+<!ELEMENT provider-name (#PCDATA)>
+<!ELEMENT group-name (#PCDATA)>
+<!ELEMENT references (reference*)>
+<!ELEMENT reference (#PCDATA)>
+<!ATTLIST reference type (interface) #REQUIRED>
+<!ATTLIST reference strength (weak) #REQUIRED>
+<!ATTLIST reference provider-name CDATA #IMPLIED>
+<!ELEMENT jars (jar-name*)>
+<!ATTLIST jars default (true) #IMPLIED>
+<!ELEMENT jar-name (#PCDATA)>

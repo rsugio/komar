@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<login-modules>
+                  <!-- holds all login modules -->
+                  <login-module>
+                  <!-- describes one login module -->
+                  <display-name>OAuthLoginModule</display-name>
+                  <!-- holds the display name of the login module -->
+                  <class-name>com.sap.aii.adapter.rest.ejb.security.OAuthLoginModule</class-name>
+                  <!-- holds the full path to the login module class -->
+                  <description>testing</description>
+                  <!-- holds the description of the login module -->
+                  <options>
+                  <!-- holds all the options of the login module -->
+                  <option>
+                  <!-- holds the name/value pair of an option -->
+                  </option>
+                  </options>
+                  </login-module>
+</login-modules>

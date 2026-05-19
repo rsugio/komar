@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="as-contextType">
+		<xs:sequence>
+			<xs:element ref="auth-method"/>
+			<xs:element ref="realm"/>
+			<xs:element ref="required"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="auth-method" type="xs:string"/>
+	<xs:element name="caller-propagation" type="ior-props-enum"/>
+	<xs:element name="confidentiality" type="ior-props-enum"/>
+	<xs:element name="description" type="xs:string"/>
+	<xs:element name="restart-at-runtime-change" type="xs:string"/>
+	<xs:element name="ejb-j2ee-engine">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="description" minOccurs="0"/>
+				<xs:element ref="restart-at-runtime-change" minOccurs="0"/>
+				<xs:element name="enterprise-beans" type="enterprise-beansType" minOccurs="0"/>
+				<xs:element name="security-permission" type="security-permissionType" minOccurs="0"/>
+				<xs:element name="message-destination-maps" type="message-destination-mapsType" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ejb-local-refType">
+		<xs:sequence>
+			<xs:element ref="ejb-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ejb-name" type="xs:string"/>
+	<xs:complexType name="ejb-refType">
+		<xs:sequence>
+			<xs:element ref="ejb-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="server-component-refType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ejb-ref-name" type="xs:string"/>
+	<xs:complexType name="enterprise-beanType">
+		<xs:sequence>
+			<xs:element ref="ejb-name"/>
+			<xs:element ref="jndi-name" minOccurs="0"/>
+			<xs:element name="ejb-ref" type="ejb-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ejb-local-ref" type="ejb-local-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="resource-ref" type="resource-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="resource-env-ref" type="resource-env-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="message-destination-ref" type="message-destination-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="server-component-ref" type="server-component-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ior-security-config" type="ior-security-configType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="app-startup-method" type="app-startup-methodType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="app-shutdown-method" type="app-shutdown-methodType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="bean-props" type="bean-propsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="enterprise-beansType">
+		<xs:sequence>
+			<xs:element name="enterprise-bean" type="enterprise-beanType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ior-props-enum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="required"/>
+			<xs:enumeration value="supported"/>
+			<xs:enumeration value="none"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="establish-trust-in-client" type="ior-props-enum"/>
+	<xs:element name="establish-trust-in-target" type="ior-props-enum"/>
+	<xs:element name="integrity" type="ior-props-enum"/>
+	<xs:complexType name="ior-security-configType">
+		<xs:sequence>
+			<xs:element name="transport-config" type="transport-configType" minOccurs="0"/>
+			<xs:element name="as-context" type="as-contextType" minOccurs="0"/>
+			<xs:element name="sas-context" type="sas-contextType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="jndi-name" type="xs:string"/>
+	<xs:complexType name="bean-propsType">
+		<xs:sequence>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="non-transactional">
+		<xs:complexType/>
+	</xs:element>
+	<xs:complexType name="propertyType">
+		<xs:sequence>
+			<xs:element ref="property-name"/>
+			<xs:element ref="property-value"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="property-name" type="xs:string"/>
+	<xs:element name="property-value" type="xs:string"/>
+	<xs:element name="realm" type="xs:string"/>
+	<xs:element name="required" type="xs:boolean"/>
+	<xs:element name="res-link" type="xs:string"/>
+	<xs:element name="res-ref-name" type="xs:string"/>
+	<xs:complexType name="resource-env-refType">
+		<xs:sequence>
+			<xs:element ref="resource-env-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="resource-env-ref-name" type="xs:string"/>
+	<xs:complexType name="message-destination-refType">
+		<xs:sequence>
+			<xs:element ref="message-destination-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="message-destination-ref-name" type="xs:string"/>
+	<xs:complexType name="resource-refType">
+		<xs:sequence>
+			<xs:element ref="res-ref-name"/>
+			<xs:element ref="res-link" minOccurs="0"/>
+			<xs:element ref="non-transactional" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="role-name" type="xs:string"/>
+	<xs:complexType name="sas-contextType">
+		<xs:sequence>
+			<xs:element ref="caller-propagation"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="security-permissionType">
+		<xs:sequence>
+			<xs:element name="security-role-map" type="security-role-mapType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="security-role-mapType">
+		<xs:sequence>
+			<xs:element ref="role-name"/>
+			<xs:element ref="server-role-name" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="server-role-name" type="xs:string"/>
+	<xs:complexType name="transport-configType">
+		<xs:sequence>
+			<xs:element ref="integrity"/>
+			<xs:element ref="confidentiality"/>
+			<xs:element ref="establish-trust-in-target"/>
+			<xs:element ref="establish-trust-in-client"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="user-name" type="xs:string"/>
+	<xs:complexType name="message-destination-mapsType">
+		<xs:sequence>
+			<xs:element name="message-destination" type="message-destinationType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="message-destination-name" type="xs:string"/>
+	<xs:complexType name="message-destinationType">
+		<xs:sequence>
+			<xs:element ref="message-destination-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="app-startup-methodType">
+		<xs:sequence>
+			<xs:element ref="description"/>
+			<xs:element name="method" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="app-shutdown-methodType">
+		<xs:sequence>
+			<xs:element ref="description"/>
+			<xs:element name="method" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

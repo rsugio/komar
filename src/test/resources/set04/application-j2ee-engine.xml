@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application-j2ee-engine SYSTEM "application-j2ee-engine.dtd">
+<application-j2ee-engine>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.aii.sec.lib</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">com.sap.aii.af.svc</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">engine.application.facade</reference-target>
+  </reference>
+  <reference reference-type="weak">
+    <reference-target target-type="interface" provider-name="sap.com">com.sap.aii.af.ms.ifc</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.aii.af.lib</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">engine.security.facade</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.base.technology.facade</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">engine.service.facade</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">engine.j2ee14.facade</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.aii.adapter.ws.cxf.lib</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.xi.util.misc</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">com.sap.aii.af.cpa.svc</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">com.sap.aii.adapter.xi.svc</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="application" provider-name="sap.com">com.sap.aii.af.app</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">com.sap.aii.sec.svc</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.aii.af.sdk.lib</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.aii.module.oauth.lib</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">com.sap.aii.adapter.rest.lib</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">tc~je~webcontainer~public~api</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">iaik.lib.facade</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="service" provider-name="sap.com">com.sap.aii.af.ms.svc</reference-target>
+  </reference>
+  <reference reference-type="hard">
+    <reference-target target-type="library" provider-name="sap.com">engine.jee5.facade</reference-target>
+  </reference>
+  <modules-additional>
+    <module>
+      <entry-name>com.sap.aii.adapter.rest.war</entry-name>
+      <container-type>WebContainer</container-type>
+    </module>
+    <module>
+      <entry-name>com.sap.aii.adapter.rest.ejb.jar</entry-name>
+      <container-type>scheduler~container</container-type>
+    </module>
+  </modules-additional>
+  <provider-name>sap.com</provider-name>
+  <start-up mode="always"/>
+</application-j2ee-engine>

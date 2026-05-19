@@ -1,0 +1,35 @@
+<!ELEMENT connector-j2ee-engine (jndi-name?, alias*, authentication-type?, user-store?, identity-subject*, driver*, pool-params?, connector-group?, loader-references?, properties?)>
+
+<!ELEMENT jndi-name (#PCDATA)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT user-store (#PCDATA)>
+<!ELEMENT authentication-type (#PCDATA)>
+
+<!ELEMENT identity-subject (caller-principal?, resource-principal)>
+<!ELEMENT caller-principal (group-name*, user-name*)>
+<!ELEMENT resource-principal (user-name, user-password?)>
+<!ELEMENT group-name (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT user-password (#PCDATA)>
+
+<!ELEMENT driver (driver-name, driver-class-name, file-name*)>
+<!ELEMENT driver-name (#PCDATA)>
+<!ELEMENT driver-class-name (#PCDATA)>
+<!ELEMENT file-name (#PCDATA)>
+
+<!ELEMENT pool-params (max-connections-number, max-time-to-wait-connection?, expiration-control?)>
+<!ELEMENT max-connections-number (#PCDATA)>
+<!ELEMENT max-time-to-wait-connection (#PCDATA)>
+
+<!ELEMENT expiration-control (connection-lifetime, run-cleanup-thread)>
+<!ELEMENT connection-lifetime (#PCDATA)>
+<!ELEMENT run-cleanup-thread (#PCDATA)>
+
+<!ELEMENT connector-group (#PCDATA)>
+<!ELEMENT loader-references (loader-name+)>
+<!ELEMENT loader-name (#PCDATA)>
+
+<!ELEMENT properties (property+)>
+<!ELEMENT property (property-name, property-value)>
+<!ELEMENT property-name (#PCDATA)>
+<!ELEMENT property-value (#PCDATA)>

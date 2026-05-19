@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="cmr-field" type="xs:string"/>
+	<xs:complexType name="columnType">
+		<xs:sequence>
+			<xs:element ref="column-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="column-name" type="xs:string"/>
+	<xs:element name="create-tables-at-deploy">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="criteria" type="xs:string"/>
+	<xs:element name="data-source-name" type="xs:string"/>
+	<xs:complexType name="database-vendorType">
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="DB2_UDB"/>
+					<xs:enumeration value="DB2_UDB_AS400"/>
+					<xs:enumeration value="DB2_UDB_OS390"/>
+					<xs:enumeration value="MS_SQL_SERVER"/>
+					<xs:enumeration value="ORACLE"/>
+					<xs:enumeration value="SYBASE"/>
+					<xs:enumeration value="SAPDB"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TargetSQLType">
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="DB2_UDB"/>
+					<xs:enumeration value="DB2_UDB_AS400"/>
+					<xs:enumeration value="DB2_UDB_OS390"/>
+					<xs:enumeration value="MS_SQL_SERVER"/>
+					<xs:enumeration value="ORACLE"/>
+					<xs:enumeration value="SYBASE"/>
+					<xs:enumeration value="MAXDB"/>
+					<xs:enumeration value="UNKNOWN"/>
+					<xs:enumeration value="OpenSQL"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>	
+	<xs:complexType name="db-propertiesType">
+		<xs:sequence>
+			<xs:element ref="data-source-name"/>
+			<xs:element ref="for-native-use-only" minOccurs="0"/>
+			<xs:element name="database-vendor" type="database-vendorType" minOccurs="0"/>
+			<xs:element name="TargetSQL" type="TargetSQLType" minOccurs="0"/>			
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="dv-columnType">
+		<xs:sequence>
+			<xs:element ref="subfield-name"/>
+			<xs:element ref="column-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ejb-name" type="xs:string"/>
+	<xs:complexType name="db-entity-beanType">
+		<xs:sequence>
+			<xs:element ref="ejb-name"/>
+			<xs:element ref="table-name"/>
+			<xs:choice minOccurs="0">
+				<xs:element ref="read-only"/>
+				<xs:element ref="select-for-update"/>
+			</xs:choice>
+			<xs:element name="field-map" type="field-mapType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="finder-descriptor" type="finder-descriptorType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="entity-beansType">
+		<xs:sequence>
+			<xs:element name="entity-bean" type="db-entity-beanType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="fetch-size" type="xs:string"/>
+	<xs:complexType name="field-mapType">
+		<xs:sequence>
+			<xs:element ref="field-name"/>
+			<xs:choice>
+				<xs:element name="column" type="columnType"/>
+				<xs:element name="dv-column" type="dv-columnType" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:element ref="mutable" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="key-type" default="NoKey">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="NoKey"/>
+					<xs:enumeration value="PrimaryKey"/>
+					<xs:enumeration value="UniqueKey"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="field-name" type="xs:string"/>
+	<xs:complexType name="finder-descriptorType">
+		<xs:sequence>
+			<xs:element ref="no-empty-tables" minOccurs="0"/>
+			<xs:element ref="criteria" minOccurs="0"/>
+			<xs:element ref="method-name"/>
+			<xs:element name="method-params" type="method-paramsType"/>
+			<xs:element ref="switch-off-storing" minOccurs="0"/>
+			<xs:element name="load-selected-objects" type="load-selected-objectsType" minOccurs="0"/>
+			<xs:element ref="lazy-loading" minOccurs="0"/>
+			<xs:element ref="fetch-size" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element ref="ql-2.0-compatible"/>
+				<xs:element ref="ql-2.1-compatible"/>
+			</xs:choice>
+			<xs:element name="verify-single-finder" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="fk-columnType">
+		<xs:sequence>
+			<xs:element ref="column-name"/>
+			<xs:element ref="pk-field-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="help-table" type="xs:string"/>
+	<xs:element name="lazy-loading">
+		<xs:complexType/>
+	</xs:element>
+	<xs:complexType name="load-selected-objectsType">
+		<xs:attribute name="lock">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="read"/>
+					<xs:enumeration value="write"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="lockingType">
+		<xs:attribute name="type" default="Table">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="Administrative"/>
+					<xs:enumeration value="Table"/>
+					<xs:enumeration value="Local"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="method-name" type="xs:string"/>
+	<xs:element name="method-param" type="xs:string"/>
+	<xs:complexType name="method-paramsType">
+		<xs:sequence>
+			<xs:element ref="method-param" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="mutable">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="persistent-ejb-map">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="switch-off-verification" minOccurs="0"/>
+				<xs:element ref="create-tables-at-deploy" minOccurs="0"/>
+				<xs:element ref="no-empty-tables" minOccurs="0"/>
+				<xs:element name="locking" type="lockingType" minOccurs="0"/>
+				<xs:element name="db-properties" type="db-propertiesType" minOccurs="0"/>
+				<xs:element name="entity-beans" type="entity-beansType" minOccurs="0"/>
+				<xs:element name="relationships" type="relationshipsType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pk-field-name" type="xs:string"/>
+	<xs:element name="ql-2.1-compatible">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="ql-2.0-compatible">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="for-native-use-only">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="read-only">
+		<xs:complexType/>
+	</xs:element>
+	<xs:complexType name="relationshipsType">
+		<xs:sequence>
+			<xs:element name="table-relation" type="table-relationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="select-for-update">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="subfield-name" type="xs:string"/>
+	<xs:element name="switch-off-storing">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="no-empty-tables">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="switch-off-verification">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="table-name" type="xs:string"/>
+	<xs:complexType name="table-relationType">
+		<xs:sequence>
+			<xs:element ref="help-table" minOccurs="0"/>
+			<xs:element name="table-relationship-role" type="table-relationship-roleType"/>
+			<xs:element name="table-relationship-role" type="table-relationship-roleType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="table-relationship-roleType">
+		<xs:sequence>
+			<xs:element ref="ejb-name"/>
+			<xs:element ref="cmr-field" minOccurs="0"/>
+			<xs:element name="fk-column" type="fk-columnType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="key-type" default="PrimaryKey">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="NoKey"/>
+					<xs:enumeration value="PrimaryKey"/>
+					<xs:enumeration value="ForeignKey"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

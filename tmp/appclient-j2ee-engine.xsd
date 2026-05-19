@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="appclient-j2ee-engine">
+		<xs:complexType>
+			<xs:attribute name="version"
+		           type="xs:string"
+		           fixed="5"
+		           use="optional">
+                <xs:annotation>
+	               <xs:documentation>
+	                   An optional value to differentiate the versions
+	              </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+			<xs:sequence>
+				<xs:element name="resource-ref" type="resource-refType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="resource-env-ref" type="resource-env-refType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="ejb-ref" type="ejb-refType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="server-component-ref" type="server-component-refType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="message-destination-ref" type="message-destination-refType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="message-destination" type="message-destinationType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="persistence-unit-ref" type="persistence-unit-refType" minOccurs="0" maxOccurs="unbounded"/>				
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="res-ref-name-uniqueness">
+			<xs:selector xpath="resource-ref"/>
+			<xs:field xpath="res-ref-name"/>
+		</xs:unique>
+		<xs:unique name="resource-env-ref-uniqueness">
+			<xs:selector xpath="resource-env-ref"/>
+			<xs:field xpath="resource-env-ref-name"/>
+		</xs:unique>
+		<xs:unique name="ejb-ref-name-uniqueness">
+			<xs:selector xpath="ejb-ref"/>
+			<xs:field xpath="ejb-ref-name"/>
+		</xs:unique>
+		<xs:unique name="message-destination-ref-name-uniqueness">
+			<xs:selector xpath="message-destination-ref"/>
+			<xs:field xpath="message-destination-ref-name"/>
+		</xs:unique>
+		<xs:unique name="message-destination-name-uniqueness">
+			<xs:selector xpath="message-destination"/>
+			<xs:field xpath="message-destination-name"/>
+		</xs:unique>
+		<xs:unique name="persistence-unit-ref-name-uniqueness">
+			<xs:selector xpath="persistence-unit-ref"/>
+			<xs:field xpath="persistence-unit-ref-name"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="description" type="xs:string"/>
+	<xs:complexType name="ejb-refType">
+		<xs:sequence>
+			<xs:element ref="ejb-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ejb-ref-name" type="xs:string"/>
+	<xs:element name="jndi-name" type="xs:string"/>
+	<xs:complexType name="message-destination-refType">
+		<xs:sequence>
+			<xs:element ref="message-destination-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="message-destinationType">
+		<xs:sequence>
+			<xs:element ref="message-destination-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="persistence-unit-refType">
+		<xs:sequence>
+			<xs:element ref="persistence-unit-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="message-destination-name" type="xs:string"/>
+	<xs:element name="message-destination-ref-name" type="xs:string"/>
+	<xs:element name="persistence-unit-ref-name" type="xs:string"/>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="res-link" type="xs:string"/>
+	<xs:element name="res-ref-name" type="xs:string"/>
+	<xs:complexType name="resource-env-refType">
+		<xs:sequence>
+			<xs:element ref="resource-env-ref-name"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="resource-env-ref-name" type="xs:string"/>
+	<xs:complexType name="resource-refType">
+		<xs:sequence>
+			<xs:element ref="res-ref-name"/>
+			<xs:element ref="res-link"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="server-component-refType">
+		<xs:sequence>
+			<xs:element ref="description" minOccurs="0"/>
+			<xs:element ref="name"/>
+			<xs:element ref="type"/>
+			<xs:element ref="jndi-name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="type" type="xs:string"/>
+</xs:schema>

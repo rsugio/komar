@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<provider-descriptor>
+  <display-name>XPI Axis Provider Library</display-name>
+  <component-name>com.sap.aii.af.axisproviderlib</component-name>
+  <provider-name>sap.com</provider-name>
+  <references>
+    <reference type="library" strength="strong" provider-name="sap.com">engine.j2ee14.facade</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">com.sap.base.technology.facade</reference>
+  </references>
+  <jars/>
+</provider-descriptor>

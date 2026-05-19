@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<data-source-aliases>
+  	<aliases>
+		<data-source-name>${com.sap.datasource.default}</data-source-name>
+		<alias>SAP/BC_XI_RST</alias>
+		<isolation-level>TRANSACTION_READ_COMMITTED</isolation-level>
+	</aliases>
+</data-source-aliases>

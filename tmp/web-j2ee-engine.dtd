@@ -1,0 +1,71 @@
+<!ELEMENT web-j2ee-engine (resource-ref*, resource-env-ref*, ejb-ref*, ejb-local-ref*,
+                            server-component-ref*, security-role-map*, response-status*, 
+			    fail-over-alert?, login-module-configuration?, 
+			    url-session-tracking?, security-policy-domain?, max-sessions?,
+			    cookie-config?)>
+
+<!ELEMENT resource-ref (res-ref-name, res-link?, non-transactional?)>
+<!ELEMENT res-ref-name (#PCDATA)>
+<!ELEMENT res-link (#PCDATA)>
+<!-- by default the resource is transactional -->
+<!ELEMENT non-transactional EMPTY>
+
+<!ELEMENT resource-env-ref (resource-env-ref-name, jndi-name)>
+<!ELEMENT resource-env-ref-name (#PCDATA)>
+
+<!ELEMENT ejb-ref (ejb-ref-name, jndi-name)>
+<!ELEMENT ejb-ref-name (#PCDATA)>
+
+<!ELEMENT ejb-local-ref (ejb-ref-name, jndi-name)>
+
+<!ELEMENT server-component-ref (description?, name, type, jndi-name)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT jndi-name (#PCDATA)>
+
+<!ELEMENT security-role-map (role-name, ((user-name*, group-name*) | server-role-name))>
+<!ELEMENT role-name (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT group-name (#PCDATA)>
+<!ELEMENT server-role-name (#PCDATA)>
+
+<!ELEMENT response-status (code, description)>
+<!ELEMENT code (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT fail-over-alert (message?, message-timeout?)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT message-timeout (#PCDATA)>
+
+<!ELEMENT login-module-configuration (login-module-stack?, password-change-config?)>
+
+<!ELEMENT login-module-stack (login-module+)>
+<!ELEMENT login-module (login-module-name, flag, options?)>
+<!ELEMENT login-module-name (#PCDATA)>
+<!ELEMENT flag (#PCDATA)>
+<!ELEMENT options (option+)>
+<!ELEMENT option (name, value)>
+<!ELEMENT value (#PCDATA)>
+
+<!ELEMENT password-change-config (login-page?, error-page?)>
+<!ELEMENT login-page (#PCDATA)>
+<!ELEMENT error-page (#PCDATA)>
+
+<!-- default value is false -->
+<!ELEMENT url-session-tracking EMPTY>
+
+<!ELEMENT security-policy-domain (#PCDATA)>
+
+<!ELEMENT max-sessions (#PCDATA)>
+
+<!ELEMENT cookie-config (cookie+)>
+<!-- type must be SESSION or APPLICATION -->
+<!ELEMENT cookie (type, path?, domain?, max-age?)>
+<!-- valid values are APPLICATION, NONE or some string 
+     by default is APPLICATION -->
+<!ELEMENT path (#PCDATA)>
+<!-- valid values are SERVER, NONE or some string 
+     by default is SERVER -->
+<!ELEMENT domain (#PCDATA)>
+<!-- default value -1 -->
+<!ELEMENT max-age (#PCDATA)>

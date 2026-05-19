@@ -1,0 +1,22 @@
+<!ELEMENT application-j2ee-engine (reference*, classpath?, provider-name?, modules-additional?, fail-over-enable?, start-up?)>
+
+<!ELEMENT reference (reference-target)>
+<!ATTLIST reference reference-type (hard|weak) #REQUIRED>
+<!ELEMENT reference-target (#PCDATA)>
+<!ATTLIST reference-target target-type (application|library|service|interface) #REQUIRED>
+<!ATTLIST reference-target provider-name CDATA #IMPLIED>
+
+<!ELEMENT classpath (#PCDATA)>
+
+<!ELEMENT provider-name (#PCDATA)>
+
+<!ELEMENT modules-additional (module+)>
+<!ELEMENT module (entry-name, container-type+)>
+<!ELEMENT entry-name (#PCDATA)>
+<!ELEMENT container-type (#PCDATA)>
+
+<!ELEMENT fail-over-enable EMPTY>
+<!ATTLIST fail-over-enable mode (disable|on_request|on_attribute) #REQUIRED>
+
+<!ELEMENT start-up EMPTY>
+<!ATTLIST start-up mode CDATA #IMPLIED>

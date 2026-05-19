@@ -1,0 +1,6 @@
+<!ELEMENT db-init (init-statements+)>
+
+<!ELEMENT init-statements (data-source-name, sql-statement+)>
+<!ELEMENT data-source-name (#PCDATA)>
+<!ELEMENT sql-statement (#PCDATA)>
+<!ATTLIST sql-statement ignore-error CDATA #IMPLIED>

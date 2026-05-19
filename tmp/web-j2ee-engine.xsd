@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by n/a (n/a) -->
+<!--Author: Violeta Georgieva-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="web-j2ee-engine" type="web-j2ee-engineType">
+		<xs:unique name="ejb-local-ref-name-uniqueness">
+			<xs:selector xpath="ejb-local-ref"/>
+			<xs:field xpath="ejb-ref-name"/>
+		</xs:unique>
+		<xs:unique name="ejb-ref-name-uniqueness">
+			<xs:selector xpath="ejb-ref"/>
+			<xs:field xpath="ejb-ref-name"/>
+		</xs:unique>
+		<xs:unique name="message-destination-name-uniqueness">
+			<xs:selector xpath="message-destination"/>
+			<xs:field xpath="message-destination-name"/>
+		</xs:unique>
+		<xs:unique name="message-destination-ref-name-uniqueness">
+			<xs:selector xpath="message-destination-ref"/>
+			<xs:field xpath="message-destination-ref-name"/>
+		</xs:unique>
+		<xs:unique name="resource-env-ref-uniqueness">
+			<xs:selector xpath="resource-env-ref"/>
+			<xs:field xpath="resource-env-ref-name"/>
+		</xs:unique>
+		<xs:unique name="res-ref-name-uniqueness">
+			<xs:selector xpath="resource-ref"/>
+			<xs:field xpath="res-ref-name"/>
+		</xs:unique>
+		<xs:unique name="role-name-uniqueness">
+			<xs:selector xpath="security-role-map"/>
+			<xs:field xpath="role-name"/>
+		</xs:unique>
+		<xs:unique name="status-code-uniqueness">
+			<xs:selector xpath="response-status"/>
+			<xs:field xpath="status-code"/>
+		</xs:unique>
+		<xs:unique name="type-uniqueness">
+			<xs:selector xpath="cookie"/>
+			<xs:field xpath="type"/>
+		</xs:unique>
+	</xs:element>
+	<!--************************************************************************************************************-->
+	<xs:simpleType name="component-typeType">
+		<xs:annotation>
+			<xs:documentation>This type specifies the server component type. It can be SERVICE or INTERFACE</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SERVICE"/>
+			<xs:enumeration value="INTERFACE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="cookieType">
+		<xs:annotation>
+			<xs:documentation>This type specifies the attributes that the web container will use when creating session or load-balancing cookies.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="type" type="cookie-typeType" default="SESSION" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The type element specifies the type of the cookie. It must be SESSION or APPLICATION. By default it is SESSION.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="path" type="xs:string" default="/" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation><![CDATA[The path element specifies the path of the cookie. The possible values for this element are: 
+					APPLICATION - the web container will set the path value to "/ " + alias-name + "/ "
+					NONE - the web container will not set a path attribute	
+					Unspecified string - the web container will use this string for path value. 
+					If this tag is missing the web container will set "/" for path attribute value.]]></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="domain" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation><![CDATA[The domain element specifies the domain of the cookie.	It can be: 
+						SERVER - the web container will set a domain value as the host name from the request	
+						NONE - the web container will not set a domain attribute	
+						Unspecified string - the web container will use this string for domain value. 
+						By default, it is NONE, which means that Web Container will not set the domain attribute (browser sends cookie to the requested host only).]]></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="max-age" type="xs:int" default="-1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The max-age element specifies the life time of the cookie, in seconds. It must be a positive integer, if the value of the element is negative, the cookie will never expire. By default, it is -1, that is, the life time value is not set.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="cookie-configType">
+		<xs:annotation>
+			<xs:documentation>This type contains description of session or load-balancing cookies.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cookie" type="cookieType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The cookie element specifies the attributes that the web container will use when creating session or load-balancing cookies.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:simpleType name="cookie-typeType">
+		<xs:annotation>
+			<xs:documentation>This type specifies the type of the cookie. It must be SESSION or APPLICATION.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SESSION"/>
+			<xs:enumeration value="APPLICATION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="ejb-local-refType">
+		<xs:annotation>
+			<xs:documentation>This type contains a reference to enterprise bean's local home.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ejb-ref-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The ejb-ref-name element identifies the name of the enterprise bean reference specified in the web.xml of the particular application.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jndi-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation><![CDATA[if you have specified a custom JNDI name for your enterprise bean using the <jndi-name> tag of the ejb-j2ee-engine.xml descriptor, the value of this tag must be the same. if you have not specified a custom JNDI name for your enterprise bean, then the JNDI name of the bean has the following format: <provider name>/<application name>/<enterprise bean name>.]]></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="ejb-refType">
+		<xs:annotation>
+			<xs:documentation>
+				The ejb-refType contains a reference to an enterprise bean in the web application.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ejb-ref-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The ejb-ref-name element identifies the name of the enterprise bean reference 
+						specified in the web.xml of the particular application.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jndi-name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="emptyType">
+		<xs:annotation>
+			<xs:documentation>
+				This type is used to designate an empty element when used.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="fail-over-alertType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+				The fail-over-alertType defines an alert message warning you that the server node, 
+				on which the user session is running will be shut down.
+				
+				Example: 
+				<fail-over-alert>
+					<message> Warning! This server node will be shut down.</message>
+					<timeout>15</timeout>
+				</fail-over-alert>
+				]]></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="message" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The message element specifies the text of alert message warning you that the server node will be shut down.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timeout" type="xs:int" default="120000" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The timeout element specifies the timeout (in minutes) 
+						after which the server node will be shut down. 
+						The displayed alert message warns you about the specified timeout period.
+						By default the value is 120000.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:simpleType name="flagType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+				The flag element specifies the priority of the authentication method in the login module. 
+				The options are: 	
+					OPTIONAL
+					REQUIRED
+					REQUISITE
+					SUFFICIENT
+				Example: 
+					<flag>REQUIRED</flag>
+			]]></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OPTIONAL"/>
+			<xs:enumeration value="REQUIRED"/>
+			<xs:enumeration value="REQUISITE"/>
+			<xs:enumeration value="SUFFICIENT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--************************************************************************************************************-->
+	<xs:simpleType name="get-request-url-modeType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+				Valid values are:
+					REQUEST-DISPATCHER 
+					CLIENT
+				By default is REQUEST-DISPATCHER.
+			]]></xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="REQUEST-DISPATCHER"/>
+			<xs:enumeration value="CLIENT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="message-destinationType">
+		<xs:sequence>
+			<xs:element name="message-destination-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+                        The message-destination-name element specifies a name for a message destination. 
+                        This name must be unique among the names of message destinations within the Deployment File.                    
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jndi-name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="message-destination-refType">
+		<xs:sequence>
+			<xs:element name="message-destination-ref-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+                        The message-destination-ref-name element specifies a name for a message destination reference. 
+                        This name must be unique among the names of message destinations references within the Deployment File.                    
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jndi-name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="login-moduleType">
+		<xs:annotation>
+			<xs:documentation>
+				The login-module type contains a particular login module's settings. 
+				It defines the authentication method and its priority.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="login-module-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation><![CDATA[
+						The login-module-name element specifies the name of the particular login module. 
+						Example: 
+							<login-module-name> 
+								com.sap.engine.services.security.server.jaas.BasicPasswordLoginModule 
+							</login-module-name>
+						]]></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="flag" type="flagType"/>
+			<xs:element name="options" type="optionsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="login-configType">
+		<xs:annotation>
+			<xs:documentation>
+				The login-config type defines login modules and password 
+				changing settings for a particular web application.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="login-module-stack" type="login-module-stackType" minOccurs="0"/>
+			<xs:element name="password-change-config" type="password-change-configType" minOccurs="0"/>
+			<xs:element name="security-policy-domain" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The security-policy-domain element defines the security domain for your web application.
+						The default value is alias-name (where "/" is replaced with "*").
+						The "/" is used for separator between security policy domains.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="login-module-stackType">
+		<xs:annotation>
+			<xs:documentation>
+				The login-module-stack type contains login modules within a web application.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="login-module" type="login-moduleType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="optionType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+				The option element defines specific login module option. 
+				Each option is in key=value format. 
+				Example: 
+				<option>
+					<name>debug</name>
+					<value>true</value>
+				</option>
+				]]></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The value element specifies the value of the login module specific option.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="optionsType">
+		<xs:annotation>
+			<xs:documentation>
+				The options type contains specific features for the particular login module.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="option" type="optionType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="password-change-configType">
+		<xs:annotation>
+			<xs:documentation>
+				The password-change-config type defines the login page and the error page 
+				enabling you to change the login password for your web application.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="login-page" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The login-page element specifies the login page that is displayed 
+						when the login password for the user expires and you have to set a new one.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="error-page" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The error-page element specifies the error page, displayed when the login fails.									</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="resource-env-refType">
+		<xs:annotation>
+			<xs:documentation>
+				The resource-env-ref type contains a web application's reference to 
+				an object in the web application's environment.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="resource-env-ref-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The resource-env-ref-name element identifies the name of the reference 
+						to the web application's environment resource specified in the web.xml of this application.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jndi-name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="resource-refType">
+		<xs:annotation>
+			<xs:documentation>
+				The resource-ref type contains additional reference's settings 
+				for external resources used within the web application.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="res-ref-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The res-ref-name element identifies the name of the defined resource reference. 
+						It is the same specified in web.xml.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="res-link" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The res-link element specifies the JNDI name of the resource.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="non-transactional" type="emptyType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The non-transactional element specifies if the resource reference is transactional. 
+						By default, all references are transactional.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="response-statusType">
+		<xs:annotation>
+			<xs:documentation>The response-status type defines response status codes for http responses and their reason phrases as specified in HTTP 1.1 protocol.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="status-code" type="status-codeType">
+				<xs:annotation>
+					<xs:documentation>The status-code element specifies custom HTTP response codes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reason-phrase" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The reason-phrase element specifies the reason phrase for the described response code.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="security-role-mapType">
+		<xs:annotation>
+			<xs:documentation>
+				The security-role-map type contains the web application's security roles 
+				that are mapped to J2EE Engine security roles.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="role-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The role-name element specifies the name of the security role.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="server-role-name" type="xs:string" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation><![CDATA[
+				The server-role-name type specifies the name of the server roles that are mapped 
+				to specific web application's security roles. 
+				This option is available when you are working offline and online. 
+				The server roles can be: 
+					administrators
+					guests 
+					all 
+					other string literal
+				Example: 
+					<server-role-name>guests</server-role-name>
+				]]></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:complexType name="server-component-refType">
+		<xs:annotation>
+			<xs:documentation>
+				This type defines a reference from the web application to the SAP J2EE Engine interface or service components. This way, components of the referring application can look up server components and use their functions.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The name element specifies the name of the component in a web application. This is the name that is used in a servlet (or JSP) code to look up that component. It is relative to the java:comp/env context.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="type" type="component-typeType" default="SERVICE">
+				<xs:annotation>
+					<xs:documentation><![CDATA[The type element specifies the server component type. It can be:
+					SERVICE
+					INTERFACE
+					By default the server component type is SERVICE. 
+					]]></xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="jndi-name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The jndi-name element is the name with which this component is bound to the SAP J2EE Engine Naming System.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--************************************************************************************************************-->
+	<xs:simpleType name="spec-versionType">
+		<xs:annotation>
+			<xs:documentation>This type specifies servlet specification version of the deployment descriptors, with which they are compatible.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="2.2"/>
+			<xs:enumeration value="2.3"/>
+			<xs:enumeration value="2.4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--************************************************************************************************************-->
+	<xs:simpleType name="status-codeType">
+		<xs:annotation>
+			<xs:documentation>This type defines custom HTTP response codes (in addition to the standard ones defined by the HTTP 1.1 specification in RFC #2616) that the Web Container uses to reply to the users of the Web application in certain cases. The value must be an Integer between 100 (exclusive) and 999 (inclusive) as the following code values are not permitted: 200, 201, 202, 203, 204, 205, 206, 300, 301, 302, 303, 304, 305, 306, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 500, 501, 502, 503, 504, 505. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:pattern value="\d{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!--************************************************************************************************************-->
+	 <xs:simpleType name="programmatic-security-againstType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[
+                Valid values are:
+					CALLER-IDENTITY
+                    RUNAS-IDENTITY
+                    By default it is RUNAS-IDENTITY for web modules with version 2.3 or less and CALLER-IDENTITY for version 2.4 or greater.
+				Note: This tag is deprecated and may be removed in future versions .
+                ]]>
+			</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CALLER-IDENTITY"/>
+            <xs:enumeration value="RUNAS-IDENTITY"/>
+        </xs:restriction>
+       </xs:simpleType>      
+    <!--************************************************************************************************************-->
+	<xs:complexType name="web-j2ee-engineType">
+		<xs:annotation>
+			<xs:documentation>
+				web-j2ee-engine is the root element for this deployment descriptor. 
+				It contains information about the deployed web applications.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="spec-version" type="spec-versionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The spec-version element specifies servlet specification version of the deployment descriptors, with which they are compatible.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="resource-ref" type="resource-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="resource-env-ref" type="resource-env-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ejb-ref" type="ejb-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ejb-local-ref" type="ejb-local-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="server-component-ref" type="server-component-refType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The server-component-ref element contains a reference to a specific server component.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-destination" type="message-destinationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="message-destination-ref" type="message-destination-refType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="security-role-map" type="security-role-mapType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="programmatic-security-against" type="programmatic-security-againstType" minOccurs="0" />
+			<xs:element name="response-status" type="response-statusType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="fail-over-alert" type="fail-over-alertType" minOccurs="0"/>
+			<xs:element name="login-module-configuration" type="login-configType" minOccurs="0"/>
+			<xs:element name="url-session-tracking" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The url-session-tracking specifies whether cookies or url-rewriting will be used for session tracking.	By default, the value is false.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="stop-on-servlets-init-failure" type="emptyType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If init method of any servlet fails during startup of the application, application will not be able to start.
+						By default, application starts successfully eventhough the init method of some servlets may have failed. 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="max-sessions" type="xs:int" default="-1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The max-sessions element specifies the maximum number of user sessions to an application.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cookie-config" type="cookie-configType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The cookie-config element contains description of session or load-balancing cookies.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="get-request-url-mode" type="get-request-url-modeType" default="REQUEST-DISPATCHER" minOccurs="0"/>
+			<xs:element name="search-tlds-in-referred-libs" type="emptyType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The search-tlds-in-referred-libs element specifies whether to search TLDs in referenced libraries.
+						By default, TLDs are searched only in application libraries. Setting this element enables searching in all externaly referred libraries.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

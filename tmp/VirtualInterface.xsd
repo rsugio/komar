@@ -1,0 +1,776 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.sap.com/2002/10/metamodel/vi"
+            xmlns="http://xml.sap.com/2002/10/metamodel/vi"
+            version="Release:6.40 Version:2.1 Timestamp:1087980362911"
+            elementFormDefault="qualified">
+
+  <!-- Element for references to objects in the same metamodel -->
+  <xsd:element name="Core.Reference">
+    <xsd:complexType>
+      <xsd:attribute name="package" type="xsd:string" use="optional"/>
+      <xsd:attribute name="name" type="xsd:string" use="optional"/>
+      <xsd:attribute name="type" type="xsd:string" use="optional"/>
+      <xsd:attribute name="path" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!-- Element for references to objects in foreign metamodels -->
+  <xsd:element name="Core.ForeignReference">
+    <xsd:complexType>
+      <xsd:attribute name="modelName" type="xsd:string" use="required"/>
+      <xsd:attribute name="package" type="xsd:string" use="required"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="type" type="xsd:string" use="required"/>
+      <xsd:attribute name="path" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!-- Element for class attributes of type "Text" -->
+  <xsd:element name="Core.Text" type="xsd:string"/>
+  
+  <!-- Element for annotations -->
+  <xsd:element name="Core.Annotations">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Core.Annotation" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:attribute name="key" type="xsd:string" use="required"/>
+            <xsd:attribute name="timestamp" type="xsd:long" use="required"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!-- DevelopmentObject (type) -->
+  <xsd:complexType name="DevelopmentObjectState">
+    <xsd:sequence>
+      <xsd:element ref="Core.Annotations" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>  
+
+  <!-- Type (type) -->
+  <xsd:complexType name="TypeState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Type.Original">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element ref="ComplexTypeReference"/>
+            <xsd:element ref="Fault"/>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Type.SoapExtensionType" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- ParentTypes (Type -> Type, to-n-association) -->
+      <xsd:element name="Type.ParentTypes" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Core.Reference" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="isAbstract" type="xsd:boolean" default="false"/>
+      <xsd:attribute name="isInterface" type="xsd:boolean" default="false"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="parentTypeName" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- AbstractConvertedTypeReference (type) -->
+  <xsd:complexType name="AbstractConvertedTypeReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="TypeReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- ComplexTypeReference (type) -->
+  <xsd:complexType name="ComplexTypeReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="TypeReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- ComplexTypeReference -->
+  <xsd:element name="ComplexTypeReference" type="ComplexTypeReferenceState"/>
+
+  <!-- SoapExtensionType (type) -->
+  <xsd:complexType name="SoapExtensionTypeState">
+    <xsd:complexContent>
+    <xsd:extension base="SoapExtensionNamespaceState">
+    <xsd:sequence>
+    </xsd:sequence>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionType -->
+  <xsd:element name="SoapExtensionType" type="SoapExtensionTypeState"/>
+
+  <!-- ConvertedTableReference (type) -->
+  <xsd:complexType name="ConvertedTableReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="AbstractConvertedTypeReferenceState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="ConvertedTableReference.LineType">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="ConvertedTypeReference"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="ConvertedTableReference.SoapExtensionTable" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionTable"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="dimension" type="xsd:integer"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- ConvertedTableReference -->
+  <xsd:element name="ConvertedTableReference" type="ConvertedTableReferenceState"/>
+
+  <!-- ParEndpointReference (type) -->
+  <xsd:complexType name="ParEndpointReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="EndpointReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="qualifiedClassName" type="xsd:string"/>
+      <xsd:attribute name="serviceAlias" type="xsd:string"/>
+      <xsd:attribute name="serviceName" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- ParEndpointReference -->
+  <xsd:element name="ParEndpointReference" type="ParEndpointReferenceState"/>
+
+  <!-- SoapExtRuntimeClass (type) -->
+  <xsd:complexType name="SoapExtRuntimeClassState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="serializer" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtRuntimeClass -->
+  <xsd:element name="SoapExtRuntimeClass" type="SoapExtRuntimeClassState"/>
+
+  <!-- Table (type) -->
+  <xsd:complexType name="TableState">
+    <xsd:complexContent>
+    <xsd:extension base="TypeState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Table.LineType">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element ref="ComplexTypeReference"/>
+            <xsd:element ref="ConvertedTableReference"/>
+            <xsd:element ref="ConvertedTypeReference"/>
+            <xsd:element ref="Fault"/>
+            <xsd:element ref="InlineComplexTableReference"/>
+            <xsd:element ref="InlinePrimitiveTableReference"/>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Table.SoapExtensionTable" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionTable"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Table -->
+  <xsd:element name="Table" type="TableState"/>
+
+  <!-- MappableItem (type) -->
+  <xsd:complexType name="MappableItemState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="nameMappedTo" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- InlinePrimitiveTableReference (type) -->
+  <xsd:complexType name="InlinePrimitiveTableReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="TypeReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="dimension" type="xsd:integer"/>
+      <xsd:attribute name="lineType" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- InlinePrimitiveTableReference -->
+  <xsd:element name="InlinePrimitiveTableReference" type="InlinePrimitiveTableReferenceState"/>
+
+  <!-- SoapExtensionConvertedTypeRef (type) -->
+  <xsd:complexType name="SoapExtensionConvertedTypeRefState">
+    <xsd:complexContent>
+    <xsd:extension base="AbstractExtensionState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="isAttribute" type="xsd:boolean" default="false"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionConvertedTypeRef -->
+  <xsd:element name="SoapExtensionConvertedTypeRef" type="SoapExtensionConvertedTypeRefState"/>
+
+  <!-- ConvertedTypeReference (type) -->
+  <xsd:complexType name="ConvertedTypeReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="AbstractConvertedTypeReferenceState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="ConvertedTypeReference.SoapExtensionConvertedTypeRef" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionConvertedTypeRef"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="originalType" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- ConvertedTypeReference -->
+  <xsd:element name="ConvertedTypeReference" type="ConvertedTypeReferenceState"/>
+
+  <!-- ElementaryTypeKinds (enumeration type) -->
+  <xsd:simpleType name="ElementaryTypeKinds">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="abap_adHoc_type"/>
+      <xsd:enumeration value="abap_data_element"/>
+      <xsd:enumeration value="abap_domain"/>
+      <xsd:enumeration value="java_type"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- ClassEndpointReference (type) -->
+  <xsd:complexType name="ClassEndpointReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="EndpointReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="qualifiedClassName" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- ClassEndpointReference -->
+  <xsd:element name="ClassEndpointReference" type="ClassEndpointReferenceState"/>
+
+  <!-- EjbEndpointReference (type) -->
+  <xsd:complexType name="EjbEndpointReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="EndpointReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="beanName" type="xsd:string"/>
+      <xsd:attribute name="remoteInterfaceName" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- EjbEndpointReference -->
+  <xsd:element name="EjbEndpointReference" type="EjbEndpointReferenceState"/>
+
+  <!-- Function (type) -->
+  <xsd:complexType name="FunctionState">
+    <xsd:complexContent>
+    <xsd:extension base="MappableItemState">
+    <xsd:sequence>
+      <!-- to-n-aggregation -->
+      <xsd:element name="Function.Faults" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Fault" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="Function.IncomingParameters" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="Function.OutgoingParameters" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Function.SoapExtensionFunction" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionFunction"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="isExposed" type="xsd:boolean" default="false"/>
+      <xsd:attribute name="originalName" type="xsd:string"/>
+      <xsd:attribute name="technicalDocumentation" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Function -->
+  <xsd:element name="Function" type="FunctionState"/>
+
+  <!-- FieldReference (type) -->
+  <xsd:complexType name="FieldReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="FieldReference.DefaultValue" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="DefaultValue"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="FieldReference.SubFields" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="FieldReference" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- FieldReference -->
+  <xsd:element name="FieldReference" type="FieldReferenceState"/>
+
+  <!-- SoapExtensionFunction (type) -->
+  <xsd:complexType name="SoapExtensionFunctionState">
+    <xsd:complexContent>
+    <xsd:extension base="SoapExtensionNamespaceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="SOAPRequestName" type="xsd:string"/>
+      <xsd:attribute name="SOAPResponseName" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionFunction -->
+  <xsd:element name="SoapExtensionFunction" type="SoapExtensionFunctionState"/>
+
+  <!-- SoapExtensionVI (type) -->
+  <xsd:complexType name="SoapExtensionVIState">
+    <xsd:complexContent>
+    <xsd:extension base="SoapExtensionNamespaceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="useNamespaces" type="xsd:boolean" default="true"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionVI -->
+  <xsd:element name="SoapExtensionVI" type="SoapExtensionVIState"/>
+
+  <!-- EndpointReference (type) -->
+  <xsd:complexType name="EndpointReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- TypeReference (type) -->
+  <xsd:complexType name="TypeReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- InlineComplexTableReference (type) -->
+  <xsd:complexType name="InlineComplexTableReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="TypeReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- InlineComplexTableReference -->
+  <xsd:element name="InlineComplexTableReference" type="InlineComplexTableReferenceState"/>
+
+  <!-- VirtualInterface (type) -->
+  <xsd:complexType name="VirtualInterfaceState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="VirtualInterface.EndpointReference">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element ref="AbapFunctionModuleReference"/>
+            <xsd:element ref="ClassEndpointReference"/>
+            <xsd:element ref="EjbEndpointReference"/>
+            <xsd:element ref="ParEndpointReference"/>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="VirtualInterface.Functions">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Function" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="VirtualInterface.SoapExtensionVI" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionVI"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="VirtualInterface.Types" minOccurs="0">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="Elementary"/>
+            <xsd:element ref="Structure"/>
+            <xsd:element ref="Table"/>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="changeable" type="xsd:boolean" default="true"/>
+      <xsd:attribute name="guid" type="xsd:string"/>
+      <xsd:attribute name="interfaceType" type="InterfaceType" default="ejb"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="package" type="xsd:string" use="required"/>
+      <xsd:attribute name="masterLanguage" type="xsd:string" use="required"/>
+      <xsd:attribute name="mmRelease" type="xsd:string" use="required"/>
+      <xsd:attribute name="mmVersion" type="xsd:string" use="required"/>
+      <xsd:attribute name="mmTimestamp" type="xsd:string" use="required"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- VirtualInterface -->
+  <xsd:element name="VirtualInterface" type="VirtualInterfaceState"/>
+
+  <!-- DefaultValue (type) -->
+  <xsd:complexType name="DefaultValueState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="isInitial" type="xsd:boolean" default="false"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- DefaultValue -->
+  <xsd:element name="DefaultValue" type="DefaultValueState"/>
+
+  <!-- Field (type) -->
+  <xsd:complexType name="FieldState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Field.TypeReference">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element ref="ComplexTypeReference"/>
+            <xsd:element ref="ConvertedTableReference"/>
+            <xsd:element ref="ConvertedTypeReference"/>
+            <xsd:element ref="Fault"/>
+            <xsd:element ref="InlineComplexTableReference"/>
+            <xsd:element ref="InlinePrimitiveTableReference"/>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="fieldName" type="xsd:string"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Field -->
+  <xsd:element name="Field" type="FieldState"/>
+
+  <!-- Structure (type) -->
+  <xsd:complexType name="StructureState">
+    <xsd:complexContent>
+    <xsd:extension base="TypeState">
+    <xsd:sequence>
+      <!-- to-n-aggregation -->
+      <xsd:element name="Structure.Fields" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Field" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Structure.SoapExtensionStructure" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionStructure"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Structure -->
+  <xsd:element name="Structure" type="StructureState"/>
+
+  <!-- Elementary (type) -->
+  <xsd:complexType name="ElementaryState">
+    <xsd:complexContent>
+    <xsd:extension base="TypeState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="builtInType" type="xsd:string"/>
+      <xsd:attribute name="decimals" type="xsd:integer"/>
+      <xsd:attribute name="kind" type="ElementaryTypeKinds" default="java_type"/>
+      <xsd:attribute name="length" type="xsd:integer"/>
+      <xsd:attribute name="signed" type="xsd:boolean"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Elementary -->
+  <xsd:element name="Elementary" type="ElementaryState"/>
+
+  <!-- SoapExtensionNamespace (type) -->
+  <xsd:complexType name="SoapExtensionNamespaceState">
+    <xsd:complexContent>
+    <xsd:extension base="AbstractExtensionState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="localname" type="xsd:string"/>
+      <xsd:attribute name="namespace" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionNamespace -->
+  <xsd:element name="SoapExtensionNamespace" type="SoapExtensionNamespaceState"/>
+
+  <!-- SoapExtensionTable (type) -->
+  <xsd:complexType name="SoapExtensionTableState">
+    <xsd:complexContent>
+    <xsd:extension base="AbstractExtensionState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="itemLabel" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionTable -->
+  <xsd:element name="SoapExtensionTable" type="SoapExtensionTableState"/>
+
+  <!-- AbstractExtension (type) -->
+  <xsd:complexType name="AbstractExtensionState">
+    <xsd:complexContent>
+    <xsd:extension base="DevelopmentObjectState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionParameter (type) -->
+  <xsd:complexType name="SoapExtensionParameterState">
+    <xsd:complexContent>
+    <xsd:extension base="SoapExtensionNamespaceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="isHeader" type="xsd:boolean" default="false"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionParameter -->
+  <xsd:element name="SoapExtensionParameter" type="SoapExtensionParameterState"/>
+
+  <!-- AbapFunctionModuleReference (type) -->
+  <xsd:complexType name="AbapFunctionModuleReferenceState">
+    <xsd:complexContent>
+    <xsd:extension base="EndpointReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="functionModuleName" type="xsd:string"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- AbapFunctionModuleReference -->
+  <xsd:element name="AbapFunctionModuleReference" type="AbapFunctionModuleReferenceState"/>
+
+  <!-- Parameter (type) -->
+  <xsd:complexType name="ParameterState">
+    <xsd:complexContent>
+    <xsd:extension base="MappableItemState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Parameter.DefaultValue" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="DefaultValue"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="Parameter.FieldReferences" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="FieldReference" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Parameter.MappedTypeReference">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element ref="ComplexTypeReference"/>
+            <xsd:element ref="ConvertedTableReference"/>
+            <xsd:element ref="ConvertedTypeReference"/>
+            <xsd:element ref="Fault"/>
+            <xsd:element ref="InlineComplexTableReference"/>
+            <xsd:element ref="InlinePrimitiveTableReference"/>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Parameter.SoapExtensionParameter" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapExtensionParameter"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="isExposed" type="xsd:boolean" default="true"/>
+      <xsd:attribute name="isOptional" type="xsd:boolean" default="false"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Parameter -->
+  <xsd:element name="Parameter" type="ParameterState"/>
+
+  <!-- InterfaceType (enumeration type) -->
+  <xsd:simpleType name="InterfaceType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="bapi"/>
+      <xsd:enumeration value="ejb"/>
+      <xsd:enumeration value="idoc"/>
+      <xsd:enumeration value="javaclass"/>
+      <xsd:enumeration value="jms"/>
+      <xsd:enumeration value="par"/>
+      <xsd:enumeration value="rfc"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- Fault (type) -->
+  <xsd:complexType name="FaultState">
+    <xsd:complexContent>
+    <xsd:extension base="ComplexTypeReferenceState">
+    <xsd:sequence>
+    </xsd:sequence>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Fault -->
+  <xsd:element name="Fault" type="FaultState"/>
+
+  <!-- SoapExtensionStructure (type) -->
+  <xsd:complexType name="SoapExtensionStructureState">
+    <xsd:complexContent>
+    <xsd:extension base="AbstractExtensionState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="unorderedFields" type="xsd:boolean" default="false"/>
+    </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- SoapExtensionStructure -->
+  <xsd:element name="SoapExtensionStructure" type="SoapExtensionStructureState"/>
+
+</xsd:schema>

@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.sap.com/2002/10/metamodel/wsd"
+            xmlns="http://xml.sap.com/2002/10/metamodel/wsd"
+            version="Release:6.30 Version:2.0 Timestamp:1083659752033"
+            elementFormDefault="qualified">
+
+  <!-- Element for references to objects in the same metamodel -->
+  <xsd:element name="Core.Reference">
+    <xsd:complexType>
+      <xsd:attribute name="package" type="xsd:string" use="optional"/>
+      <xsd:attribute name="name" type="xsd:string" use="optional"/>
+      <xsd:attribute name="type" type="xsd:string" use="optional"/>
+      <xsd:attribute name="path" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!-- Element for references to objects in foreign metamodels -->
+  <xsd:element name="Core.ForeignReference">
+    <xsd:complexType>
+      <xsd:attribute name="modelName" type="xsd:string" use="required"/>
+      <xsd:attribute name="package" type="xsd:string" use="required"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="type" type="xsd:string" use="required"/>
+      <xsd:attribute name="path" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!-- Element for class attributes of type "Text" -->
+  <xsd:element name="Core.Text" type="xsd:string"/>
+
+  <!-- Property (type) -->
+  <xsd:complexType name="PropertyState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="value" type="xsd:string"/>
+  </xsd:complexType>
+
+  <!-- Property -->
+  <xsd:element name="Property" type="PropertyState"/>
+
+  <!-- Feature (type) -->
+  <xsd:complexType name="FeatureState">
+    <xsd:sequence>
+      <!-- to-n-aggregation -->
+      <xsd:element name="Feature.Properties" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Property" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+  <!-- Feature -->
+  <xsd:element name="Feature" type="FeatureState"/>
+
+  <!-- WebServiceDefinition (type) -->
+  <xsd:complexType name="WebServiceDefinitionState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="WebServiceDefinition.Documentation" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Documentation"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="WebServiceDefinition.SoapApplications" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapApplication" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="WebServiceDefinition.VirtualInterfaceReferences">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="VirtualInterfaceReference" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-n-aggregation -->
+      <xsd:element name="WebServiceDefinition.uddiTModelPublications" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="UDDITModelPublication" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="guid" type="xsd:string"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="package" type="xsd:string" use="required"/>
+      <xsd:attribute name="masterLanguage" type="xsd:string" use="required"/>
+      <xsd:attribute name="mmRelease" type="xsd:string" use="required"/>
+      <xsd:attribute name="mmVersion" type="xsd:string" use="required"/>
+      <xsd:attribute name="mmTimestamp" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+  <!-- WebServiceDefinition -->
+  <xsd:element name="WebServiceDefinition" type="WebServiceDefinitionState"/>
+
+  <!-- Documentation (type) -->
+  <xsd:complexType name="DocumentationState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+  <!-- Documentation -->
+  <xsd:element name="Documentation" type="DocumentationState"/>
+
+  <!-- SoapApplication (type) -->
+  <xsd:complexType name="SoapApplicationState">
+    <xsd:sequence>
+      <!-- to-n-aggregation -->
+      <xsd:element name="SoapApplication.Features" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Feature" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+  <!-- SoapApplication -->
+  <xsd:element name="SoapApplication" type="SoapApplicationState"/>
+
+  <!-- UDDITModelPublication (type) -->
+  <xsd:complexType name="UDDITModelPublicationState">
+    <xsd:sequence>
+    </xsd:sequence>
+      <xsd:attribute name="inquiryUrl" type="xsd:string"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="publishUrl" type="xsd:string"/>
+  </xsd:complexType>
+
+  <!-- UDDITModelPublication -->
+  <xsd:element name="UDDITModelPublication" type="UDDITModelPublicationState"/>
+
+  <!-- Function (type) -->
+  <xsd:complexType name="FunctionState">
+    <xsd:sequence>
+      <!-- to-1-aggregation -->
+      <xsd:element name="Function.SoapApplication">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapApplication"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+  <!-- Function -->
+  <xsd:element name="Function" type="FunctionState"/>
+
+  <!-- VirtualInterfaceReference (type) -->
+  <xsd:complexType name="VirtualInterfaceReferenceState">
+    <xsd:sequence>
+      <!-- to-n-aggregation -->
+      <xsd:element name="VirtualInterfaceReference.Functions" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="Function" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <!-- to-1-aggregation -->
+      <xsd:element name="VirtualInterfaceReference.SoapApplication" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="SoapApplication"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+      <xsd:attribute name="package" type="xsd:string"/>
+      <xsd:attribute name="viGuid" type="xsd:string"/>
+  </xsd:complexType>
+
+  <!-- VirtualInterfaceReference -->
+  <xsd:element name="VirtualInterfaceReference" type="VirtualInterfaceReferenceState"/>
+
+</xsd:schema>

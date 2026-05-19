@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.sap.com/webas/630/soap/java/descriptors/ws-clients-runtime-descriptor"
+           targetNamespace="http://www.sap.com/webas/630/soap/java/descriptors/ws-clients-runtime-descriptor">
+
+
+  <xs:complexType name="WSClientsRuntimeDescriptor">
+    <xs:sequence>
+      <xs:element name="wsclient-runtime-descriptor" type="tns:WSClientRuntimeDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WSClientRuntimeDescriptor">
+    <xs:sequence>
+      <xs:element name="application-name" type="xs:string" minOccurs="0"/>
+      <xs:element name="module-name" type="xs:string" />
+      <xs:element name="component-descriptor" type="tns:ComponentDescriptorType" minOccurs="0" maxOccurs="unbounded"  />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ComponentDescriptorType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="jndi-name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="ws-clients-runtime-descriptor" type="tns:WSClientsRuntimeDescriptor"/>
+</xs:schema>

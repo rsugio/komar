@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:tns="http://www.sap.com/webas/630/soap/java/descriptors/ws-runtime-descriptor"
+           targetNamespace="http://www.sap.com/webas/630/soap/java/descriptors/ws-runtime-descriptor">
+
+
+<xs:complexType name="WSRuntimeDescriptor">
+  <xs:sequence>
+    <xs:element name="uddi-key" type="xs:string" minOccurs="0"/>
+    <xs:element name="uddi-publications" type="tns:UDDIPublication" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:element name="severity-level" type="xs:int" minOccurs="0"/>
+    <xs:element name="jar-name" type="xs:string"/>
+    <xs:element name="wsdl-styles" type="xs:string" minOccurs = "0" maxOccurs="unbounded"/>
+    <xs:element name="ws-runtime-configuration" type="tns:WSRuntimeConfigurationDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="WSRuntimeConfigurationDescriptor">
+  <xs:sequence>
+    <xs:element name="service-endpoint-name" type="tns:QNameDescriptor"/>
+    <xs:element name="impl-link" type="tns:ImplLinkDescriptor" minOccurs="0"/>
+    <xs:element name="runtime-operation-configuration" type="tns:RuntimeOperationConfigDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RuntimeOperationConfigDescriptor">
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:sequence>
+    <xs:element name="operation-mapping" type="tns:PropertiesDescriptor"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="PropertiesDescriptor">
+  <xs:sequence>
+    <xs:element name="property" type="tns:PropertyDescriptor" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ImplLinkDescriptor">
+  <xs:attribute name="implementation-id" type="xs:string" use="required"/>  
+  <xs:sequence>   
+    <xs:element name="properties" type="tns:PropertiesDescriptor" minOccurs="0"/> 
+  </xs:sequence>     
+</xs:complexType>
+
+<xs:complexType name="PropertyDescriptor">
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="value" type="xs:string" use="required"/>
+  <xs:sequence/>     
+</xs:complexType>
+
+<xs:complexType name="QNameDescriptor">
+  <xs:sequence>
+    <xs:element name="namespaceURI" type="xs:string"/>
+    <xs:element name="localName" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UDDIPublication">
+  <xs:attribute name="inquiryURL" type="xs:string" use="required"/>
+  <xs:attribute name="publishURL" type="xs:string" use="required"/>
+  <xs:sequence>
+    <xs:element name="serviceKey" type="xs:string" minOccurs="1" maxOccurs="1"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="ws-runtime-descriptor" type="tns:WSRuntimeDescriptor"/>
+
+</xs:schema>

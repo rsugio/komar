@@ -1,0 +1,94 @@
+<!ELEMENT ejb-j2ee-engine (description?, enterprise-beans?, transaction-descriptor?, security-permission?)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT enterprise-beans (enterprise-bean+)>
+
+<!ELEMENT enterprise-bean (ejb-name, jndi-name?, container-size?, ejb-ref*, ejb-local-ref*, resource-ref*, resource-env-ref*, server-component-ref*,
+  run-as-identity-map?, ior-security-config*, (session-props|entity-props|message-props)?)>
+<!ELEMENT ejb-name (#PCDATA)>
+<!ELEMENT jndi-name (#PCDATA)>
+<!ELEMENT container-size (#PCDATA)>
+
+<!ELEMENT ejb-ref (ejb-ref-name, jndi-name)>
+<!ELEMENT ejb-ref-name (#PCDATA)>
+
+<!ELEMENT ejb-local-ref (ejb-ref-name, jndi-name)>
+
+<!ELEMENT resource-ref (res-ref-name, res-link?, non-transactional?)>
+<!ELEMENT res-ref-name (#PCDATA)>
+<!ELEMENT res-link (#PCDATA)>
+<!-- by default the resource is transactional -->
+<!ELEMENT non-transactional EMPTY>
+
+<!ELEMENT resource-env-ref (resource-env-ref-name, jndi-name)>
+<!ELEMENT resource-env-ref-name (#PCDATA)>
+
+<!ELEMENT server-component-ref (description?, name, type, jndi-name)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+
+<!ELEMENT run-as-identity-map (user-name)>
+
+<!ELEMENT ior-security-config (transport-config?, as-context?, sas-context?)>
+<!ELEMENT transport-config (integrity, confidentiality, establish-trust-in-target, establish-trust-in-client)>
+<!ELEMENT integrity (#PCDATA)>
+<!ELEMENT confidentiality (#PCDATA)>
+<!ELEMENT establish-trust-in-target (#PCDATA)>
+<!ELEMENT establish-trust-in-client (#PCDATA)>
+
+<!ELEMENT as-context (auth-method, realm, required)>
+<!ELEMENT auth-method (#PCDATA)>
+<!ELEMENT realm (#PCDATA)>
+<!ELEMENT required (#PCDATA)>
+
+<!ELEMENT sas-context (caller-propagation)>
+<!ELEMENT caller-propagation (#PCDATA)>
+
+<!--
+ for session beans : session-timeout - timeout for sessions
+          stateful : passivation - if presents then there must be passivation
+         stateless : property - stateless session pool
+-->
+<!ELEMENT session-props (session-timeout?, (passivation|keeps-open-resources)?, property*)>
+<!ELEMENT session-timeout (#PCDATA)>
+<!ELEMENT passivation (passive-timeout, lrulimit)>
+<!ELEMENT passive-timeout (#PCDATA)>
+<!ELEMENT lrulimit (#PCDATA)>
+<!ELEMENT keeps-open-resources EMPTY>
+
+<!--
+ for entity beans : property - passive pool
+                    initial-cache-size - initial size for the cache of the PersistenceManager
+-->
+<!ELEMENT entity-props (unknown-pk-interval?, initial-cache-size?, property*)>
+<!ELEMENT unknown-pk-interval (#PCDATA)>
+<!ELEMENT initial-cache-size (#PCDATA)>
+
+<!ELEMENT message-props (destination-name?, connection-factory-name?, property*)>
+<!ELEMENT destination-name (#PCDATA)>
+<!ELEMENT connection-factory-name (#PCDATA)>
+
+<!ELEMENT property (property-name, property-value)>
+<!ELEMENT property-name (#PCDATA)>
+<!ELEMENT property-value (#PCDATA)>
+
+<!ELEMENT transaction-descriptor (isolation-level+)>
+<!ELEMENT isolation-level ((method|ejb-name)+, isolation-attribute)>
+
+<!ELEMENT method (ejb-name, method-intf?, method-name, method-params?)>
+<!ELEMENT method-intf (#PCDATA)>
+<!ELEMENT method-name (#PCDATA)>
+<!ELEMENT method-params (method-param*)>
+<!ELEMENT method-param (#PCDATA)>
+<!--
+ Committed, Repeatable
+-->
+<!ELEMENT isolation-attribute (#PCDATA)>
+
+<!ELEMENT security-permission (security-role-map+)>
+<!ELEMENT security-role-map (role-name, ((user-name*, group-name*) | server-role-name))>
+<!ELEMENT role-name (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT group-name (#PCDATA)>
+<!ELEMENT server-role-name (#PCDATA)>

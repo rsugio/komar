@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="jms-resources">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="application-name" type="xs:string" minOccurs="0"/>
+				<xs:element name="connection-factory" type="connection-factoryType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="destination" type="destinationType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="saf-agent" type="saf-agentType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="virtual-provider-properties" type="virtual-providerPropertiesType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="saf-agent-name-uniqueness">
+			<xs:annotation>
+				<xs:documentation>
+				      The jms-resources/saf-agent/name element content must be unique in the
+				      jms-resources. Multiple saf-agents
+				      can not use the same name.
+			    </xs:documentation>
+			</xs:annotation>
+			<xs:selector xpath="saf-agent"/>
+			<xs:field xpath="name"/>
+		</xs:unique>
+	</xs:element>
+	<xs:complexType name="connection-factoryType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:choice>
+				<xs:element name="sap-local-factory-type" type="sap-local-factory-typeType"/>
+				<xs:element name="context-factory-type" type="context-factory-typeType"/>
+				<xs:element name="object-factory-type" type="object-factory-typeType"/>
+				<xs:element name="sjo-factory-type" type="sjo-factory-typeType"/>
+			</xs:choice>
+			<xs:element name="alias" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="client-id" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sap-local-factory-typeType">
+		<xs:sequence>
+			<xs:element name="type" type="typeType"/>
+			<xs:element name="virtual-provider" type="xs:string" default="default"/>
+			<!-- This is the name which will be used by SAP JMS Provider while binding the factory in the Naming. E.g. jmsfactory/default/"name" -->
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<!-- This user-name is not used in JMSConnector, but it could be used in SAP JMS Provider -->
+			<xs:element name="user-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="password" type="xs:string" minOccurs="0"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="typeType">
+		<xs:simpleContent>
+			<xs:extension base="AllConnectionFactoryTypes"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="AllConnectionFactoryTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="javax.jms.ConnectionFactory"/>
+			<xs:enumeration value="javax.jms.TopicConnectionFactory"/>
+			<xs:enumeration value="javax.jms.QueueConnectionFactory"/>
+			<xs:enumeration value="javax.jms.XAQueueConnectionFactory"/>
+			<xs:enumeration value="javax.jms.XATopicConnectionFactory"/>
+			<xs:enumeration value="javax.jms.XAConnectionFactory"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="propertyType">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="config-property-name" type="xs:string"/>
+			<xs:element name="config-property-value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="context-factory-typeType">
+		<xs:sequence>
+			<xs:element name="initial-context-properties" type="initial-context-propertiesType"/>
+			<xs:element name="link-factory-name" type="xs:string"/>
+			<!-- This pair (user-name and password) are used for connFactory.createConnectionFactory(username, password) calls -->
+			<xs:element name="user-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="password" type="xs:string" minOccurs="0"/>
+			<xs:element name="library-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="initial-context-propertiesType">
+		<xs:sequence>
+			<xs:element name="initial-context-factory" type="xs:string"/>
+			<xs:element name="provider-url" type="xs:string" minOccurs="0"/>
+			<xs:element name="security-principal" type="xs:string" minOccurs="0"/>
+			<xs:element name="security-credentials" type="xs:string" minOccurs="0"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="object-factory-typeType">
+		<xs:sequence>
+			<xs:element name="object-factory-name" type="xs:string"/>
+			<xs:element name="class-name" type="xs:string"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- This pair (user-name and password) are used for connFactory.createConnectionFactory(username, password) calls -->
+			<xs:element name="user-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="password" type="xs:string" minOccurs="0"/>
+			<xs:element name="library-name" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sjo-factory-typeType">
+		<xs:sequence>
+			<xs:element name="sjo-file-name" type="xs:string"/>
+			<!-- This pair (user-name and password) are used for connFactory.createConnectionFactory(username, password) calls -->
+			<xs:element name="user-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="password" type="xs:string" minOccurs="0"/>
+			<xs:element name="library-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="destinationType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="type" type="DestinationsRestrictionType"/>
+			<xs:choice>
+				<xs:element name="sap-local-destination-type" type="sap-local-destination-typeType"/>
+				<xs:element name="external-destination-type" type="external-destination-typeType"/>
+				<xs:element name="sjo-destination-type" type="sjo-destination-typeType"/>
+			</xs:choice>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DestinationsRestrictionType">
+		<xs:simpleContent>
+			<xs:extension base="AllDestinationTypes"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="AllDestinationTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="javax.jms.Topic"/>
+			<xs:enumeration value="javax.jms.Queue"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="sap-local-destination-typeType">
+		<xs:sequence>
+			<xs:element name="virtual-provider" type="xs:string" default="default"/>
+			<!-- This is the name which will be used by SAP JMS Provider while binding the destination in the Naming. E.g. jmsqueues/default/"name" -->
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="external-destination-typeType">
+		<xs:sequence>
+			<xs:element name="link-connection-factory" type="xs:string"/>
+			<!-- This name will be used for the lookup. If omitted then the destination's name will be used -->
+			<xs:element name="link-destination" type="xs:string" minOccurs="0"/>
+			<!-- This pair (user-name and password) are set to .deploy.DestinationDescriptor fields, but has no any meaningful use after that -->
+			<xs:element name="user-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="password" type="xs:string" minOccurs="0"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sjo-destination-typeType">
+		<xs:sequence>
+			<xs:element name="sjo-file-name" type="xs:string"/>
+			<xs:element name="library-name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="saf-agentType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+			A Store And Forward (sending) agent is a regular JMS consumer who forwards all consumed messages from the local destination (in local-info)
+			to the specified remote destination (in remote-info)
+			]]></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="local-info" type="saf-agentLocalInfoType" nillable="false"/>
+			<xs:element name="remote-info" type="saf-agentRemoteInfoType" nillable="false"/>
+			<xs:element name="message-selector" type="xs:string"  minOccurs="0" maxOccurs="1" />
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="saf-agentLocalInfoType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+			This info contains information about the local (at the side of SAF sending agent) JMS resources - the factory and the destination to which the messages will be sent by the users
+			and from which the SAF sending agent will consume messages before trying to sent them to the remote destination
+			]]></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="factory-name-ref" type="xs:string" nillable="false"/>
+			<xs:element name="destination-name-ref" type="xs:string" nillable="false"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="saf-agentRemoteInfoType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+			This info contains information about the remote (SAF receiver) JMS resources - the factory and the destination to which the messages will be forwarded.
+			Note: the factory is transitively resolved from the destination
+			]]></xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="destination-name-ref" type="remote-destination-name-refType" nillable="false"/>
+			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="remote-destination-name-refType">
+		<xs:annotation>
+			<xs:documentation><![CDATA[
+			A complex type for remote "destination-name-ref". This is a simple string element with one optional attribute
+			that indicates whether this destination and its factory should be bound to the local JNDI tree
+			]]></xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="bindInLocalNaming" type="xs:boolean" default="false"/>
+			</xs:extension>
+			<!-- Indicates whether the SAF remote resources should be bound to the local JNDI tree-->
+		</xs:simpleContent>
+	</xs:complexType>
+
+    <xs:complexType name="virtual-providerPropertiesType">   
+          <xs:sequence>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+     </xs:complexType>
+
+
+
+</xs:schema>

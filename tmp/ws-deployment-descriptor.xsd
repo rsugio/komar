@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sap.com/webas/630/soap/java/descriptors/ws-deployment-descriptor" targetNamespace="http://www.sap.com/webas/630/soap/java/descriptors/ws-deployment-descriptor">
+
+
+<xs:complexType name="WSDeploymentDescriptor">
+  <xs:attribute name="version" type="xs:string" default="6.30"/>
+  <xs:sequence>
+    <xs:element name="webservice" type="tns:WSDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="WSDescriptor">
+  <xs:sequence>
+    <xs:element name="guid" type="xs:string" minOccurs="0"/>
+    <xs:element name="ejb-name-temp" type="xs:string" minOccurs="0"/>
+    <xs:element name="webservice-name" type="tns:QNameDescriptor"/>
+    <xs:element name="webservice-internal-name" type="xs:string"/>
+    <xs:element name="standard-namespaceURI" type="xs:string"/>
+    <xs:element name="ws-configuration" type="tns:WSConfigurationDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:element name="uddi-key" type="xs:string" minOccurs="0"/>
+    <xs:element name="outside-in-descriptor" type="tns:OutsideInDescriptor" minOccurs="0"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UDDIPublishDescriptor">
+  <xs:sequence>
+    <xs:element name="url" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="WSConfigurationDescriptor">
+  <xs:sequence>    
+    <xs:element name="configuration-name" type="xs:string"/>
+    <xs:element name="impl-link" type="tns:ImplLinkDescriptor" minOccurs="0"/>
+    <xs:element name="ejb-name" type="xs:string" minOccurs="0"/>    
+    <xs:element name="service-endpoint-name" type="tns:QNameDescriptor"/>
+    <xs:element name="wsdl-porttype-name" type="tns:QNameDescriptor"/>
+    <xs:element name="webservice-definition-ref" type="tns:NameDescriptor"/>
+    <xs:element name="service-endpoint-vi-ref" type="tns:NameDescriptor"/>
+    <xs:element name="transport-binding" type="tns:TrBindingDescriptor"/>
+    <xs:element name="target-server-url" type="xs:string" minOccurs="0"/>
+    <xs:element name="transport-address" type="xs:string"/>
+    <xs:element name="global-features" type="tns:GlobalFeaturesDescriptor" minOccurs="0"/>
+    <xs:element name="operation-configuration" type="tns:OperationConfigurationDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:element name="outside-in-configuration" type="tns:OutsideInConfiguration" minOccurs="0"/>
+    <xs:element name="security-roles-definition" type="tns:SecurityRolesDefDescriptor" minOccurs="0"/>
+    <xs:element name="entrypoint-settings" type="tns:EntryPointSettingsDescriptor" minOccurs="0"/>
+  </xs:sequence>
+  <xs:attribute name="web-support" type="xs:boolean" use="optional"/>
+</xs:complexType>
+
+<xs:complexType name="TrBindingDescriptor">
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:sequence>
+    <xs:element name="wsdl-binding-name" type="tns:QNameDescriptor"/>
+    <xs:element name="property" type="tns:PropertyDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GlobalFeaturesDescriptor">
+  <xs:sequence>
+    <xs:element name="feature" type="tns:FeatureDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="FeatureDescriptor">
+  <xs:sequence>
+    <xs:element name="property" type="tns:PropertyDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="protocol" type="xs:string" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="PropertyDescriptor">
+  <xs:sequence>
+    <xs:choice>
+     <xs:element name="simpleContent" type="xs:string" minOccurs="0"/>
+     <xs:element name="property" type="tns:PropertyDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+   </xs:choice>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="value" type="xs:string" use="optional"/>
+</xs:complexType>
+
+<xs:complexType name="OperationConfigurationDescriptor">
+  <xs:attribute name="name" type="xs:string" use="optional"/>
+  <xs:attribute name="uniqueViName" type="xs:string" use="optional"/>
+  <xs:sequence>
+    <xs:element name="documentation" type="xs:string" minOccurs="0"/>
+    <xs:element name="transport-binding-configuration" type="tns:TrBindingConfigDescriptor"/>
+    <xs:element name="feature" type="tns:FeatureDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TrBindingConfigDescriptor">
+  <xs:sequence>
+    <xs:element name="general-configuration" type="tns:PropertiesDescriptor" minOccurs="0"/>
+    <xs:element name="input" type="tns:PropertiesDescriptor"/>
+    <xs:element name="output" type="tns:PropertiesDescriptor"/>
+    <xs:element name="fault" type="tns:FaultConfigDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ImplLinkDescriptor">
+    <xs:attribute name="implementation-id" type="xs:string" use="required"/>
+  <xs:sequence>    
+    <xs:element name="properties" type="tns:PropertiesDescriptor"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="PropertiesDescriptor">
+  <xs:sequence>
+    <xs:element name="property" type="tns:PropertyDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="FaultConfigDescriptor">
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:sequence>
+    <xs:element name="property" type="tns:PropertyDescriptor" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="QNameDescriptor">
+  <xs:sequence>
+    <xs:element name="namespaceURI" type="xs:string"/>
+    <xs:element name="localName" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="NameDescriptor">
+  <xs:sequence>
+    <xs:element name="package" type="xs:string"/>
+    <xs:element name="name" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="OutsideInDescriptor">
+  <xs:sequence>
+    <xs:element name="wsdl-ref" type="tns:NameDescriptor"/>
+    <xs:element name="java-qname-mapping-ref" type="tns:NameDescriptor"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="OutsideInConfiguration">
+  <xs:sequence>
+    <xs:element name="style" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SecurityRolesDefDescriptor">
+  <xs:sequence>
+    <xs:element name="security-role" type="tns:SecurityRoleDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SecurityRoleDescriptor">
+  <xs:sequence>
+    <xs:element name="role-name" type="xs:string"/>
+    <xs:element name="description" type="xs:string" minOccurs="0"/>
+    <xs:element name="security-role-map" type="tns:SecurityRoleMapDescriptor" minOccurs="0"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SecurityRoleMapDescriptor">
+  <xs:sequence>
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="user-name" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="group-name" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:element name="server-role-name" type="xs:string"/>
+    </xs:choice>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="EntryPointSettingsDescriptor">
+  <xs:attribute name="type" type="xs:string" use="required"/>
+  <xs:sequence>    
+    <xs:element name="properties" type="tns:PropertiesDescriptor"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="ws-deployment-descriptor" type="tns:WSDeploymentDescriptor"/>
+
+</xs:schema>

@@ -1,0 +1,36 @@
+<!-- Added for backward compatibility - in case of opening an old application. -->
+<!-- Application-client-additional is the root element for this deployment descriptor. It contains declarations of resource references, resource environment references, and Enterprise JavaBeans references. -->
+<!ELEMENT application-client-additional (resource-ref*, resource-env-ref*, ejb-ref*, server-component-ref*)>
+
+<!-- Resource-ref element contains information about a reference to a resource that the application client uses. This information enables the client to look up the resource reference and thus access the necessary resource linked to the reference. -->
+<!ELEMENT resource-ref (res-ref-name, res-link)>
+
+<!-- Res-ref-name element defines the name of the resource reference. The client looks up the reference by its name. -->
+<!ELEMENT res-ref-name (#PCDATA)>
+
+<!-- Res-link element specifies the resource that is linked to the resource reference. -->
+<!ELEMENT res-link (#PCDATA)>
+
+<!-- Resource-env-ref encapsulates information about JMS destinations . -->
+<!ELEMENT resource-env-ref (resource-env-ref-name, jndi-name)>
+
+<!-- Resource-env-ref-name element defines the name of the resource environment reference entry. -->
+<!ELEMENT resource-env-ref-name (#PCDATA)>
+
+<!-- Jndi-name element specifies the JNDI name of the resource. -->
+<!ELEMENT jndi-name (#PCDATA)>
+
+<!-- Ejb-ref element contains information about an EJB that is referenced by the application client. This information is used for lookup operations. -->
+<!ELEMENT ejb-ref (ejb-ref-name, ejb-jndi-name)>
+
+<!-- Ejb-ref-name element specifies the name of the EJB reference. -->
+<!ELEMENT ejb-ref-name (#PCDATA)>
+
+<!-- Ejb-jndi-name element specifies the JNDI name of the referenced EJB. -->
+<!ELEMENT ejb-jndi-name (#PCDATA)>
+
+<!ELEMENT server-component-ref (name, type, jndi-name, description?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+

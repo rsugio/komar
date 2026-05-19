@@ -1,0 +1,9 @@
+<!ELEMENT data-source-aliases (application-name?, aliases+)>
+
+<!ELEMENT application-name (#PCDATA)>
+
+<!ELEMENT aliases (data-source-name, alias+, isolation-level?, max-connections?)>
+<!ELEMENT data-source-name (#PCDATA)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT isolation-level (#PCDATA)>
+<!ELEMENT max-connections (#PCDATA)>

@@ -1,0 +1,44 @@
+<!ELEMENT data-sources (application-name?, data-source+)>
+
+<!ELEMENT application-name (#PCDATA)>
+
+<!ELEMENT data-source (description?, data-source-name, alias*, driver-name, init-connections?, max-connections?, max-time-to-wait-connection?, expiration-control?, isolation-level?, sql-engine, (jdbc-2.0 | jdbc-1.x))>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT data-source-name (#PCDATA)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT driver-name (#PCDATA)>
+<!ELEMENT init-connections (#PCDATA)>
+<!ELEMENT max-connections (#PCDATA)>
+<!ELEMENT max-time-to-wait-connection (#PCDATA)>
+
+<!ELEMENT expiration-control (connection-lifetime, run-cleanup-thread)>
+<!ELEMENT connection-lifetime (#PCDATA)>
+<!ELEMENT run-cleanup-thread (#PCDATA)>
+
+<!ELEMENT isolation-level (#PCDATA)>
+
+<!--
+  legal values for 'sql-engine' tag:
+	  Open_SQL: DBI CommonConnection
+	Native_SQL: DBI DirectConnection
+	Vendor_SQL: Standart connection from JDBC driver (not using DBI at all)
+-->
+<!ELEMENT sql-engine (#PCDATA)>
+
+<!ELEMENT jdbc-1.x (driver-class-name, url, user-name, password, properties?)>
+<!ELEMENT driver-class-name (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+<!ATTLIST password encrypted CDATA #IMPLIED>
+
+<!ELEMENT jdbc-2.0 ((xads-class-name | cpds-class-name), object-factory?, properties?)>
+<!ELEMENT xads-class-name (#PCDATA)>
+<!ELEMENT cpds-class-name (#PCDATA)>
+<!ELEMENT object-factory (#PCDATA)>
+  
+<!ELEMENT properties (property+)>
+<!ELEMENT property (property-name, property-value)>
+<!ELEMENT property-name (#PCDATA)>
+<!ELEMENT property-value (#PCDATA)>
+<!ATTLIST property-value encrypted CDATA #IMPLIED>

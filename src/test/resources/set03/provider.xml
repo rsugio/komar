@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<provider-descriptor>
+  <display-name>XPI AF REST Adapter Library</display-name>
+  <component-name>com.sap.aii.adapter.rest.lib</component-name>
+  <provider-name>sap.com</provider-name>
+  <references>
+    <reference type="library" strength="strong" provider-name="sap.com">engine.jee5.facade</reference>
+  </references>
+  <jars/>
+</provider-descriptor>

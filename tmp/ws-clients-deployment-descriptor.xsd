@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:tns="http://www.sap.com/webas/630/soap/java/descriptors/ws-clients-deployment-descriptor"
+           targetNamespace="http://www.sap.com/webas/630/soap/java/descriptors/ws-clients-deployment-descriptor">
+
+
+  <xs:complexType name="WSClientDeploymentDescriptor">
+    <xs:attribute name="version" type="xs:string" default="6.30"/>
+    <xs:attribute name="keep-runtime-mode" type="xs:boolean" default="false"/>
+    <xs:sequence>
+      <xs:element name="component-scoped-refs" type="tns:ComponentScopedRefsDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="service-ref" type="tns:ServiceRefDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ComponentScopedRefsDescriptor">
+    <xs:sequence>
+      <xs:element name="component-name" type="xs:string" minOccurs="0"/>
+      <xs:element name="service-ref" type="tns:ServiceRefDescriptor" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ServiceRefDescriptor">
+    <xs:sequence>
+      <xs:element name="service-ref-name" type="xs:string"/>
+      <xs:element name="service-interface" type="xs:string"/>      
+      <xs:element name="package-name" type="xs:string"/>
+      <xs:element name="wsdl-file" type="xs:string"/>
+      <xs:element name="logical-ports-file" type="xs:string" minOccurs="0"/>
+      <xs:element name="uri-mapping-file" type="xs:string" minOccurs="0"/>
+      <xs:element name="package-mapping-file" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="ws-clients-deployment-descriptor" type="tns:WSClientDeploymentDescriptor"/>
+</xs:schema>

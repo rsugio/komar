@@ -1,0 +1,38 @@
+<!ELEMENT jms-factories (application-name?, connection-factory+)>
+
+<!ELEMENT application-name (#PCDATA)>
+
+<!ELEMENT connection-factory (description?, library-name?, alias*, factory-name, (context-factory-type|object-factory-type), client-id,  user-name?, password?, (pooled | shared)?)>
+
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT factory-name (#PCDATA)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT library-name (#PCDATA)>
+<!ELEMENT client-id (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+
+<!ELEMENT context-factory-type (link-factory-name, initial-context-factory, provider-url, security-principal, security-credentials, properties?)>
+<!ELEMENT link-factory-name (#PCDATA)>
+<!ELEMENT initial-context-factory (#PCDATA)>
+<!ELEMENT provider-url (#PCDATA)>
+<!ELEMENT security-principal (#PCDATA)>
+<!ELEMENT security-credentials (#PCDATA)>
+
+<!ELEMENT properties (property+)>
+<!ELEMENT property (property-name,property-value)>
+<!ELEMENT property-name (#PCDATA)>
+<!ELEMENT property-value (#PCDATA)>
+
+<!ELEMENT object-factory-type (object-factory-name, class-name, properties)>
+<!ELEMENT object-factory-name (#PCDATA)>
+<!ELEMENT class-name (#PCDATA)>
+
+<!ELEMENT pooled (expire-timeout?, min-connections?, max-connections?, time-to-wait?)>
+
+<!ELEMENT expire-timeout (#PCDATA)>
+<!ELEMENT min-connections (#PCDATA)>
+<!ELEMENT max-connections (#PCDATA)>
+<!ELEMENT time-to-wait (#PCDATA)>
+
+<!ELEMENT shared (expire-timeout?)>

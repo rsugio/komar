@@ -1,0 +1,11 @@
+<!ELEMENT jms-destinations (application-name?, destination+)>
+
+<!ELEMENT application-name (#PCDATA)>
+
+<!ELEMENT destination (connection-factory, destination-name, user-name?, password?, description?)>
+
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT connection-factory (#PCDATA)>
+<!ELEMENT destination-name (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT password (#PCDATA)>

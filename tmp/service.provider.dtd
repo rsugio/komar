@@ -1,0 +1,29 @@
+<!ELEMENT provider-descriptor (display-name, component-name, description?, communication-frame?, application-frame?, runtime-editor?, major-version,
+                               minor-version, micro-version, provider-name, group-name?, provided-interfaces?, references?, jars, security?)>
+<!ELEMENT display-name (#PCDATA)>
+<!ELEMENT component-name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT communication-frame (#PCDATA)>
+<!ELEMENT application-frame (#PCDATA)>
+<!ELEMENT runtime-editor (#PCDATA)>
+<!ELEMENT major-version (#PCDATA)>
+<!ELEMENT minor-version (#PCDATA)>
+<!ELEMENT micro-version (#PCDATA)>
+<!ELEMENT provider-name (#PCDATA)>
+<!ELEMENT group-name (#PCDATA)>
+<!ELEMENT provided-interfaces (interface*)>
+<!ELEMENT interface (#PCDATA)>
+<!ATTLIST interface provider-name CDATA #IMPLIED>
+<!ELEMENT references (reference*)>
+<!ELEMENT reference (#PCDATA)>
+<!ATTLIST reference type (service|library|interface) #REQUIRED>
+<!ATTLIST reference strength (weak|hard|strong|notify) #REQUIRED>
+<!ATTLIST reference provider-name CDATA #IMPLIED>
+<!ELEMENT jars (jar-name+)>
+<!ELEMENT jar-name (#PCDATA)>
+<!ELEMENT security (resource+)>
+<!ELEMENT resource (action+) >
+<!ATTLIST resource class CDATA #REQUIRED>
+<!ELEMENT action EMPTY>
+<!ATTLIST action method CDATA #REQUIRED>
+<!ATTLIST action security-role (administrators|all|guests) #REQUIRED>

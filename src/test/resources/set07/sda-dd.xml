@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<SDA name="com.sap.aii.adapter.sfsf.app">
+	<SoftwareType>J2EE</SoftwareType>
+	<engine-deployment-descriptor version="2.0"/>
+</SDA>

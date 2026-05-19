@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<provider-descriptor>
+  <display-name>XPI Utility Library</display-name>
+  <component-name>com.sap.xi.util.misc</component-name>
+  <provider-name>sap.com</provider-name>
+  <references>
+    <reference type="library" strength="strong" provider-name="sap.com">tc~bl~jco~api</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">com.sap.xi.util.dbprof</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">engine.j2ee14.facade</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">tc~bl~jrfc~api</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">com.sapportals.htmlb</reference>
+    <reference type="interface" strength="weak" provider-name="sap.com">com.sap.xi.util.ifc</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">engine.application.lib.facade</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">engine.security.lib.facade</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">engine.security.core.lib.facade</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">com.sap.base.technology.facade</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">com.sap.base.sld.facade</reference>
+    <reference type="library" strength="strong" provider-name="sap.com">boot.facade</reference>
+  </references>
+  <jars>
+    <jar-name>lib/com.sap.aii.proxy.gen.jar</jar-name>
+    <jar-name>lib/com.sap.aii.utilxi.core.jar</jar-name>
+    <jar-name>lib/com.sap.aii.utilxi.server.jar</jar-name>
+  </jars>
+</provider-descriptor>
