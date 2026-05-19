@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<!DOCTYPE application-j2ee-engine SYSTEM 'application-j2ee-engine.dtd'>-->
-<application-j2ee-engine>
+<!DOCTYPE application-j2ee-engine SYSTEM 'application-j2ee-engine.dtd'>
+<application-j2ee-engine
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="application-j2ee-engine.xsd"
+        >
 <!-- ume-permissions for servlet -->
 <reference reference-type="hard">
 	<reference-target provider-name="sap.com" target-type="library">com.sap.security.api.sda</reference-target>

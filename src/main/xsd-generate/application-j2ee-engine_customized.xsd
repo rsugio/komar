@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by mazuki (darksiderg) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="application-j2ee-engine">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="reference" type="referenceType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="library-loader" type="libraryLoaderType" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="classpath" minOccurs="0"/>
+				<xs:element ref="provider-name" minOccurs="0"/>
+				<xs:element name="modules-additional" type="modules-additionalType" minOccurs="0"/>
+				<xs:element name="fail-over-enable" type="fail-over-enableType" minOccurs="0"/>
+				<xs:element name="start-up" type="start-upType" minOccurs="0"/>
+				<xs:element ref="java-version" minOccurs="0"/>
+				<xs:element name="exclude-default-reference" type="excludeDefaultReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="classpath" type="xs:string"/>
+	<xs:element name="container-type" type="xs:string"/>
+	<xs:element name="entry-name" type="xs:string"/>
+	<xs:element name="java-version" type="xs:string"/>
+	<xs:complexType name="fail-over-enableType"> <!-- abstract="true" -->
+		<xs:sequence/>
+        <xs:attribute name="mode" type="xs:string" use="required"/>
+        <xs:attribute name="scope" type="xs:string" use="optional" default="instance_local"/>
+    </xs:complexType>
+	<xs:complexType name="start-upType">
+		<xs:attribute name="mode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="manual"/>
+					<xs:enumeration value="lazy"/>
+					<xs:enumeration value="always"/>
+					<xs:enumeration value="disabled"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="moduleType">
+		<xs:sequence>
+			<xs:element ref="entry-name"/>
+			<xs:element ref="container-type" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modules-additionalType">
+		<xs:sequence>
+			<xs:element name="module" type="moduleType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="provider-name" type="xs:string"/>
+	<xs:complexType name="referenceType">
+		<xs:sequence>
+			<xs:element name="reference-target" type="reference-targetType"/>
+		</xs:sequence>
+		<xs:attribute name="reference-type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="hard"/>
+					<xs:enumeration value="weak"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="prepend" type="xs:boolean" use="optional" default="false"/>
+	</xs:complexType>
+	<xs:complexType name="excludeDefaultReferenceType">
+		<xs:sequence>
+			<xs:element name="reference-target" type="reference-targetType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="reference-targetType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="target-type" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:NMTOKEN">
+							<xs:enumeration value="application"/>
+							<xs:enumeration value="library"/>
+							<xs:enumeration value="service"/>
+							<xs:enumeration value="interface"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="provider-name" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="libraryLoaderType">
+		<xs:sequence>
+			<xs:element name="reference" type="libLoaderReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="libLoaderReferenceType">
+		<xs:sequence>
+			<xs:element name="reference-target" type="libLoaderReferenceTargetType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="libLoaderReferenceTargetType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="target-type" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:NMTOKEN">
+							<xs:enumeration value="library"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="provider-name" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>
