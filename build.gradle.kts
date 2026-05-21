@@ -1,13 +1,15 @@
 plugins {
-    id("java")
+    id("java-library")
+    id("maven-publish")
 }
 val appVersion: String by project
 
-group = "rsug.io"
+group = "io.rsug"
 version = "0.0.1"
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 java {
@@ -19,13 +21,14 @@ java {
 }
 
 dependencies {
-    testImplementation("commons-io:commons-io:2.22.0")
-    testImplementation(platform("org.junit:junit-bom:5.10.2"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+//    testImplementation("commons-io:commons-io:2.22.0")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
     implementation("com.sun.xml.bind:jaxb-impl:2.3.1")
     implementation("com.sun.xml.bind:jaxb-core:2.3.0.1")
+
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.jar {
@@ -41,6 +44,14 @@ tasks.jar {
     }
     manifest {
 //        attributes["Implementation-Version"] = "7.654321"
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
     }
 }
 

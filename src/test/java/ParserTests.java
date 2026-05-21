@@ -2,10 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -60,6 +57,9 @@ public class ParserTests {
                 case "provider.xml":
                     provider(path, doc);
                     break;
+                case "log-configuration.xml":
+                    logconfiguraion(path, doc);
+                    break;
                 default:
             }
         } catch (Exception e) {
@@ -111,6 +111,21 @@ public class ParserTests {
     }
 
     void provider(Path path, Document doc) {
+
+    }
+
+    void logconfiguraion(Path path, Document doc) throws JAXBException {
+        logConfiguration.ObjectFactory cof = new logConfiguration.ObjectFactory();
+        JAXBContext ctx = JAXBContext.newInstance(logConfiguration.LogConfiguration.class);
+        JAXBElement<logConfiguration.LogConfiguration> jaxbResult;
+        logConfiguration.LogConfiguration result;
+
+        Unmarshaller unmarshaller = ctx.createUnmarshaller();
+        jaxbResult = unmarshaller.unmarshal(doc, logConfiguration.LogConfiguration.class);
+        result = jaxbResult.getValue();
+        Marshaller marshaller = ctx.createMarshaller();
+        marshaller.marshal(jaxbResult, System.out);
+        System.out.println();
 
     }
 }
