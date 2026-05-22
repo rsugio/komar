@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+
+replace
+
+		1)	#SDA_NAME# = com.sapportals.commonservices (2 replacements)
+				( you can have it from Philip xls file in SDA Name column)
+		2)	#Corresponding_Development_Components# = SAP EP Wizards Framework (2 replacements)
+				( you can have it from Philip xls file in Corresponding_Development_Components column)
+-->
+<SDA name="devserver_metadataupload_ear.ear">
+	<SoftwareType>J2EE</SoftwareType>
+	<j2ee-deployment-descriptor version="2.0">
+		<display-name>METADATA UPLOAD EAR</display-name>
+	</j2ee-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/VCFRAMEWORK32_0-80000727.zip/devserver_metadataupload_ear.ear/metadataupload-dd.xml -->

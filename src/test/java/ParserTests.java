@@ -1,13 +1,13 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
+import provider.ProviderDescriptor;
 
 import javax.xml.bind.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.stream.StreamSource;
-import java.io.IOException;
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,7 +33,7 @@ public class ParserTests {
         Path testDir = Paths.get("./src/test/resources");
         try (Stream<Path> pathStream = Files.walk(testDir, 10)) {
             pathStream.forEach(path -> {
-                if (Files.isRegularFile(path) && path.toString().endsWith(".xml")) {
+                if (Files.isRegularFile(path) && path.toString().contains(".xml")) {
                     parseXml(path);
                 }
             });
@@ -46,19 +46,19 @@ public class ParserTests {
             Document doc = db.parse(path.toFile());
             switch (name) {
                 case "ra.xml":
-                    resourceAdapter(path, doc);
+                    resourceAdapter(doc);
                     break;
                 case "connector-j2ee-engine.xml":
-                    connectorj2eeengine(path, doc);
+                    connectorj2eeengine(doc);
                     break;
                 case "application-j2ee-engine.xml":
-                    applicationj2eeengine(path, doc);
+                    applicationj2eeengine(doc);
                     break;
                 case "provider.xml":
-                    provider(path, doc);
+                    provider(doc);
                     break;
                 case "log-configuration.xml":
-                    logconfiguraion(path, doc);
+                    logconfiguraion(doc);
                     break;
                 default:
             }
@@ -68,7 +68,7 @@ public class ParserTests {
         }
     }
 
-    void resourceAdapter(Path path, Document doc) throws JAXBException, IOException {
+    void resourceAdapter(Document doc) throws JAXBException {
         // connector_1_5.xsd, пакет connector15
         connector15.ObjectFactory cof = new connector15.ObjectFactory();
         JAXBContext ctx = JAXBContext.newInstance(connector15.ConnectorType.class);
@@ -82,7 +82,7 @@ public class ParserTests {
         Assertions.assertEquals(new BigDecimal("1.5"), ct.getVersion());
     }
 
-    void connectorj2eeengine(Path path, Document doc) throws JAXBException, IOException {
+    void connectorj2eeengine(Document doc) throws JAXBException {
         // connector-j2ee-engine.xsd, пакет connectorj2eeengine
         connectorj2eeengine.ObjectFactory cof = new connectorj2eeengine.ObjectFactory();
         JAXBContext ctx = JAXBContext.newInstance(connectorj2eeengine.ConnectorType.class);
@@ -96,36 +96,33 @@ public class ParserTests {
 //        Assertions.assertNotEquals(null, ct.getDescription());
     }
 
-    void applicationj2eeengine(Path path, Document doc) throws JAXBException, IOException {
+    void applicationj2eeengine(Document doc) throws JAXBException {
         // application-j2ee-engine_customized.xsd, пакет applicationj2eeengine
         // JAXB на стандартном application-j2ee-engine.xsd генерирует не совсем ожидаемое
         // определение для fail-over-enable, пришлось упростить
         applicationj2eeengine.ObjectFactory cof = new applicationj2eeengine.ObjectFactory();
         JAXBContext ctx = JAXBContext.newInstance(applicationj2eeengine.ApplicationJ2EeEngine.class);
         JAXBElement<applicationj2eeengine.ApplicationJ2EeEngine> jaxbResult;
-        applicationj2eeengine.ApplicationJ2EeEngine result;
 
         Unmarshaller unmarshaller = ctx.createUnmarshaller();
         jaxbResult = unmarshaller.unmarshal(doc, applicationj2eeengine.ApplicationJ2EeEngine.class);
-        result = jaxbResult.getValue();
+        applicationj2eeengine.ApplicationJ2EeEngine result = jaxbResult.getValue();
     }
 
-    void provider(Path path, Document doc) {
-
-    }
-
-    void logconfiguraion(Path path, Document doc) throws JAXBException {
-        logConfiguration.ObjectFactory cof = new logConfiguration.ObjectFactory();
-        JAXBContext ctx = JAXBContext.newInstance(logConfiguration.LogConfiguration.class);
-        JAXBElement<logConfiguration.LogConfiguration> jaxbResult;
-        logConfiguration.LogConfiguration result;
-
+    void provider(Document doc) throws JAXBException {
+        JAXBContext ctx = JAXBContext.newInstance(provider.ProviderDescriptor.class);
         Unmarshaller unmarshaller = ctx.createUnmarshaller();
-        jaxbResult = unmarshaller.unmarshal(doc, logConfiguration.LogConfiguration.class);
-        result = jaxbResult.getValue();
-        Marshaller marshaller = ctx.createMarshaller();
-        marshaller.marshal(jaxbResult, System.out);
-        System.out.println();
+        JAXBElement<provider.ProviderDescriptor> jr = unmarshaller.unmarshal(doc, provider.ProviderDescriptor.class);
+        ProviderDescriptor pd = jr.getValue();
+    }
 
+    void logconfiguraion(Document doc) throws JAXBException {
+        JAXBContext ctx = JAXBContext.newInstance(logConfiguration.LogConfiguration.class);
+        Unmarshaller unmarshaller = ctx.createUnmarshaller();
+        JAXBElement<logConfiguration.LogConfiguration> jaxbResult = unmarshaller.unmarshal(doc, logConfiguration.LogConfiguration.class);
+        logConfiguration.LogConfiguration result = jaxbResult.getValue();
+        Marshaller marshaller = ctx.createMarshaller();
+        StringWriter sw = new StringWriter();
+        marshaller.marshal(jaxbResult, sw);
     }
 }

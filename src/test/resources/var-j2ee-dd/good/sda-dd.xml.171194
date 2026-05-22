@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<SDA >
+    <SoftwareType>FS</SoftwareType>
+    <fs-deployment-descriptor version="2.0">
+        <display-name>J2EE Engine config tool</display-name>
+        <fileset id="J2EE_Engine_config_tool_fileset">
+            <display-name>Complete</display-name>
+            <description>Files for J2EE Engine config tool</description>
+            <default-deployment-dir>${com.sap.engine.installdir}/configtool</default-deployment-dir>
+            <substitute>
+                <file substitute="yes">cachegui.bat</file>
+                <file substitute="yes" permissions="755">cachegui.sh</file>
+                <file substitute="yes">configtool.bat</file>
+                <file substitute="yes" permissions="755">configtool.sh</file>
+                <file substitute="yes">consoleconfig.bat</file>
+                <file substitute="yes" permissions="755">consoleconfig.sh</file>
+                <file substitute="yes">lv.bat</file>
+                <file substitute="yes" permissions="755">lv.sh</file>
+                <file substitute="yes">offlinecfgeditor.bat</file>
+                <file substitute="yes" permissions="755">offlinecfgeditor.sh</file>
+                <file substitute="yes">opm.bat</file>
+                <file substitute="yes" permissions="755">opm.sh</file>
+                <file substitute="yes" permissions="755">opm.csh</file>
+                <file substitute="yes">batchconfig.bat</file>
+                <file substitute="yes" permissions="755">batchconfig.csh</file>
+                <file substitute="yes">config.properties</file>
+                <file substitute="yes">./licenses/offlinelicensing.bat</file>
+                <file substitute="yes">./licenses/offlinelicensing.properties</file>
+                <file substitute="yes" permissions="755">./licenses/offlinelicensing.sh</file>
+                <file substitute="yes">./licenses/offlinelicensing_usage.txt</file>
+            </substitute>
+        </fileset>
+    </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/CORETOOLS32_0-80000437.zip/sap.com~com.sap.engine.configtool.sda/sda-dd.xml -->

@@ -1,0 +1,671 @@
+<xsd:schema attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="LabelListType" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="Label" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">66c976a06b6f11d7a8f8c2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:attribute name="language" type="xsd:string" use="optional">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="EN">language of the label</xsd:documentation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">66c976a16b6f11d7991fc2720a14031c</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="resourceId" type="xsd:string" use="optional">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="EN">alternatively the Id of a Java resource bundle</xsd:documentation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">8b282b80aba811d7b690cfe20a140334</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="guid" type="xsd:string" use="optional">
+          </xsd:attribute>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProtocolIdentifier" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="Name" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">protocol name</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">94b667708ad811d79cacc10c0a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Version" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">protocol version</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">94b667718ad811d7badec10c0a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttributeReference" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="ReferenceName" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">name of an attribute</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">65e8f0608ad911d79948c10c0a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EditCondition" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">condition for which attribute values the attribute should be editable</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">65e8f0618ad911d78442c10c0a14031c</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AttributeName" minOccurs="1" maxOccurs="1" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">name of an attribute (AttributeType, AttributeTableType)</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">65e8f0628ad911d7c13ec10c0a14031c</xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="AttributeValue" minOccurs="1" maxOccurs="unbounded" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">values of an attribute for which the attribute should be editable</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">65e8f0638ad911d78613c10c0a14031c</xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttributeGroup" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://mm.com/scheduleTypes">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="Name" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">name of the group</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">67edd2f0a19411d7a0a2ea0f0a140334</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="GuiLabels" minOccurs="1" maxOccurs="1" type="LabelListType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">list of GUI labels</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">67edd2f1a19411d7b3b4ea0f0a140334</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AttributeReference" minOccurs="1" maxOccurs="unbounded" type="AttributeReference">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">list of referenced attributes (AttributeType, AttributeTableType)</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">67edd2f2a19411d7a8e2ea0f0a140334</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttributeTableType" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="Name" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">attribute table name</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">262bbf806b6111d7adacc2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AttributeReference" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">72d1c0206b5511d7a430c2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ReferenceName" minOccurs="1" maxOccurs="1" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">references an AttributeType element by name</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">e98a7410972811d78e96f7df0a140334</xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CertificateType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://mm.com/scheduleTypes">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="Name" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">Certificate name, e.g. &quot;encryption&quot;, &quot;signing&quot;, &quot;logon&quot;</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">4442f3c0a19011d7802fdf8f0a140334</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="GuiLabel" minOccurs="1" maxOccurs="1" type="LabelListType">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">8b171fb0a19011d790badf8f0a140334</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValueType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://mm.com/scheduleTypes">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="value" minOccurs="1" maxOccurs="1" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">value</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">540bc120755711d78470f0160a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="GuiLabels" minOccurs="1" maxOccurs="1" type="LabelListType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">GUI Labels</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">22abeef06b5e11d78021c2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LabelListType" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="Label" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">66c976a06b6f11d7a8f8c2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:attribute name="language" type="xsd:string" use="optional">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="EN">language of the label</xsd:documentation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">66c976a16b6f11d7991fc2720a14031c</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:attribute>
+          <xsd:attribute name="resourceId" type="xsd:string" use="optional">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="EN">alternatively the Id of a Java resource bundle</xsd:documentation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">8b282b80aba811d7b690cfe20a140334</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:attribute>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttributeType" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://mm.com/scheduleTypes">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="Name" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">attribute name</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">ef045480652611d79266d7fc0a140b5e</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Usage" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">usage optional/required</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">9f6511d065c611d7a14deb4d0a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Default" minOccurs="0" maxOccurs="1" type="xsd:base64Binary">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">default value</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">9f6511d165c611d7c75ceb4d0a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Datatype" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">xsd data type or table</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">ef045481652611d7bd92d7fc0a140b5e</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Length" minOccurs="1" maxOccurs="1" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">length, 0 in case of infinite</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">67e333906b3911d7933ece250a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FixedValue" minOccurs="0" maxOccurs="unbounded" type="ValueType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">list of fixed values</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">a1bee8706b3911d78f5ece250a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="GuiLabel" minOccurs="1" maxOccurs="1" type="LabelListType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">GUI labels</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">ef045482652611d7af13d7fc0a140b5e</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="isPassword" type="xsd:boolean" use="optional">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="EN">&quot;true&quot; for password fields, default is &quot;false&quot;</xsd:documentation>
+        <xsd:appinfo source="http://sap.com/xi/TextID">35e44de0755a11d7890df0160a14031c</xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="AdapterTypeMetaData" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://mm.com/scheduleTypes">
+    <xsd:annotation />
+    <xsd:sequence>
+      <xsd:element name="GuiHandlerClassName" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">GUI handler class</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">5948f7c06b5711d7c152c2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Type" minOccurs="1" maxOccurs="1" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">adapter type</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">39a475f065be11d79e95eb4d0a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="GuiLabels" minOccurs="1" maxOccurs="1" type="LabelListType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">adapter type GUI labels</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">eedfee60755211d796e7e2730a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Inbound" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">inbound direction</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">39a475f165be11d7aa85eb4d0a14031c</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TransportProtocol" minOccurs="1" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">transport attributes</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">02b51220770211d7bef7c3800a14031c</xsd:appinfo>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol name</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">f2e22d408abd11d7b832c10c0a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Version" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol version</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">02b51221770211d79f5ec3800a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="GuiLabels" minOccurs="1" maxOccurs="1" type="LabelListType">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol GUI labels</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">02b51223770211d7a4b5c3800a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="ValidMessageProtocols" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">valid message protocols</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">e5d271e0a1ac11d781c9c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="ProtocolIdentifier" minOccurs="1" maxOccurs="unbounded" type="ProtocolIdentifier">
+                          <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">e5d271e1a1ac11d780afc30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ChannelAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol channel attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">02b51224770211d7cff8c3800a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes (AttributeType, AttributeTableType, CertificateType)</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">212c0111a19511d78f1bea0f0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">212c0112a19511d7a720ea0f0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="SecurityAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol security attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">02b51225770211d793c9c3800a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes (AttributeType, AttributeTableType, CertificateType)</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">212c0113a19511d78915ea0f0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">212c0114a19511d7ad9fea0f0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MessageProtocol" minOccurs="1" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">message protocol</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">02b51226770211d7b82bc3800a14031c</xsd:appinfo>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol name</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">f2e22d418abd11d785d2c10c0a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Version" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol version</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">02b51227770211d7b4ffc3800a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="GuiLabels" minOccurs="1" maxOccurs="1" type="LabelListType">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol GUI labels</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">02b51229770211d79f85c3800a14031c</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="ChannelAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol channel attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">a9174090a1a811d7cfd0c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes (AttributeType, AttributeTableType, CertificateType)</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">a9174091a1a811d7c880c30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">a9174092a1a811d79d12c30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="SecurityAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol security attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">a9174093a1a811d784cfc30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes (AttributeType, AttributeTableType, CertificateType)</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">0ab5ac60aba911d7b1d8cfe20a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">0ab5ac61aba911d78fafcfe20a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GlobalChannelAttributes" minOccurs="1" maxOccurs="1">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">transport and message protocol independent channel attributes</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">a9174097a1a811d7c55dc30c0a140334</xsd:appinfo>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">list of referenced attributes (AttributeType, AttributeTableType, CertificateType)</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">a9174098a1a811d7b6b2c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">a9174099a1a811d7c230c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Outbound" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">outbound direction</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">02b5122e770211d7905cc3800a14031c</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TransportProtocol" minOccurs="1" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">transport attributes</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">89a584f0a1a911d7cd3dc30c0a140334</xsd:appinfo>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol name</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a584f1a1a911d78a94c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Version" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol version</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a584f2a1a911d7ba0dc30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="GuiLabels" minOccurs="1" maxOccurs="1" type="LabelListType">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol GUI labels</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70b90a1a911d7a2adc30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="ValidMessageProtocols" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">valid message protocols</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">e5d271e2a1ac11d7b2f8c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="ProtocolIdentifier" minOccurs="1" maxOccurs="unbounded" type="ProtocolIdentifier">
+                          <xsd:annotation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">e5d271e3a1ac11d7ae64c30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ChannelAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol channel attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70b92a1a911d78dd5c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">89a70b93a1a911d7c3eec30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">89a70b94a1a911d7bf81c30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="SecurityAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">transport protocol security attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70b95a1a911d784cac30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">89a70b96a1a911d790f3c30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">89a70b97a1a911d7c1b1c30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MessageProtocol" minOccurs="1" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">message protocol</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">89a70b99a1a911d7881ac30c0a140334</xsd:appinfo>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol name</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70b9aa1a911d79147c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Version" minOccurs="1" maxOccurs="1" type="xsd:string">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol version</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70b9ba1a911d7a806c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="GuiLabels" minOccurs="1" maxOccurs="1" type="LabelListType">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol GUI labels</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70b9ca1a911d79b58c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="ChannelAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol channel attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70b9da1a911d7ce33c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">89a70b9ea1a911d79121c30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">89a70b9fa1a911d7a48ac30c0a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="SecurityAttributes" minOccurs="1" maxOccurs="1">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">message protocol security attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70ba0a1a911d7b5cfc30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">list of referenced attributes</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">0ab5ac62aba911d7bdc6cfe20a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                            <xsd:appinfo source="http://sap.com/xi/TextID">0ab5ac63aba911d7b1a5cfe20a140334</xsd:appinfo>
+                          </xsd:annotation>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GlobalChannelAttributes" minOccurs="1" maxOccurs="1">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="EN">transport and message protocol independent channel attributes</xsd:documentation>
+                <xsd:appinfo source="http://sap.com/xi/TextID">89a70ba2a1a911d7a01dc30c0a140334</xsd:appinfo>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AttributeReference" minOccurs="0" maxOccurs="unbounded" type="AttributeReference">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">list of referenced attributes</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70ba3a1a911d7cd7cc30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="AttributeGroup" minOccurs="0" maxOccurs="unbounded" type="AttributeGroup">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="EN">groups attributes together</xsd:documentation>
+                      <xsd:appinfo source="http://sap.com/xi/TextID">89a70ba4a1a911d7bd50c30c0a140334</xsd:appinfo>
+                    </xsd:annotation>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Attribute" minOccurs="1" maxOccurs="unbounded" type="AttributeType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">adapter attributes</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">09a424206b6511d787e6c2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AttributeTable" minOccurs="0" maxOccurs="unbounded" type="AttributeTableType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">adapter attribute tables</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">09a424216b6511d797cfc2720a14031c</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Certificate" minOccurs="0" maxOccurs="unbounded" type="CertificateType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">adapter certificate attributes</xsd:documentation>
+          <xsd:appinfo source="http://sap.com/xi/TextID">df1951a0a19011d7af50df8f0a140334</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="version" type="xsd:integer" use="required">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="EN">meta data version</xsd:documentation>
+        <xsd:appinfo source="http://sap.com/xi/TextID">39a475f665be11d790c7eb4d0a14031c</xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:element name="AdapterTypeMetaData" minOccurs="1" maxOccurs="1" type="AdapterTypeMetaData">
+  </xsd:element>
+
+</xsd:schema>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIESR32_0-80000635.zip/com.sap.xi.repository.sda/com.sap.xpi.ibrep.server.impl.jar/adapterschema.xml -->

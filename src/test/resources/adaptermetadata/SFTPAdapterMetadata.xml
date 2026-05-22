@@ -1,0 +1,3504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdapterTypeMetaData version="30">
+   <!-- ********************************************************************** -->
+   <!-- G E N E R A L   S E C T I O N                                          -->
+   <!-- ********************************************************************** -->
+   <GuiHandlerClassName/>
+   <!-- Adapter type definition -->
+   <Type>SFTP</Type>
+   <GuiLabels>
+      <Label language="EN">SFTP Adapter</Label>
+      <Label language="DE">SFTP Adapter</Label>
+   </GuiLabels>
+   <!-- Adapter Specific Message Attributes Attribute Declaration (used e.g. in XI Routing) -->
+   <DynamicAttributes>
+      <AttributeReference>
+         <ReferenceName>SFTPChannelID</ReferenceName>
+      </AttributeReference>
+   </DynamicAttributes>
+   <!-- ********************************************************************** -->
+   <!-- R E C E I V E R  C H A N N E L   S E C T I O N                         -->
+   <!-- ********************************************************************** -->
+   <Inbound>
+      <!-- Transport protocol settings -->
+      <TransportProtocol>
+         <Name>SSHFtp</Name>
+         <!-- Note: If you increase the version number below then transport protocol data of
+                                                                older channels cannot read anymore. I.e. You have to provide the old and new
+                                                                version to be compatible- -->
+         <Version>3.0.11</Version>
+         <GuiLabels>
+            <Label language="DE">SFTP</Label>
+            <Label language="EN">SFTP</Label>
+         </GuiLabels>
+         <ValidMessageProtocols>
+            <ProtocolIdentifier>
+               <Name>Datei</Name>
+               <Version>1.0.0</Version>
+            </ProtocolIdentifier>
+            <ProtocolIdentifier>
+               <Name>FileCSV</Name>
+               <Version>1.0.0</Version>
+            </ProtocolIdentifier>
+         </ValidMessageProtocols>
+         <ChannelAttributes>
+            <Tab id="source">
+               <!-- &amp;lt;AttributeGroup&amp;gt;
+                  &amp;lt;Name&amp;gt;tpm&amp;lt;/Name&amp;gt;
+                  &amp;lt;GuiLabels&amp;gt;
+                     &amp;lt;Label language=&amp;quot;EN&amp;quot;&amp;gt;Trading Partner Management (TPM) Configuration&amp;lt;/Label&amp;gt;
+                     &amp;lt;Label language=&amp;quot;DE&amp;quot;&amp;gt;Trading Partner Management (TPM) Configuration&amp;lt;/Label&amp;gt;
+                  &amp;lt;/GuiLabels&amp;gt;
+                  &amp;lt;AttributeReference&amp;gt;
+                     &amp;lt;ReferenceName&amp;gt;tpm.enable&amp;lt;/ReferenceName&amp;gt;
+                  &amp;lt;/AttributeReference&amp;gt;
+                  &amp;lt;AttributeReference&amp;gt;
+                     &amp;lt;ReferenceName&amp;gt;tpm.tpID&amp;lt;/ReferenceName&amp;gt;
+                     &amp;lt;EditCondition&amp;gt;
+                        &amp;lt;AttributeName&amp;gt;tpm.enable&amp;lt;/AttributeName&amp;gt;
+                        &amp;lt;AttributeValue&amp;gt;1&amp;lt;/AttributeValue&amp;gt;
+                     &amp;lt;/EditCondition&amp;gt;
+                  &amp;lt;/AttributeReference&amp;gt;
+               &amp;lt;/AttributeGroup -->
+               <AttributeGroup>
+                  <Name>inboundServer</Name>
+                  <GuiLabels>
+                     <Label language="EN">SFTP Server</Label>
+                     <Label language="DE">SFTP Server</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>serverhost</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>serverport</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>timeout</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>fingerprint</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>proxySet</Name>
+                  <GuiLabels>
+                     <Label language="EN">Proxy</Label>
+                     <Label language="DE">Proxy</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>proxy</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.host</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.port</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.user</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.password</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>auth</Name>
+                  <GuiLabels>
+                     <Label language="EN">Authentication</Label>
+                     <Label language="DE">Authentifizierung</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>authMethod</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>userName</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>password</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authPassword</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authDual</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>privateKeyView</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authPrivatekey</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authDual</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>privateKeyEntry</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authPrivatekey</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authDual</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>fileparameter</Name>
+                  <GuiLabels>
+                     <Label language="EN">File</Label>
+                     <Label language="DE">Datei</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>regFileName</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>fileDirectory</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>advancedSourceFileSelection</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>exclusionMask</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>advancedSourceFileSelection</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>ignoreCDErrors</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>advancedSourceFileSelection</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>advancedFileSources</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>advancedSourceFileSelection</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>attach.files</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>attach.list</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>attach.files</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>attach.table</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>attach.files</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+            <Tab id="processing">
+               <AttributeGroup>
+                  <Name>processings</Name>
+                  <GuiLabels>
+                     <Label language="EN">Processing parameters</Label>
+                     <Label language="DE">Verarbeitungsparameter</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>deleteFile</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>emptyFileHandling</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>duplicateCheck</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>modifyCheck</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>maxFileRestr</ReferenceName>
+                     <OrCondition>
+                        <AndCondition>
+                           <EditCondition>
+                              <AttributeName>deliverySemantics</AttributeName>
+                              <AttributeValue>eoio</AttributeValue>
+                           </EditCondition>
+                           <NotCondition>
+                              <EditCondition>
+                                 <AttributeName>specialHandlingModeEOIO</AttributeName>
+                                 <AttributeValue>bypass</AttributeValue>
+                              </EditCondition>
+                           </NotCondition>
+                        </AndCondition>
+                        <AndCondition>
+                           <NotCondition>
+                              <EditCondition>
+                                 <AttributeName>deliverySemantics</AttributeName>
+                                 <AttributeValue>eoio</AttributeValue>
+                              </EditCondition>
+                           </NotCondition>
+                           <NotCondition>
+                              <EditCondition>
+                                 <AttributeName>specialHandlingMode</AttributeName>
+                                 <AttributeValue>bypass</AttributeValue>
+                              </EditCondition>
+                           </NotCondition>
+                        </AndCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>maxFileRestr.length</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>maxFileRestr</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                        <OrCondition>
+                           <AndCondition>
+                              <EditCondition>
+                                 <AttributeName>deliverySemantics</AttributeName>
+                                 <AttributeValue>eoio</AttributeValue>
+                              </EditCondition>
+                              <NotCondition>
+                                 <EditCondition>
+                                    <AttributeName>specialHandlingModeEOIO</AttributeName>
+                                    <AttributeValue>bypass</AttributeValue>
+                                 </EditCondition>
+                              </NotCondition>
+                           </AndCondition>
+                           <AndCondition>
+                              <NotCondition>
+                                 <EditCondition>
+                                    <AttributeName>deliverySemantics</AttributeName>
+                                    <AttributeValue>eoio</AttributeValue>
+                                 </EditCondition>
+                              </NotCondition>
+                              <NotCondition>
+                                 <EditCondition>
+                                    <AttributeName>specialHandlingMode</AttributeName>
+                                    <AttributeValue>bypass</AttributeValue>
+                                 </EditCondition>
+                              </NotCondition>
+                           </AndCondition>
+                        </OrCondition>
+                     </AndCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>maxFileRestr.error</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>maxFileRestr</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                        <OrCondition>
+                           <AndCondition>
+                              <EditCondition>
+                                 <AttributeName>deliverySemantics</AttributeName>
+                                 <AttributeValue>eoio</AttributeValue>
+                              </EditCondition>
+                              <NotCondition>
+                                 <EditCondition>
+                                    <AttributeName>specialHandlingModeEOIO</AttributeName>
+                                    <AttributeValue>bypass</AttributeValue>
+                                 </EditCondition>
+                              </NotCondition>
+                           </AndCondition>
+                           <AndCondition>
+                              <NotCondition>
+                                 <EditCondition>
+                                    <AttributeName>deliverySemantics</AttributeName>
+                                    <AttributeValue>eoio</AttributeValue>
+                                 </EditCondition>
+                              </NotCondition>
+                              <NotCondition>
+                                 <EditCondition>
+                                    <AttributeName>specialHandlingMode</AttributeName>
+                                    <AttributeValue>bypass</AttributeValue>
+                                 </EditCondition>
+                              </NotCondition>
+                           </AndCondition>
+                        </OrCondition>
+                     </AndCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>processSeq</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>msg.archive.faulty</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>msg.archive.path.faulty</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>msg.archive.faulty</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>breakFaulty</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+            <Tab id="processing">
+               <AttributeGroup>
+                  <Name>QoS</Name>
+                  <GuiLabels>
+                     <Label language="EN">Quality of Service</Label>
+                     <Label language="DE">Quality of Service</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>deliverySemantics</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>eoio.sequenceId</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>deliverySemantics</AttributeName>
+                           <AttributeValue>eoio</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>be.responseDir</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>deliverySemantics</AttributeName>
+                           <AttributeValue>be</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>be.responseExtension</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>deliverySemantics</AttributeName>
+                           <AttributeValue>be</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>file.osCommand</Name>
+                  <GuiLabels guid="3b709ea012b111dc88fb000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.ATG_PREPROCESS_OSCOMMAND">
+                     <Label language="EN">Run Operating System Command Before Message Processing</Label>
+                     <Label language="DE">Betriebssystembefehl vor Nachrichtenverarbeitung ausführen</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>file.preprocess.execute</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.preprocess.executeTimeout</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.preprocess.executeTerminateAfterTimeout</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>file.osCommand</Name>
+                  <GuiLabels guid="3b709ea112b111dc8695000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.ATG_OSCOMMAND">
+                     <Label language="EN">Run Operating System Command After Message Processing</Label>
+                     <Label language="DE">Betriebssystembefehl nach Nachrichtenverarbeitung ausführen</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>file.execute</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.executeTimeout</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.executeTerminateAfterTimeout</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+            <Tab id="advanced">
+               <AttributeGroup>
+                  <Name>asma</Name>
+                  <GuiLabels>
+                     <Label language="EN">Adapter-Specific Message Attributes</Label>
+                     <Label language="DE">Adapter Spezifische Message-Attributes</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>asma.in</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>asma.in.namespace</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>asma.in</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>asma.in.file</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>asma.in</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>asma.in.dir</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>asma.in</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>asma.in.size</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>asma.in</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>asma.in.time</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>asma.in</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>asma.in.host</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>asma.in</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+            <Tab id="advanced">
+               <AttributeGroup>
+                  <Name>ArchiveSFTP</Name>
+                  <GuiLabels>
+                     <Label language="EN">Archiving on SFTP Server</Label>
+                     <Label language="DE">Archivierung auf SFTP Server</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>msg.archive.sftp</ReferenceName>
+                     <OrCondition>
+                        <AndCondition>
+                           <EditCondition>
+                              <AttributeName>deliverySemantics</AttributeName>
+                              <AttributeValue>eoio</AttributeValue>
+                           </EditCondition>
+                           <EditCondition>
+                              <AttributeName>specialHandlingModeEOIO</AttributeName>
+                              <AttributeValue>none</AttributeValue>
+                           </EditCondition>
+                        </AndCondition>
+                        <AndCondition>
+                           <NotCondition>
+                              <EditCondition>
+                                 <AttributeName>deliverySemantics</AttributeName>
+                                 <AttributeValue>eoio</AttributeValue>
+                              </EditCondition>
+                           </NotCondition>
+                           <EditCondition>
+                              <AttributeName>specialHandlingMode</AttributeName>
+                              <AttributeValue>none</AttributeValue>
+                           </EditCondition>
+                        </AndCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>msg.archive.path.sftp</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>msg.archive.sftp</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                        <OrCondition>
+                           <AndCondition>
+                              <EditCondition>
+                                 <AttributeName>deliverySemantics</AttributeName>
+                                 <AttributeValue>eoio</AttributeValue>
+                              </EditCondition>
+                              <EditCondition>
+                                 <AttributeName>specialHandlingModeEOIO</AttributeName>
+                                 <AttributeValue>none</AttributeValue>
+                              </EditCondition>
+                           </AndCondition>
+                           <AndCondition>
+                              <NotCondition>
+                                 <EditCondition>
+                                    <AttributeName>deliverySemantics</AttributeName>
+                                    <AttributeValue>eoio</AttributeValue>
+                                 </EditCondition>
+                              </NotCondition>
+                              <EditCondition>
+                                 <AttributeName>specialHandlingMode</AttributeName>
+                                 <AttributeValue>none</AttributeValue>
+                              </EditCondition>
+                           </AndCondition>
+                        </OrCondition>
+                     </AndCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+         </ChannelAttributes>
+      </TransportProtocol>
+      <!-- Message protocol settings -->
+      <MessageProtocol>
+         <Name>Datei</Name>
+         <Version>1.0.0</Version>
+         <GuiLabels>
+            <Label language="EN">File</Label>
+            <Label language="DE">Datei</Label>
+         </GuiLabels>
+         <ChannelAttributes>
+            <Tab id="processing">
+               <AttributeGroup>
+                  <Name>processings</Name>
+                  <GuiLabels>
+                     <Label language="EN">Large File Handling</Label>
+                     <Label language="DE">Große Dateihandhabung</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>specialHandlingMode</ReferenceName>
+                     <NotCondition>
+                        <EditCondition>
+                           <AttributeName>deliverySemantics</AttributeName>
+                           <AttributeValue>eoio</AttributeValue>
+                        </EditCondition>
+                     </NotCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>specialHandlingModeEOIO</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>deliverySemantics</AttributeName>
+                        <AttributeValue>eoio</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>storagelocation</ReferenceName>
+                     <OrCondition>
+                        <AndCondition>
+                           <EditCondition>
+                              <AttributeName>deliverySemantics</AttributeName>
+                              <AttributeValue>eoio</AttributeValue>
+                           </EditCondition>
+                           <EditCondition>
+                              <AttributeName>specialHandlingModeEOIO</AttributeName>
+                              <AttributeValue>bypass</AttributeValue>
+                           </EditCondition>
+                        </AndCondition>
+                        <AndCondition>
+                           <NotCondition>
+                              <EditCondition>
+                                 <AttributeName>deliverySemantics</AttributeName>
+                                 <AttributeValue>eoio</AttributeValue>
+                              </EditCondition>
+                           </NotCondition>
+                           <EditCondition>
+                              <AttributeName>specialHandlingMode</AttributeName>
+                              <AttributeValue>bypass</AttributeValue>
+                           </EditCondition>
+                        </AndCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>chunkSize</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>deliverySemantics</AttributeName>
+                           <AttributeValue>eoio</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>specialHandlingModeEOIO</AttributeName>
+                           <AttributeValue>chunk</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+         </ChannelAttributes>
+         <ModuleProcessorAttributes>
+            <ModuleSequence>
+               <ModuleSequenceItem>
+                  <Name>localejbs/CallSapAdapter</Name>
+                  <Type>local</Type>
+                  <Key>entry</Key>
+               </ModuleSequenceItem>
+            </ModuleSequence>
+         </ModuleProcessorAttributes>
+      </MessageProtocol>
+      <MessageProtocol>
+         <Name>FileCSV</Name>
+         <Version>1.0.0</Version>
+         <GuiLabels>
+            <Label language="EN">File Content Conversion</Label>
+            <Label language="DE">File Content Conversion</Label>
+         </GuiLabels>
+         <ChannelAttributes>
+            <Tab id="fcc">
+               <AttributeGroup>
+                  <Name>file.convParams</Name>
+                  <GuiLabels>
+                     <Label language="EN">Content Conversion Parameters</Label>
+                     <Label language="DE">Parameter zur Inhaltskonvertierung</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>xml.documentName</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.documentNamespace</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.documentSkipFirstRows</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.recordsetName</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.recordsetNamespace</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.recordsetStructure</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.recordsetsPerMessage</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.keyfieldName</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>xml.keyfieldType</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.conversionParameters</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+         </ChannelAttributes>
+         <SecurityAttributes/>
+         <ModuleProcessorAttributes>
+            <ModuleSequence>
+               <ModuleSequenceItem>
+                  <Name>localejbs/CallSapAdapter</Name>
+                  <Type>local</Type>
+                  <Key>entry</Key>
+               </ModuleSequenceItem>
+            </ModuleSequence>
+         </ModuleProcessorAttributes>
+      </MessageProtocol>
+      <!-- Global settings -->
+      <GlobalChannelAttributes>
+         <Tab id="advanced">
+            <AttributeGroup>
+               <Name>ArchivePI</Name>
+               <GuiLabels>
+                  <Label language="EN">Archiving on File System</Label>
+               </GuiLabels>
+               <AttributeReference>
+                  <ReferenceName>msg.archive</ReferenceName>
+                  <OrCondition>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>deliverySemantics</AttributeName>
+                           <AttributeValue>eoio</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>specialHandlingModeEOIO</AttributeName>
+                           <AttributeValue>none</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                     <AndCondition>
+                        <NotCondition>
+                           <EditCondition>
+                              <AttributeName>deliverySemantics</AttributeName>
+                              <AttributeValue>eoio</AttributeValue>
+                           </EditCondition>
+                        </NotCondition>
+                        <EditCondition>
+                           <AttributeName>specialHandlingMode</AttributeName>
+                           <AttributeValue>none</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </OrCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>msg.archive.path</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>msg.archive</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <OrCondition>
+                        <AndCondition>
+                           <EditCondition>
+                              <AttributeName>deliverySemantics</AttributeName>
+                              <AttributeValue>eoio</AttributeValue>
+                           </EditCondition>
+                           <EditCondition>
+                              <AttributeName>specialHandlingModeEOIO</AttributeName>
+                              <AttributeValue>none</AttributeValue>
+                           </EditCondition>
+                        </AndCondition>
+                        <AndCondition>
+                           <NotCondition>
+                              <EditCondition>
+                                 <AttributeName>deliverySemantics</AttributeName>
+                                 <AttributeValue>eoio</AttributeValue>
+                              </EditCondition>
+                           </NotCondition>
+                           <EditCondition>
+                              <AttributeName>specialHandlingMode</AttributeName>
+                              <AttributeValue>none</AttributeValue>
+                           </EditCondition>
+                        </AndCondition>
+                     </OrCondition>
+                  </AndCondition>
+               </AttributeReference>
+            </AttributeGroup>
+         </Tab>
+         <Tab id="source">
+            <AttributeGroup>
+               <Name>interv</Name>
+               <GuiLabels>
+                  <Label language="EN">Period</Label>
+                  <Label language="DE">interval</Label>
+               </GuiLabels>
+               <AttributeReference>
+                  <ReferenceName>interv.poll</ReferenceName>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.schedule</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>60</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <!-- MONTAG -->
+               <AttributeReference>
+                  <ReferenceName>interv.mon</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.mon.from</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.mon</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.mon.to</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.mon</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <!-- Dienstag -->
+               <AttributeReference>
+                  <ReferenceName>interv.tue</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.tue.from</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.tue</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.tue.to</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.tue</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <!-- Mittwoch -->
+               <AttributeReference>
+                  <ReferenceName>interv.wed</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.wed.from</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.wed</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.wed.to</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.wed</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <!-- Donnerstag -->
+               <AttributeReference>
+                  <ReferenceName>interv.thu</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.thu.from</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.thu</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.thu.to</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.thu</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <!-- Freitag -->
+               <AttributeReference>
+                  <ReferenceName>interv.fri</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.fri.from</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.fri</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.fri.to</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.fri</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <!-- Samstag -->
+               <AttributeReference>
+                  <ReferenceName>interv.sat</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.sat.from</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.sat</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.sat.to</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.sat</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <!-- Sonntag -->
+               <AttributeReference>
+                  <ReferenceName>interv.sun</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>interv.schedule</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.sun.from</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.sun</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>interv.sun.to</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>interv.schedule</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                     <EditCondition>
+                        <AttributeName>interv.sun</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+            </AttributeGroup>
+         </Tab>
+         <!-- Channel activation via XI directory -->
+         <Tab id="advanced">
+            <AttributeGroup>
+               <Name>Status</Name>
+               <GuiLabels>
+                  <Label language="EN">Adapter Status</Label>
+                  <Label language="DE">Adapterstatus</Label>
+               </GuiLabels>
+               <AttributeReference>
+                  <ReferenceName>adapterStatus</ReferenceName>
+               </AttributeReference>
+            </AttributeGroup>
+            <AttributeReference>
+               <ReferenceName>sftp.advanced</ReferenceName>
+            </AttributeReference>
+            <AttributeGroup>
+               <Name>addTable</Name>
+               <GuiLabels>
+                  <Label language="EN">Additional Parameters</Label>
+                  <Label language="DE">Zusätzliche Parameter</Label>
+               </GuiLabels>
+               <AttributeReference>
+                  <ReferenceName>sftp.addParameterParams</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>sftp.advanced</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+            </AttributeGroup>
+         </Tab>
+      </GlobalChannelAttributes>
+   </Inbound>
+   <!-- ********************************************************************** -->
+   <!-- S E N D E R  C H A N N E L   S E C T I O N                             -->
+   <!-- ********************************************************************** -->
+   <Outbound>
+      <!-- Transport protocol settings -->
+      <TransportProtocol>
+         <Name>SSHFtp</Name>
+         <!-- Note: If you increase the version number below then transport protocol data of
+                                                                older channels cannot read anymore. I.e. You have to provide the old and new
+                                                                version to be compatible- -->
+         <Version>1.0.0</Version>
+         <GuiLabels>
+            <Label language="DE">SFTP</Label>
+            <Label language="EN">SFTP</Label>
+         </GuiLabels>
+         <ValidMessageProtocols>
+            <ProtocolIdentifier>
+               <Name>Datei</Name>
+               <Version>1.0.0</Version>
+            </ProtocolIdentifier>
+            <ProtocolIdentifier>
+               <Name>FileCSV</Name>
+               <Version>1.0.0</Version>
+            </ProtocolIdentifier>
+         </ValidMessageProtocols>
+         <ChannelAttributes>
+            <Tab id="destination">
+               <!-- &amp;lt;AttributeGroup&amp;gt;
+                  &amp;lt;Name&amp;gt;tpm&amp;lt;/Name&amp;gt;
+                  &amp;lt;GuiLabels&amp;gt;
+                     &amp;lt;Label language=&amp;quot;EN&amp;quot;&amp;gt;Trading Partner Management (TPM) Configuration&amp;lt;/Label&amp;gt;
+                     &amp;lt;Label language=&amp;quot;DE&amp;quot;&amp;gt;Trading Partner Management (TPM) Configuration&amp;lt;/Label&amp;gt;
+                  &amp;lt;/GuiLabels&amp;gt;
+                  &amp;lt;AttributeReference&amp;gt;
+                     &amp;lt;ReferenceName&amp;gt;tpm.enable&amp;lt;/ReferenceName&amp;gt;
+                  &amp;lt;/AttributeReference&amp;gt;
+                  &amp;lt;AttributeReference&amp;gt;
+                     &amp;lt;ReferenceName&amp;gt;tpm.tpID&amp;lt;/ReferenceName&amp;gt;
+                     &amp;lt;EditCondition&amp;gt;
+                        &amp;lt;AttributeName&amp;gt;tpm.enable&amp;lt;/AttributeName&amp;gt;
+                        &amp;lt;AttributeValue&amp;gt;1&amp;lt;/AttributeValue&amp;gt;
+                     &amp;lt;/EditCondition&amp;gt;
+                  &amp;lt;/AttributeReference&amp;gt;
+               &amp;lt;/AttributeGroup&amp;gt; -->
+               <AttributeGroup>
+                  <Name>outboundParameters</Name>
+                  <GuiLabels>
+                     <Label language="EN">SFTP Server</Label>
+                     <Label language="DE">SFTP Server</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>serverhost</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>serverport</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>timeout</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>fingerprint</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>proxySet</Name>
+                  <GuiLabels>
+                     <Label language="EN">Proxy</Label>
+                     <Label language="DE">Proxy</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>proxy</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.host</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.port</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.user</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>proxy.password</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks4</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>socks5</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>proxy</AttributeName>
+                           <AttributeValue>http</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>auth</Name>
+                  <GuiLabels>
+                     <Label language="EN">Authentication</Label>
+                     <Label language="DE">Authentifizierung</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>authMethod</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>userName</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>password</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authPassword</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authDual</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>privateKeyView</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authPrivatekey</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authDual</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>privateKeyEntry</ReferenceName>
+                     <OrCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authPrivatekey</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>authMethod</AttributeName>
+                           <AttributeValue>authDual</AttributeValue>
+                        </EditCondition>
+                     </OrCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>fileParameter</Name>
+                  <GuiLabels>
+                     <Label language="EN">File parameter</Label>
+                     <Label language="DE">Datei Parameter</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>fileName</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>filePath</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>createDirectory</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>overwriteFile</ReferenceName>
+                     <NotCondition>
+                        <EditCondition>
+                           <AttributeName>writeModus</AttributeName>
+                           <AttributeValue>writeModus.append</AttributeValue>
+                        </EditCondition>
+                     </NotCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+            <Tab id="processing">
+               <AttributeGroup>
+                  <Name>fileParameter</Name>
+                  <GuiLabels>
+                     <Label language="EN">Processing parameter</Label>
+                     <Label language="DE">Verarbeitungsparameter</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>timeStamp</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>messageID</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>writeModus</ReferenceName>
+                     <NotCondition>
+                        <OrCondition>
+                           <EditCondition>
+                              <AttributeName>timeStamp</AttributeName>
+                              <AttributeValue>1</AttributeValue>
+                           </EditCondition>
+                           <EditCondition>
+                              <AttributeName>messageID</AttributeName>
+                              <AttributeValue>1</AttributeValue>
+                           </EditCondition>
+                        </OrCondition>
+                     </NotCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>writeModus.overwrite</ReferenceName>
+                     <NotCondition>
+                        <AndCondition>
+                           <EditCondition>
+                              <AttributeName>timeStamp</AttributeName>
+                              <AttributeValue>0</AttributeValue>
+                           </EditCondition>
+                           <EditCondition>
+                              <AttributeName>messageID</AttributeName>
+                              <AttributeValue>0</AttributeValue>
+                           </EditCondition>
+                        </AndCondition>
+                     </NotCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>maxParallel</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>maxParallel_Timeout</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>maxParallel_TimeUnit</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>out.emptyFileHandling</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>setPermission</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>setPermission.permissions</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>setPermission</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>out.storeAttachments</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>file.osCommand</Name>
+                  <GuiLabels guid="3b709ea012b111dc88fb000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.ATG_PREPROCESS_OSCOMMAND">
+                     <Label language="EN">Run Operating System Command Before Message Processing</Label>
+                     <Label language="DE">Betriebssystembefehl vor Nachrichtenverarbeitung ausführen</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>file.preprocess.execute</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.preprocess.executeTimeout</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.preprocess.executeTerminateAfterTimeout</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>file.osCommand</Name>
+                  <GuiLabels guid="3b709ea112b111dc8695000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.ATG_OSCOMMAND">
+                     <Label language="EN">Run Operating System Command After Message Processing</Label>
+                     <Label language="DE">Betriebssystembefehl nach Nachrichtenverarbeitung ausführen</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>file.execute</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.executeTimeout</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.executeTerminateAfterTimeout</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+            <Tab id="advanced">
+               <AttributeGroup>
+                  <Name>variableSubstitution</Name>
+                  <GuiLabels>
+                     <Label language="EN">Variable substitution (Filepath/Filename)</Label>
+                     <Label language="DE">Variablenersetzung (Verzeichnis/Dateiname)</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>variableSubstitution.enabled</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>variableSubstitution.table</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>variableSubstitution.enabled</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>variableSubstitution.securityCheck</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>variableSubstitution.enabled</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+               <AttributeGroup>
+                  <Name>dynamicParameter</Name>
+                  <GuiLabels>
+                     <Label language="EN">Adapter-Specific Message Attributes</Label>
+                     <Label language="DE">Adapter Spezifische Message-Attribute</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>dynamicValues</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>dynamicNamespace</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>dynamicValues</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>dynamicDir</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>dynamicValues</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>dynamicFDir</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>dynamicDir</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>dynamicValues</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>dynamicFilename</ReferenceName>
+                     <EditCondition>
+                        <AttributeName>dynamicValues</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>dynamicFName</ReferenceName>
+                     <AndCondition>
+                        <EditCondition>
+                           <AttributeName>dynamicFilename</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                        <EditCondition>
+                           <AttributeName>dynamicValues</AttributeName>
+                           <AttributeValue>1</AttributeValue>
+                        </EditCondition>
+                     </AndCondition>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+         </ChannelAttributes>
+      </TransportProtocol>
+      <!-- Message protocol settings -->
+      <MessageProtocol>
+         <Name>Datei</Name>
+         <Version>1.0.0</Version>
+         <GuiLabels>
+            <Label language="EN">File</Label>
+            <Label language="DE">Datei</Label>
+         </GuiLabels>
+         <ModuleProcessorAttributes>
+            <ModuleSequence>
+               <ModuleSequenceItem>
+                  <Name>localejbs/ModuleProcessorExitBean</Name>
+                  <Type>local</Type>
+                  <Key>exit</Key>
+               </ModuleSequenceItem>
+            </ModuleSequence>
+            <ModuleConfig>
+               <ModuleConfigItem>
+                  <Key>exit</Key>
+                  <Name>JNDIName</Name>
+                  <Value>deployedAdapters/com.sap.aii.adapter.sftp.ra/shareable/com.sap.aii.adapter.sftp.ra</Value>
+               </ModuleConfigItem>
+            </ModuleConfig>
+         </ModuleProcessorAttributes>
+      </MessageProtocol>
+      <MessageProtocol>
+         <Name>FileCSV</Name>
+         <Version>1.0.0</Version>
+         <GuiLabels>
+            <Label language="EN">File Content Conversion</Label>
+            <Label language="DE">File Content Conversion</Label>
+         </GuiLabels>
+         <ChannelAttributes>
+            <Tab id="fcc">
+               <AttributeGroup>
+                  <Name>file.convParams</Name>
+                  <GuiLabels>
+                     <Label language="EN">Content Conversion Parameters</Label>
+                     <Label language="DE">Parameter zur Inhaltskonvertierung</Label>
+                  </GuiLabels>
+                  <AttributeReference>
+                     <ReferenceName>file.recordsetStructure</ReferenceName>
+                  </AttributeReference>
+                  <AttributeReference>
+                     <ReferenceName>file.conversionParameters</ReferenceName>
+                  </AttributeReference>
+               </AttributeGroup>
+            </Tab>
+         </ChannelAttributes>
+         <SecurityAttributes/>
+         <ModuleProcessorAttributes>
+            <ModuleSequence>
+               <ModuleSequenceItem>
+                  <Name>localejbs/ModuleProcessorExitBean</Name>
+                  <Type>local</Type>
+                  <Key>exit</Key>
+               </ModuleSequenceItem>
+            </ModuleSequence>
+            <ModuleConfig>
+               <ModuleConfigItem>
+                  <Key>exit</Key>
+                  <Name>JNDIName</Name>
+                  <Value>deployedAdapters/com.sap.aii.adapter.sftp.ra/shareable/com.sap.aii.adapter.sftp.ra</Value>
+               </ModuleConfigItem>
+            </ModuleConfig>
+         </ModuleProcessorAttributes>
+      </MessageProtocol>
+      <!-- Global settings -->
+      <GlobalChannelAttributes>
+         <Tab id="advanced">
+            <AttributeGroup>
+               <Name>Archive</Name>
+               <GuiLabels>
+                  <Label language="EN">Archiving</Label>
+                  <Label language="DE">Archivierung</Label>
+               </GuiLabels>
+               <AttributeReference>
+                  <ReferenceName>msg.archive</ReferenceName>
+               </AttributeReference>
+               <AttributeReference>
+                  <ReferenceName>msg.archive.path</ReferenceName>
+                  <AndCondition>
+                     <EditCondition>
+                        <AttributeName>msg.archive</AttributeName>
+                        <AttributeValue>1</AttributeValue>
+                     </EditCondition>
+                  </AndCondition>
+               </AttributeReference>
+            </AttributeGroup>
+            <AttributeGroup>
+               <Name>status</Name>
+               <GuiLabels>
+                  <Label language="EN">Adapter status</Label>
+                  <Label language="DE">Adapterstatus</Label>
+               </GuiLabels>
+               <AttributeReference>
+                  <ReferenceName>adapterStatus</ReferenceName>
+               </AttributeReference>
+            </AttributeGroup>
+            <AttributeReference>
+               <ReferenceName>sftp.advanced</ReferenceName>
+            </AttributeReference>
+            <AttributeGroup>
+               <Name>addTable</Name>
+               <GuiLabels>
+                  <Label language="EN">Additional Parameters</Label>
+                  <Label language="DE">Zusätzliche Parameter</Label>
+               </GuiLabels>
+               <AttributeReference>
+                  <ReferenceName>sftp.addParameterParams</ReferenceName>
+                  <EditCondition>
+                     <AttributeName>sftp.advanced</AttributeName>
+                     <AttributeValue>1</AttributeValue>
+                  </EditCondition>
+               </AttributeReference>
+            </AttributeGroup>
+         </Tab>
+         <!-- Adapter Specific Message Attributes -->
+      </GlobalChannelAttributes>
+   </Outbound>
+   <!-- ********************************************************************** -->
+   <!-- A T T R I B U T E S     S E C T I O N                                  -->
+   <!-- ********************************************************************** -->
+   <!-- Inboud Source -->
+   <Attribute>
+      <Name>serverhost</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Server</Label>
+         <Label language="DE">Server</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>serverport</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>5</Length>
+      <Flag>nonTransportable</Flag>
+      <Default>22</Default>
+      <GuiLabels>
+         <Label language="EN">Port</Label>
+         <Label language="DE">Port</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>fingerprint</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Server fingerprint</Label>
+         <Label language="DE">Server Fingerabdruck</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>timeout</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>0</Length>
+      <Default>30000</Default>
+      <GuiLabels>
+         <Label language="EN">Timeout (ms)</Label>
+         <Label language="DE">Zeitüberschreitung (ms)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>proxy</Name>
+      <Usage>required</Usage>
+      <Default>noProxy</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Proxy</Label>
+         <Label language="DE">Proxy</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>noProxy</value>
+         <GuiLabels>
+            <Label language="EN">No Proxy</Label>
+            <Label language="DE">Kein Proxy</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>socks4</value>
+         <GuiLabels>
+            <Label language="EN">SOCKS4</Label>
+            <Label language="DE">SOCKS4</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>socks5</value>
+         <GuiLabels>
+            <Label language="EN">SOCKS5</Label>
+            <Label language="DE">SOCKS5</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>http</value>
+         <GuiLabels>
+            <Label language="EN">HTTP</Label>
+            <Label language="DE">HTTP</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>proxy.host</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Server</Label>
+         <Label language="DE">Server</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>proxy.port</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>5</Length>
+      <Flag>nonTransportable</Flag>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Port</Label>
+         <Label language="DE">Port</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>proxy.user</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Username</Label>
+         <Label language="DE">Benutzername</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute isPassword="true">
+      <Name>proxy.password</Name>
+      <Usage>optional</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Password</Label>
+         <Label language="DE">Passwort</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>authMethod</Name>
+      <Usage>required</Usage>
+      <Default>authPassword</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Authentication method</Label>
+         <Label language="DE">Authentifizierungsmethode</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>authPassword</value>
+         <GuiLabels>
+            <Label language="EN">Password</Label>
+            <Label language="DE">Passwort</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>authPrivatekey</value>
+         <GuiLabels>
+            <Label language="EN">Private Key</Label>
+            <Label language="DE">Private Key</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>authDual</value>
+         <GuiLabels>
+            <Label language="EN">Dual Authentication</Label>
+            <Label language="DE">Dual-Authentifizierung</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>userName</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Username</Label>
+         <Label language="DE">Benutzername</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute isPassword="true">
+      <Name>password</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Password</Label>
+         <Label language="DE">Passwort</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>privateKeyView</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <HelpService>
+         <HelpServiceName>SecStoreHelpServiceView</HelpServiceName>
+         <HelpServiceQueryAttributes>
+            <HelpServiceQueryAttribute>
+               <Name>Key</Name>
+               <Value>Private</Value>
+            </HelpServiceQueryAttribute>
+         </HelpServiceQueryAttributes>
+      </HelpService>
+      <GuiLabels>
+         <Label language="EN">Private Key View</Label>
+         <Label language="DE">Private Key Ansicht</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>privateKeyEntry</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <HelpService>
+         <HelpServiceName>SecStoreHelpServiceAlias</HelpServiceName>
+         <HelpServiceQueryAttributes>
+            <HelpServiceQueryAttribute>
+               <Name>Key</Name>
+               <Value>Private</Value>
+            </HelpServiceQueryAttribute>
+         </HelpServiceQueryAttributes>
+      </HelpService>
+      <GuiLabels>
+         <Label language="EN">Private Key Entry</Label>
+         <Label language="DE">Private Key Eintrag</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>regFileName</Name>
+      <Usage>required</Usage>
+      <Default>.*</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Filename</Label>
+         <Label language="DE">Dateiname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>fileDirectory</Name>
+      <Usage>required</Usage>
+      <Default>~/</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Directory</Label>
+         <Label language="DE">Ordner</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>advancedSourceFileSelection</Name>
+      <Usage>optional</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <GuiLabels>
+         <Label language="EN">Advanced Source File Selection</Label>
+         <Label language="DE">Erweiterte Auswahl der Quelldateien</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>ignoreCDErrors</Name>
+      <Usage>optional</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <GuiLabels>
+         <Label language="EN">Ignore Individual Directory Not Found Errors</Label>
+         <Label language="DE">Ignorieren Einzelverzeichnis nicht gefunden Fehler</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>exclusionMask</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Exclusion Mask</Label>
+         <Label language="DE">Ausschlussmaske</Label>
+      </GuiLabels>
+   </Attribute>
+   <AttributeTable>
+      <Name>advancedFileSources</Name>
+      <Usage>required</Usage>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Source Files and Directories</Label>
+         <Label language="DE">Quelldateien und -verzeichnisse</Label>
+      </GuiLabels>
+      <AttributeReference>
+         <ReferenceName>advancedSourceDir</ReferenceName>
+      </AttributeReference>
+      <AttributeReference>
+         <ReferenceName>advancedSourceFileMask</ReferenceName>
+      </AttributeReference>
+      <AttributeReference>
+         <ReferenceName>advancedSourceExclusionMask</ReferenceName>
+      </AttributeReference>
+   </AttributeTable>
+   <Attribute>
+      <Name>advancedSourceDir</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Directory</Label>
+         <Label language="DE">Verzeichnis</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>advancedSourceFileMask</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">File Name Mask</Label>
+         <Label language="DE">Dateinamensmaske</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>advancedSourceExclusionMask</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <GuiLabels>
+         <Label language="EN">Exclusion Mask</Label>
+         <Label language="DE">Ausschlussmaske</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>attach.files</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Additional file(s)</Label>
+         <Label language="DE">Zusätzliche Datei(en)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>attach.list</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">File List</Label>
+         <Label language="DE">Datei Liste</Label>
+      </GuiLabels>
+   </Attribute>
+   <AttributeTable>
+      <Name>attach.table</Name>
+      <Usage>required</Usage>
+      <AttributeReference>
+         <ReferenceName>attach.table.name</ReferenceName>
+      </AttributeReference>
+      <AttributeReference>
+         <ReferenceName>attach.table.value</ReferenceName>
+      </AttributeReference>
+      <GuiLabels>
+         <Label language="EN">Attachment Table</Label>
+         <Label language="DE">Zeitüberschreitung Datein Tabelle</Label>
+      </GuiLabels>
+   </AttributeTable>
+   <Attribute>
+      <Name>attach.table.name</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Name</Label>
+         <Label language="DE">Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>attach.table.value</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Value</Label>
+         <Label language="DE">Wert</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- Polling interval -->
+   <Attribute>
+      <Name>interv.mon</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Monday</Label>
+         <Label language="DE">Montag</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.tue</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Tuesday</Label>
+         <Label language="DE">Dienstag</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.wed</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Wednesday</Label>
+         <Label language="DE">Mittwoch</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.thu</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Thursday</Label>
+         <Label language="DE">Donnerstag</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.fri</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Friday</Label>
+         <Label language="DE">Freitag</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.sat</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Saturday</Label>
+         <Label language="DE">Samstag</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.sun</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Sunday</Label>
+         <Label language="DE">Sonntag</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.mon.from</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">From (hour)</Label>
+         <Label language="DE">Von (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.mon.to</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">to (hour)</Label>
+         <Label language="DE">bis (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.tue.from</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">From (hour)</Label>
+         <Label language="DE">Von (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.tue.to</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">to (hour)</Label>
+         <Label language="DE">bis (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.wed.from</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">From (hour)</Label>
+         <Label language="DE">Von (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.wed.to</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">to (hour)</Label>
+         <Label language="DE">bis (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.thu.from</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">From (hour)</Label>
+         <Label language="DE">Von (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.thu.to</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">to (hour)</Label>
+         <Label language="DE">bis (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.fri.from</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">From (hour)</Label>
+         <Label language="DE">Von (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.fri.to</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">to (hour)</Label>
+         <Label language="DE">bis (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.sat.from</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">From (hour)</Label>
+         <Label language="DE">Von (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.sat.to</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">to (hour)</Label>
+         <Label language="DE">bis (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.sun.from</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">From (hour)</Label>
+         <Label language="DE">Von (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.sun.to</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>2</Length>
+      <GuiLabels>
+         <Label language="EN">to (hour)</Label>
+         <Label language="DE">bis (Stunde)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.poll</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>6</Length>
+      <Default>60</Default>
+      <GuiLabels>
+         <Label language="EN">Poll interval (minimum 10 seconds)</Label>
+         <Label language="DE">Poll interval (minimum 10 seconds)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>interv.schedule</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Use Timetable</Label>
+         <Label language="DE">Zeitgesteuertes Polling</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- Inboud Processing -->
+   <Attribute>
+      <Name>BypassPIRuntimeForFileTransfer</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Bypass PI Runtime For File Transfer</Label>
+         <Label language="DE">Bypass PI Runtime For File Transfer</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>storagelocation</Name>
+      <Usage>required</Usage>
+      <Default>/</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Absolute Filepath (including Filename)</Label>
+         <Label language="DE">Absolute Filepath (including Filename)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>deleteFile</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Delete file</Label>
+         <Label language="DE">Datei löschen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>emptyFileHandling</Name>
+      <Usage>required</Usage>
+      <Default>empty.process</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Process empty file</Label>
+         <Label language="DE">Behandlung leerer Dateien</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>empty.noMessage</value>
+         <GuiLabels>
+            <Label language="EN">Create no message</Label>
+            <Label language="DE">Keine Message anlegen</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>empty.process</value>
+         <GuiLabels>
+            <Label language="EN">Process empty file</Label>
+            <Label language="DE">Leere Dateien verarbeiten</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>empty.skip</value>
+         <GuiLabels>
+            <Label language="EN">Skip empty files</Label>
+            <Label language="DE">Leere Dateien überspringen</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>duplicateCheck</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Duplicate file checking</Label>
+         <Label language="DE">Doppelte Dateien erkennen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>modifyCheck</Name>
+      <Usage>required</Usage>
+      <Default>100</Default>
+      <DataType>xsd:integer</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">interval (mSec) for modification check</Label>
+         <Label language="DE">Wartezeit (mSek) vor änderungsprüfung</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>maxFileRestr</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Maximum file size restriction</Label>
+         <Label language="DE">Maximale Dateigrößeschränkung</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>maxFileRestr.length</Name>
+      <Usage>required</Usage>
+      <Default>25165824</Default>
+      <DataType>xsd:long</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Maximum file size (Byte)</Label>
+         <Label language="DE">Maximale Dateigröße (Byte)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>maxFileRestr.error</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Error when restricted</Label>
+         <Label language="DE">Fehlermeldung bei Beschränkung</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>processSeq</Name>
+      <Usage>required</Usage>
+      <Default>processSeq.date.asc</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Process Sequence</Label>
+         <Label language="DE">Verarbeitungsreihenfolge</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>processSeq.date.asc</value>
+         <GuiLabels>
+            <Label language="EN">Ascending by date</Label>
+            <Label language="DE">Aufsteigend nach Datum</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>processSeq.date.desc</value>
+         <GuiLabels>
+            <Label language="EN">Descending by date</Label>
+            <Label language="DE">absteigend nach Datum</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>processSeq.name.asc</value>
+         <GuiLabels>
+            <Label language="EN">Ascending by name</Label>
+            <Label language="DE">Aufsteigend nach Name</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>processSeq.name.desc</value>
+         <GuiLabels>
+            <Label language="EN">Descending by name</Label>
+            <Label language="DE">Absteigend nach Name</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>msg.archive.faulty</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Archive faulty files</Label>
+         <Label language="DE">Fehlerhaft Dateien archivieren</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>msg.archive.path.faulty</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Archive name</Label>
+         <Label language="DE">Archivname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>breakFaulty</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Stop processing after faulty file</Label>
+         <Label language="DE">Verarbeitung nach fehlerhafter Datei abbrechen</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- delivery semantics -->
+   <Attribute>
+      <Name>deliverySemantics</Name>
+      <Usage>required</Usage>
+      <Default>eo</Default>
+      <DataType>xsd:string</DataType>
+      <GuiLabels>
+         <Label language="EN">Quality of service</Label>
+         <Label language="DE">Quality of service</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>eo</value>
+         <GuiLabels>
+            <Label language="EN">Exactly once (asynchronous)</Label>
+            <Label language="DE">Exactly once (asynchron)</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>eoio</value>
+         <GuiLabels>
+            <Label language="EN">Exactly once in order (asynchronous)</Label>
+            <Label language="DE">Exactly once in order (asynchron)</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>be</value>
+         <GuiLabels>
+            <Label language="EN">Best effort (synchronous)</Label>
+            <Label language="DE">Best effort (synchron)</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>eoio.sequenceId</Name>
+      <DataType>xsd:string</DataType>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Queue Name</Label>
+         <Label language="DE">Queue Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>be.responseExtension</Name>
+      <DataType>xsd:string</DataType>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Response Extension</Label>
+         <Label language="DE">Antwort Erweiterung</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>be.responseDir</Name>
+      <DataType>xsd:string</DataType>
+      <Default/>
+      <GuiLabels>
+         <Label language="EN">Response Directory</Label>
+         <Label language="DE">Antwort Verzeichnis</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- Inbound Advanced -->
+   <Attribute>
+      <Name>adapterStatus</Name>
+      <Usage>optional</Usage>
+      <Default>active</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Adapter Status</Label>
+         <Label language="DE">Adapterstatus</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>active</value>
+         <GuiLabels>
+            <Label language="EN">Active</Label>
+            <Label language="DE">Aktiv</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>inactive</value>
+         <GuiLabels>
+            <Label language="EN">Inactive</Label>
+            <Label language="DE">Inaktiv</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>suppressEmptyDirException</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Suppress empty directory exceptions</Label>
+         <Label language="DE">Fehler bei leeren Verzeichnissen unterdrücken</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>asma.in</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Set Adapter-Specific Message Attributes</Label>
+         <Label language="DE">Adapterspezifische Message-Attribute setzen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>asma.in.namespace</Name>
+      <Usage>required</Usage>
+      <Default>http://sap.com/xi/XI/System</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Namespace</Label>
+         <Label language="DE">Namensraum</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>asma.in.file</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">File Name</Label>
+         <Label language="DE">Dateiname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>asma.in.dir</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Directory</Label>
+         <Label language="DE">Verzeichnis</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>asma.in.size</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">File Size</Label>
+         <Label language="DE">Dateigröße</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>asma.in.time</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Timestamp</Label>
+         <Label language="DE">Zeitstempel</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>asma.in.host</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">SFTP Host</Label>
+         <Label language="DE">SFTP Host</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>msg.archive</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Archive Files on File System</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>msg.archive.path</Name>
+      <Usage>required</Usage>
+      <Default>C:/sftpArchiv/%TIME_%SEQNUM</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Archive name</Label>
+         <Label language="DE">Archivname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>msg.archive.sftp</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Archive Files on SFTP Server</Label>
+         <Label language="DE">Dateien archivieren auf SFTP Server</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>msg.archive.path.sftp</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Archive name</Label>
+         <Label language="DE">Archivname</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- ........................................... -->
+   <!-- ............ OUTBOUND Attributes .......... -->
+   <!-- ........................................... -->
+   <!-- Outbound Destination -->
+   <Attribute>
+      <Name>fileName</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <Default>newFile</Default>
+      <GuiLabels>
+         <Label language="EN">Filename</Label>
+         <Label language="DE">Dateiname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>filePath</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Flag>nonTransportable</Flag>
+      <Default>~/</Default>
+      <GuiLabels>
+         <Label language="EN">Filepath</Label>
+         <Label language="DE">Verzeichnis</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>createDirectory</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Create Directory</Label>
+         <Label language="DE">Ordner erstellen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>overwriteFile</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Overwrite</Label>
+         <Label language="DE">überschreiben</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- Outbound Processing-->
+   <Attribute>
+      <Name>timeStamp</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <Default>1</Default>
+      <GuiLabels>
+         <Label language="EN">Add Timestamp to filename</Label>
+         <Label language="DE">Zeitstempel an Dateinamen anhängen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>messageID</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <Default>0</Default>
+      <GuiLabels>
+         <Label language="EN">Add Message-ID to filename</Label>
+         <Label language="DE">Message-ID an Dateinamen anhängen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>writeModus</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Default>writeModus.direct</Default>
+      <GuiLabels>
+         <Label language="EN">Write modus</Label>
+         <Label language="DE">Schreibmodus</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>writeModus.direct</value>
+         <GuiLabels>
+            <Label language="EN">Direct</Label>
+            <Label language="DE">Direkt</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>writeModus.append</value>
+         <GuiLabels>
+            <Label language="EN">Append</Label>
+            <Label language="DE">Anhängen</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>writeModus.temp</value>
+         <GuiLabels>
+            <Label language="EN">Use temporary file</Label>
+            <Label language="DE">Temporäre Datei verwenden</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>writeModus.overwrite</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Default>writeModus.overwrite.direct</Default>
+      <GuiLabels>
+         <Label language="EN">Write modus</Label>
+         <Label language="DE">Schreibmodus</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>writeModus.overwrite.direct</value>
+         <GuiLabels>
+            <Label language="EN">Direct</Label>
+            <Label language="DE">Direkt</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>writeModus.overwrite.temp</value>
+         <GuiLabels>
+            <Label language="EN">Use temporary file</Label>
+            <Label language="DE">Temporäre Datei verwenden</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>maxParallel</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>0</Length>
+      <Default>30</Default>
+      <GuiLabels>
+         <Label language="EN">Maximum Concurrency</Label>
+         <Label language="DE">Maximum Nebenläufigkeit</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>maxParallel_Timeout</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>0</Length>
+      <Default>30</Default>
+      <GuiLabels>
+         <Label language="EN">Timeout</Label>
+         <Label language="DE">Zeitüberschreitung</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>maxParallel_TimeUnit</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Default>maxParallel_TimeUnit.sec</Default>
+      <GuiLabels>
+         <Label language="EN">Timeunit</Label>
+         <Label language="DE">Zeiteinheit</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>maxParallel_TimeUnit.millisec</value>
+         <GuiLabels>
+            <Label language="EN">Milliseconds</Label>
+            <Label language="DE">Millisekunden</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>maxParallel_TimeUnit.sec</value>
+         <GuiLabels>
+            <Label language="EN">Seconds</Label>
+            <Label language="DE">Sekunden</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>maxParallel_TimeUnit.min</value>
+         <GuiLabels>
+            <Label language="EN">Minutes</Label>
+            <Label language="DE">Minuten</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>out.emptyFileHandling</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <Default>out.emptyFileHandling.empty</Default>
+      <GuiLabels>
+         <Label language="EN">Empty File Handling</Label>
+         <Label language="DE">Behandlung leerer Messages</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>out.emptyFileHandling.empty</value>
+         <GuiLabels>
+            <Label language="EN">Write empty files</Label>
+            <Label language="DE">Leere Dateien schreiben</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>out.emptyFileHandling.ignore</value>
+         <GuiLabels>
+            <Label language="EN">Ignore</Label>
+            <Label language="DE">Ignorieren</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>setPermission</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <Default>0</Default>
+      <GuiLabels>
+         <Label language="EN">Set Permissions</Label>
+         <Label language="DE">Berechtigungen setzen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>setPermission.permissions</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:integer</DataType>
+      <Length>3</Length>
+      <Default>555</Default>
+      <GuiLabels>
+         <Label language="EN">Permissions</Label>
+         <Label language="DE">Berechtigungen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>out.storeAttachments</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <Default>1</Default>
+      <GuiLabels>
+         <Label language="EN">Store attachments</Label>
+         <Label language="DE">Anhänge speichern</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- Outbound Advanced -->
+   <Attribute>
+      <Name>dynamicValues</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Use Adapter-Specific Message Attributes</Label>
+         <Label language="DE">Adapterspezifische Message-Attribute verwenden</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>dynamicNamespace</Name>
+      <Usage>required</Usage>
+      <Default>http://sap.com/xi/XI/System</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Namespace</Label>
+         <Label language="DE">Namespace</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>dynamicDir</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Directory</Label>
+         <Label language="DE">Verzeichnis</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>dynamicFilename</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Filename</Label>
+         <Label language="DE">Dateiname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>dynamicFName</Name>
+      <Usage>required</Usage>
+      <Default>FileName</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Filename Attribute Name</Label>
+         <Label language="DE">Dateiname Attributs Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>dynamicFDir</Name>
+      <Usage>required</Usage>
+      <Default>Directory</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Directory Attribute Name</Label>
+         <Label language="DE">Verzeichnis Attributs Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>variableSubstitution.enabled</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <GuiLabels>
+         <Label language="EN">Activate</Label>
+         <Label language="DE">Aktivieren</Label>
+      </GuiLabels>
+   </Attribute>
+   <AttributeTable>
+      <Name>variableSubstitution.table</Name>
+      <Usage>required</Usage>
+      <AttributeReference>
+         <ReferenceName>variableSubstitution.table.name</ReferenceName>
+      </AttributeReference>
+      <AttributeReference>
+         <ReferenceName>variableSubstitution.table.replacement</ReferenceName>
+      </AttributeReference>
+      <GuiLabels>
+         <Label language="EN">Variable substitution table</Label>
+         <Label language="DE">Variablenersetzungstabelle</Label>
+      </GuiLabels>
+   </AttributeTable>
+   <Attribute>
+      <Name>variableSubstitution.table.name</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Variable name</Label>
+         <Label language="DE">Name der Variablen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>variableSubstitution.table.replacement</Name>
+      <Usage>required</Usage>
+      <Default>0</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Reference</Label>
+         <Label language="DE">Referenz</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>variableSubstitution.securityCheck</Name>
+      <Usage>required</Usage>
+      <Default>1</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Enable security checks</Label>
+         <Label language="DE">Sicherheitsprüfingen aktivieren</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>sftp.advanced</Name>
+      <Usage>optional</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <GuiLabels>
+         <Label language="EN">Advanced Mode</Label>
+         <Label language="DE">Erweiterter Modus</Label>
+      </GuiLabels>
+   </Attribute>
+   <AttributeTable>
+      <Name>sftp.addParameterParams</Name>
+      <Usage>optional</Usage>
+      <GuiLabels>
+         <Label language="EN">Additional Parameters</Label>
+         <Label language="DE">Zusätzliche Parameter</Label>
+      </GuiLabels>
+      <AttributeReference>
+         <ReferenceName>sftp.addParameterParamName</ReferenceName>
+      </AttributeReference>
+      <AttributeReference>
+         <ReferenceName>sftp.addParameterParamValue</ReferenceName>
+      </AttributeReference>
+   </AttributeTable>
+   <Attribute>
+      <Name>sftp.addParameterParamName</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Name</Label>
+         <Label language="DE">Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>sftp.addParameterParamValue</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Value</Label>
+         <Label language="DE">Wert</Label>
+      </GuiLabels>
+   </Attribute>
+   <!-- Dynamic Attributes -->
+   <DynamicAttributes>
+      <AttributeReference>
+         <ReferenceName>Directory</ReferenceName>
+      </AttributeReference>
+      <AttributeReference>
+         <ReferenceName>Filename</ReferenceName>
+      </AttributeReference>
+   </DynamicAttributes>
+   <!-- TabDefinitions -->
+   <TabDefinition id="source">
+      <GuiLabels>
+         <Label language="EN">Source</Label>
+         <Label language="DE">Quelle</Label>
+      </GuiLabels>
+   </TabDefinition>
+   <TabDefinition id="destination">
+      <GuiLabels>
+         <Label language="EN">Destination</Label>
+         <Label language="DE">Ziel</Label>
+      </GuiLabels>
+   </TabDefinition>
+   <TabDefinition id="processing">
+      <GuiLabels>
+         <Label language="EN">Processing</Label>
+         <Label language="DE">Verarbeitung</Label>
+      </GuiLabels>
+   </TabDefinition>
+   <TabDefinition id="fcc">
+      <GuiLabels>
+         <Label language="EN">Content Conversion</Label>
+         <Label language="DE">Content Conversion</Label>
+      </GuiLabels>
+   </TabDefinition>
+   <TabDefinition id="advanced">
+      <GuiLabels>
+         <Label language="EN">Advanced</Label>
+         <Label language="DE">Erweitert</Label>
+      </GuiLabels>
+   </TabDefinition>
+   <Attribute>
+      <Name>file.preprocess.execute</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels guid="fc5c8093f02011d8818feaf70a126329" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.AT_OPCMD">
+         <Label language="EN">Command Line</Label>
+         <Label language="DE">Kommandozeile</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>file.preprocess.executeTimeout</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <Length>6</Length>
+      <DataType>xsd:integer</DataType>
+      <GuiLabels guid="3b7ef68212b111dcc753000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.AT_OPCMDTIMEOUT">
+         <Label language="EN">Timeout (secs)</Label>
+         <Label language="DE">Timeout (Sek.)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>file.preprocess.executeTerminateAfterTimeout</Name>
+      <Usage>optional</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels guid="3b7ef68312b111dc8ca8000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.AT_OPCMDTERMINATE">
+         <Label language="EN">Terminate Program After Timeout</Label>
+         <Label language="DE">Programm nach nach Timeout abbrechen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>file.execute</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels guid="fc5c8093f02011d8818feaf70a126329" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.AT_OPCMD">
+         <Label language="EN">Command Line</Label>
+         <Label language="DE">Kommandozeile</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>file.executeTimeout</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <Length>6</Length>
+      <DataType>xsd:integer</DataType>
+      <GuiLabels guid="3b7ef68012b111dcb554000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.AT_OPCMDTIMEOUT">
+         <Label language="EN">Timeout (secs)</Label>
+         <Label language="DE">Timeout (Sek.)</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>file.executeTerminateAfterTimeout</Name>
+      <Usage>optional</Usage>
+      <Default>0</Default>
+      <DataType>xsd:boolean</DataType>
+      <Length>0</Length>
+      <GuiLabels guid="3b7ef68112b111dc8fb9000f206a1795" resourceId="com.sap.aii.ib.bom.cpa.generic.adaptermetadata.rb_FileAdapterMetadata.AT_OPCMDTERMINATE">
+         <Label language="EN">Terminate Program After Timeout</Label>
+         <Label language="DE">Programm nach nach Timeout abbrechen</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>tpm.tpID</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Technical Profile Name</Label>
+         <Label language="DE">Technische Profil Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>tpm.enable</Name>
+      <Usage>required</Usage>
+      <DataType>xsd:boolean</DataType>
+      <Default>0</Default>
+      <GuiLabels>
+         <Label language="EN">Enable TPM</Label>
+         <Label language="DE">Aktivieren TPM</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.documentName</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Document Name</Label>
+         <Label language="DE">Dokumentname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.documentNamespace</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Document Namespace</Label>
+         <Label language="DE">Dokumentnamensraum</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.documentSkipFirstRows</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Document Offset</Label>
+         <Label language="DE">Dokument Offset</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.recordsetName</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Recordset Name</Label>
+         <Label language="DE">Recordset-Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.recordsetNamespace</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Recordset Namespace</Label>
+         <Label language="DE">Recordset-Namensraum</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.recordsetStructure</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Recordset Structure</Label>
+         <Label language="DE">Recordset-Struktur </Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.recordsetsPerMessage</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Recordsets per Message</Label>
+         <Label language="DE">Recordsets pro Message</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.keyfieldName</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Key Field Name</Label>
+         <Label language="DE">Schlüsselfeldname</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>xml.keyfieldType</Name>
+      <Usage>optional</Usage>
+      <Default>StrS</Default>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Key Field Type</Label>
+         <Label language="DE">Schlüsselfeldtyp</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>StrS</value>
+         <GuiLabels>
+            <Label language="EN">String (Case-Sensitive)</Label>
+            <Label language="DE">String (case-sensitive)</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>StrI</value>
+         <GuiLabels>
+            <Label language="EN">String (Case-Insensitive)</Label>
+            <Label language="DE">String (case-insensitive)</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>Integer</value>
+         <GuiLabels>
+            <Label language="EN">Integer</Label>
+            <Label language="DE">Integer</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>Float</value>
+         <GuiLabels>
+            <Label language="EN">Float</Label>
+            <Label language="DE">Float</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>file.recordsetStructure</Name>
+      <Usage>required</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Recordset Structure</Label>
+         <Label language="DE">Recordset-Struktur</Label>
+      </GuiLabels>
+   </Attribute>
+   <AttributeTable>
+      <Name>file.conversionParameters</Name>
+      <Usage>optional</Usage>
+      <GuiLabels>
+         <Label language="EN">Recordsets Description</Label>
+         <Label language="DE">Recordsets-Beschreibung</Label>
+      </GuiLabels>
+      <AttributeReference>
+         <ReferenceName>file.addConvParamName</ReferenceName>
+      </AttributeReference>
+      <AttributeReference>
+         <ReferenceName>file.addConvParamValue</ReferenceName>
+      </AttributeReference>
+   </AttributeTable>
+   <Attribute>
+      <Name>file.addConvParamName</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Name</Label>
+         <Label language="DE">Name</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>file.addConvParamValue</Name>
+      <Usage>optional</Usage>
+      <Default/>
+      <DataType>xsd:string</DataType>
+      <Length>0</Length>
+      <GuiLabels>
+         <Label language="EN">Value</Label>
+         <Label language="DE">Wert</Label>
+      </GuiLabels>
+   </Attribute>
+   <Attribute>
+      <Name>specialHandlingMode</Name>
+      <Usage>required</Usage>
+      <Default>none</Default>
+      <DataType>xsd:string</DataType>
+      <GuiLabels>
+         <Label language="EN">Special Processing Mode</Label>
+         <Label language="DE">Special Processing Mode</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>none</value>
+         <GuiLabels>
+            <Label language="EN">None</Label>
+            <Label language="DE">None</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>bypass</value>
+         <GuiLabels>
+            <Label language="EN">Bypass PI runtime for File Transfer</Label>
+            <Label language="DE">Bypass PI runtime for File Transfer</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>specialHandlingModeEOIO</Name>
+      <Usage>required</Usage>
+      <Default>none</Default>
+      <DataType>xsd:string</DataType>
+      <GuiLabels>
+         <Label language="EN">Special Processing Mode</Label>
+         <Label language="DE">Special Processing Mode</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>none</value>
+         <GuiLabels>
+            <Label language="EN">None</Label>
+            <Label language="DE">None</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>bypass</value>
+         <GuiLabels>
+            <Label language="EN">ByPass PI Runtime</Label>
+            <Label language="DE">ByPass PI Runtime</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>chunk</value>
+         <GuiLabels>
+            <Label language="EN">Chunk Mode</Label>
+            <Label language="DE">Chunk Mode</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+   <Attribute>
+      <Name>chunkSize</Name>
+      <Usage>optional</Usage>
+      <Default>10</Default>
+      <DataType>xsd:string</DataType>
+      <Length>5</Length>
+      <GuiLabels>
+         <Label language="EN">Maximum Size [MB]</Label>
+         <Label language="DE">maximale Größe [MB]</Label>
+      </GuiLabels>
+      <FixedValue>
+         <value>1</value>
+         <GuiLabels>
+            <Label language="EN">1</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>2</value>
+         <GuiLabels>
+            <Label language="EN">2</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>5</value>
+         <GuiLabels>
+            <Label language="EN">5</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>10</value>
+         <GuiLabels>
+            <Label language="EN">10</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>20</value>
+         <GuiLabels>
+            <Label language="EN">20</Label>
+         </GuiLabels>
+      </FixedValue>
+      <FixedValue>
+         <value>50</value>
+         <GuiLabels>
+            <Label language="EN">50</Label>
+         </GuiLabels>
+      </FixedValue>
+   </Attribute>
+</AdapterTypeMetaData>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.sftp.app.sda/com.sap.aii.adapter.sftp.ra.rar/SFTPAdapterMetadata.xml -->

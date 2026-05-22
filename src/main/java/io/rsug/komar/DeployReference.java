@@ -2,7 +2,7 @@ package io.rsug.komar;
 
 import java.util.Objects;
 
-enum ReferenceType {weak, hard}
+enum ReferenceType {weak, hard, strong}
 
 enum TargetType {
     library, service, interface_, application;
@@ -28,4 +28,26 @@ public class DeployReference {
         this.providerName = providerName;
         this.target = target;
     }
+
+    public static DeployReference libraryHard(String name) {
+        return new DeployReference("hard", "library", "sap.com", name);
+    }
+
+    public static DeployReference interfaceHard(String name) {
+        return new DeployReference("hard", "interface", "sap.com", name);
+    }
+
+    public static DeployReference applicationHard(String name) {
+        return new DeployReference("hard", "application", "sap.com", name);
+    }
+
+    public static DeployReference serviceHard(String name) {
+        return new DeployReference("hard", "service", "sap.com", name);
+    }
+
+    public static DeployReference applicationWeak(String name) {
+        return new DeployReference("weak", "application", "sap.com", name);
+    }
+
+
 }
