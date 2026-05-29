@@ -4,6 +4,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,6 +35,27 @@ public class Komar {
         return String.format(xml, dcName, dcVendor, dcVendorLocation, counter, swcName, swcVendor, dcVendorLocation);
     }
 
+    public static String componentElementSC(String scName, String scVendor, String scVendorLocation, String counter,
+                                            String release, String serviceLevel, String patchLevel,
+                                            String updateversion) {
+        Objects.requireNonNull(scName);
+        Objects.requireNonNull(scVendor);
+        Objects.requireNonNull(scVendorLocation);
+        Objects.requireNonNull(counter);
+        Objects.requireNonNull(release);
+        Objects.requireNonNull(serviceLevel);
+        Objects.requireNonNull(patchLevel);
+        Objects.requireNonNull(updateversion);
+
+        String xml = "<componentelement name=\"{0}\" vendor=\"{1}\" location=\"{2}\" "
+                + "componenttyp=\"SC\" subsystem=\"NO_SUBSYS\" " +
+                "counter=\"{3}\" scname=\"{0}\" scvendor=\"{1}\" deltaversion=\"F\" " +
+                "release=\"{4}\" servicelevel=\"{5}\" patchlevel=\"{6}\" " +
+                "updateversion=\"{7}\" componentprovider=\"{2}\" />";
+        return MessageFormat.format(xml, scName, scVendor, scVendorLocation, counter,
+                release, serviceLevel, patchLevel, updateversion);
+    }
+
     public static String generateProviderXml(String displayName, String componentName, String providerName, List<DeployReference> deployReferenceList, List<String> jarNames) {
         try {
             return ProviderXmlGenerator.generateProviderXml(displayName, componentName, providerName, deployReferenceList, jarNames);
@@ -58,17 +80,25 @@ public class Komar {
         }
     }
 
-    public static String generateApplicationJ2eeEngineXml(List<DeployReference> lst) {
+    public static String generateApplicationJ2eeEngineXml(List<DeployReference> lst, String additionalModuleName, String additionalModuleType, String providerName) {
         try {
-            return ApplicationJ2eeEngineXmlGenerator.generateApplicationJ2eeEngineXml(lst);
+            return ApplicationJ2eeEngineXmlGenerator.generateApplicationJ2eeEngineXml(lst, additionalModuleName, additionalModuleType, providerName);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static String generateApplicationXml(String sdaDescription, String rarName) {
+    public static String generateApplicationXmlRar(String sdaDescription, String rarName) {
         try {
-            return ApplicationXmlGenerator.generateApplicationXml(sdaDescription, rarName);
+            return ApplicationXmlGenerator.generateApplicationXmlRar(sdaDescription, rarName);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String generateApplicationXmlWar(String sdaDescription, String webUri, String contextRoot) {
+        try {
+            return ApplicationXmlGenerator.generateApplicationXmlWar(sdaDescription, webUri, contextRoot);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }

@@ -48,10 +48,19 @@ public class ParserTests {
         Objects.requireNonNull(y);
         y = Komar.generateRaXml(x, x, x, x, x, x, x, x, x);
         Objects.requireNonNull(y);
-        y = Komar.generateApplicationJ2eeEngineXml(null);
+        y = Komar.generateApplicationJ2eeEngineXml(null, null, null, null);
         Objects.requireNonNull(y);
-        y = Komar.generateApplicationXml(x, x);
+        y = Komar.generateApplicationXmlRar(x, x);
         Objects.requireNonNull(y);
+        y = Komar.generateApplicationXmlWar(x, x, x);
+        Objects.requireNonNull(y);
+    }
+
+    @Test
+    public void a() throws Exception {
+        String s = Komar.componentElementSC("ZRSUGIO", "rsug.io", "Russia, Moscow",
+                "1.2345678", "REL", "SERVLVL", "PATCHLVL", "upd");
+        System.out.println(s);
     }
 
     @Test
