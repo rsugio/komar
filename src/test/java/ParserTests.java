@@ -3,6 +3,7 @@ import adaptermetadata.Attribute;
 import adaptermetadata.AttributeReference;
 import adaptermetadata.Outbound;
 import io.rsug.komar.AdapterMetaData;
+import io.rsug.komar.Komar;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -32,6 +33,25 @@ public class ParserTests {
         dbf.setXIncludeAware(false);
         dbf.setExpandEntityReferences(false);
         db = dbf.newDocumentBuilder();
+    }
+
+    @Test
+    public void dummy() {
+        String x = "", y;
+        y = Komar.minimalSdaDdXml(x);
+        Objects.requireNonNull(y);
+        y = Komar.componentElementDC(x, x, x, x, x, x);
+        Objects.requireNonNull(y);
+        y = Komar.generateProviderXml(x, x, x, null, null);
+        Objects.requireNonNull(y);
+        y = Komar.generateConnectorJ2eeXmlGenerator(x, x, null);
+        Objects.requireNonNull(y);
+        y = Komar.generateRaXml(x, x, x, x, x, x, x, x, x);
+        Objects.requireNonNull(y);
+        y = Komar.generateApplicationJ2eeEngineXml(null);
+        Objects.requireNonNull(y);
+        y = Komar.generateApplicationXml(x, x);
+        Objects.requireNonNull(y);
     }
 
     @Test

@@ -4,7 +4,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
 public class ApplicationXmlGenerator {
-    public String generateApplicationXml(String sdaDescription, String rarName) throws JAXBException {
+    public static String generateApplicationXml(String sdaDescription, String rarName) throws JAXBException {
         application13.Application application = new application13.Application();
         application13.DisplayName displayName = new application13.DisplayName();
         displayName.setvalue(sdaDescription);

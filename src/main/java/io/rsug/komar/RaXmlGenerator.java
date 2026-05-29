@@ -10,12 +10,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class RaXmlGenerator {
-    //    final Map<String,Object> constants;
-//
-//    public RaXmlGenerator(Map<String,Object> constants) {
-//        this.constants = constants;
-//    }
-//
+
     private static XsdStringType xsdStringType(String s) {
         XsdStringType xst = new XsdStringType();
         xst.setValue(s);
@@ -43,34 +38,7 @@ public class RaXmlGenerator {
         return cp;
     }
 
-//    private String $(String key) {
-//        return Objects.requireNonNull(constants.get(key), key).toString();
-//    }
-
-//    public String generateConnectorXml() throws JAXBException {
-//        return RaXmlGenerator.generateConnectorXml(
-//                $("adapterType"),
-//                $("adapterNamespace"),
-//                $("adapterVendor"),
-//                $("adapterVersion"),
-//                "Ресурсный адаптер " + $("raName") + " (из ra.xml)",
-//                $("eisType"),
-//                $("raSPIManagedConnectionFactory"),
-//                $("raCCIConnectionFactory"),
-//                $("raCCIConnection"));
-//    }
-
-    public static String generateConnectorXml(
-            String adapterType,
-            String adapterNamespace,
-            String adapterVendor,
-            String adapterVersion,
-            String displayNameType,
-            String eisType,
-            String raSPIManagedConnectionFactory,
-            String raCCIConnectionFactory,
-            String raCCIConnection
-    ) throws JAXBException {
+    public static String generateRaXml(String adapterType, String adapterNamespace, String adapterVendor, String adapterVersion, String displayNameType, String eisType, String raSPIManagedConnectionFactory, String raCCIConnectionFactory, String raCCIConnection) throws JAXBException {
         Objects.requireNonNull(displayNameType);
         Objects.requireNonNull(adapterVendor);
         Objects.requireNonNull(adapterType);

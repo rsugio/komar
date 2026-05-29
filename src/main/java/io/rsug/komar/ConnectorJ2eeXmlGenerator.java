@@ -11,7 +11,7 @@ import java.util.List;
 public class ConnectorJ2eeXmlGenerator {
     // see https://help.sap.com/docs/SAP_NETWEAVER_750/c591e2679e104fcdb8dc8e77771ff524/4ac4eebebcfb22aee10000000a42189b.html?locale=en-US
 
-    public static String generateConnectorXml(String description, String resourceAdapterJNDI, List<DeployReference> drefList) throws JAXBException {
+    public static String generateConnectorJ2eeXmlGenerator(String description, String resourceAdapterJNDI, List<DeployReference> drefList) throws JAXBException {
         ConnectorType con = new ConnectorType();
         con.setDescription(description);
         ResourceadapterType ra = new ResourceadapterType();
@@ -25,10 +25,10 @@ public class ConnectorJ2eeXmlGenerator {
         con.setResourceadapter(ra);
 
         LoaderReferencesType lr = new LoaderReferencesType();
-        for (DeployReference link : drefList) {
+        if (drefList != null) for (DeployReference link : drefList) {
             LoaderReferencesType.LoaderName ln = new LoaderReferencesType.LoaderName();
             ln.setStrength(link.referenceType);
-            ln.setValue(link.target);
+            ln.setValue(link.targetType + ":" + link.target);
             lr.getLoaderName().add(ln);
         }
         ra.setLoaderReferences(lr);
