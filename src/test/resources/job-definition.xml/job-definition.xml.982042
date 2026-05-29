@@ -1,0 +1,16 @@
+<job-definitions>
+    <job-definition name="IGWMonitorDataCleanUpJob" description="Cleanup outdated monitoring data, e.g. Message Processing Logs (MPL)">
+		<job-definition-parameter name="olderThanOrEqualDays" direction="IN" data-type="Integer" data-default="30" description="Defines retention time for monitoring data"/>
+		<job-definition-parameter name="maxDeletionRangeDays" direction="IN" data-type="Integer" data-default="7" description="Defines maximum deletion time range for monitoring data"/>
+		<job-definition-parameter name="deleteDiscardedOnly" direction="IN" data-type="Boolean" data-default="false" description="Defines if only MPLs with status Discarded shall be deleted"/>
+    </job-definition>
+    <job-definition name="IGWTraceDataCleanupJob" description="Cleanup Trace Data">
+	    <job-definition-parameter name="olderThanOrEqualMinutes" direction="IN" data-type="Integer" data-default="60" description="Defines retention time for trace data"/>
+    </job-definition>
+    <job-definition name="IGWTelemetryDiscoveryJob" description="Collect Telemetry Data">
+    </job-definition>
+    <job-definition name="IGWTelemetryDataCleanupJob" description="Cleanup Telemetry Data">
+	    <job-definition-parameter name="olderThanOrEqualDays" direction="IN" data-type="Integer" data-default="90" description="Defines retention time for telemetry data"/>
+    </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIIGWAPPL32_0-70000705.zip/com.sap.aii.igw.mpl.app.sda/com.sap.aii.igw.op.agent.ejb.jar/job-definition.xml -->

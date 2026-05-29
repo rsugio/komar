@@ -1,0 +1,7 @@
+<job-definitions>
+	<job-definition name="cup_brms_monthly"
+		description="Post monthly usage data for BRM to database" />
+</job-definitions>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BRMSCORE32_0-80000593.zip/sap.com~tc~brms~cup~ear.ear/sap.com~tc~brms~cup~web.war/sap.com~tc~brms~cup~ejb.jar/job-definition.xml -->

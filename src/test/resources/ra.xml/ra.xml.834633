@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connector xmlns="http://java.sun.com/xml/ns/j2ee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+           http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd"
+           version="1.5">
+
+  <description>J2EE Connector Architecture 1.5 based Resource Adapter for LCM of PI java Idoc Adapter.
+               Required Properties (Nil)
+  </description>
+  <display-name>idoc_ra</display-name>
+  <vendor-name>sap.com</vendor-name>
+  <eis-type>R/3</eis-type>
+  <resourceadapter-version>7.20</resourceadapter-version>
+  <resourceadapter>
+    <resourceadapter-class>com.sap.aii.af.idoc.ra.IDOCManagedConnectionFactory</resourceadapter-class> 
+    	<config-property>
+              <description>Waiting time for lock (in msec.)1</description>
+              <config-property-name>LockWaitingTime</config-property-name>
+              <config-property-type>java.lang.Integer</config-property-type>
+              <config-property-value>200</config-property-value>
+            </config-property>
+        <config-property>
+              <description>Maximum retries for lock</description>
+              <config-property-name>LockMaxRetries</config-property-name>
+              <config-property-type>java.lang.Integer</config-property-type>
+              <config-property-value>900</config-property-value>
+        </config-property>		
+        <config-property>
+              <description>Override Default Metadata Destination; eg: ABC=DEST1;XYZ=DEST2</description>
+              <config-property-name>CustomDestMap</config-property-name>
+              <config-property-type>java.lang.String</config-property-type>
+              <config-property-value></config-property-value>
+        </config-property>				
+        <config-property>
+              <description>Turn off (=false) Persistance; ALEAUD also donot work</description>
+              <config-property-name>Persistance</config-property-name>
+              <config-property-type>java.lang.Boolean</config-property-type>
+              <config-property-value>false</config-property-value>
+        </config-property>						
+        <config-property>
+              <description>Turn off(=false) DB based Autonumber</description>
+              <config-property-name>AutoNumberFromDB</config-property-name>
+              <config-property-type>java.lang.Boolean</config-property-type>
+              <config-property-value>false</config-property-value>
+        </config-property>       						
+<!--  	<config-property>
+              <description>Turn off(=false) MetaDataCacheSyncEnabled</description>
+              <config-property-name>MetaDataCacheSyncEnabled</config-property-name>
+              <config-property-type>java.lang.Boolean</config-property-type>
+              <config-property-value>true</config-property-value>
+        </config-property>
+        <config-property>
+              <description>Sleep Time in minutes MetaDataCacheSyncSleepTimeInMinutes</description>
+              <config-property-name>MetaDataCacheSyncSleepTimeInMinutes</config-property-name>
+              <config-property-type>java.lang.Integer</config-property-type>
+              <config-property-value>360</config-property-value>
+        </config-property>
+ -->        
+ 		<config-property>
+	      <description>Default IDoc Sender Port for IDoc Adapter</description>
+	      <config-property-name>DefaultSenderPort</config-property-name>
+	      <config-property-type>java.lang.String</config-property-type>
+	      <config-property-value></config-property-value>
+		   </config-property>
+        <config-property>
+ 	      <description>Confirm TID: confirmation handling is done for TID</description>
+ 	      <config-property-name>ConfirmTID</config-property-name>
+ 	      <config-property-type>java.lang.Boolean</config-property-type>
+ 	      <config-property-value>true</config-property-value>
+        </config-property>	
+        <config-property>
+ 	      <description>IDOCXML Handler: DEFAULT; SUBSTITUTE_INVALID_CHARS(substitutes invalid xml1.0 chars with #);ONLY_VALID_XMLVERSION_10(throws error if IDOC contains invalid xml1.0 chars);</description>
+ 	      <config-property-name>IDocXMLHandler</config-property-name>
+ 	      <config-property-type>java.lang.String</config-property-type>
+ 	      <config-property-value>DEFAULT</config-property-value>
+        </config-property>
+        <config-property>
+ 	      <description>Duplicate check persist: how long (in milliseconds) the information for duplicate check is stored</description>
+ 	      <config-property-name>DuplicateCheckPersist</config-property-name>
+ 	      <config-property-type>java.lang.Integer</config-property-type>
+ 	      <config-property-value>86400000</config-property-value>
+        </config-property>
+        <config-property>
+ 	      <description>Duplicate check: Define the sender port and client combination concatenated with '.',  comma separated.</description>
+ 	      <config-property-name>DuplicateCheck</config-property-name>
+ 	      <config-property-type>java.lang.String</config-property-type>
+ 	      <config-property-value></config-property-value>
+        </config-property>	
+        <config-property>
+ 	      <description>Remove Namespaces</description>
+ 	      <config-property-name>RemoveNS</config-property-name>
+ 	      <config-property-type>java.lang.Boolean</config-property-type>
+ 	      <config-property-value>false</config-property-value>
+        </config-property>	
+        <config-property>        	
+ 	      <description>Handling of Messaging System delete and archive events</description>
+ 	      <config-property-name>HandleMSEvent</config-property-name>
+ 	      <config-property-type>java.lang.Boolean</config-property-type>
+ 	      <config-property-value>true</config-property-value>
+        </config-property>		
+        <config-property>        	
+ 	      <description>Resolve Receiver Party if receiver partner type in IDOC control header is not LS (Logical System)</description>
+ 	      <config-property-name>ResolveVirtualReceiver</config-property-name>
+ 	      <config-property-type>java.lang.Boolean</config-property-type>
+ 	      <config-property-value>false</config-property-value>
+        </config-property>
+        <config-property>        	
+ 	      <description>Resolve Receiver Service if receiver partner type in IDOC control header is LS (Logical System)</description>
+ 	      <config-property-name>ResolveVirtualReceiverService</config-property-name>
+ 	      <config-property-type>java.lang.Boolean</config-property-type>
+ 	      <config-property-value>false</config-property-value>
+        </config-property>		
+       	<config-property>
+			<description>Enable input help values in the IDoc Message Monitor: CACHE (default value), DB, NONE. See SAP note 2793577.</description>
+			<config-property-name>MonitorInputHelpTarget</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value>DB</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Disable field validation check (by default enabled)</description>
+			<config-property-name>FieldValidationEnabled</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>true</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Skip ALEAUD status with no correlation information in PI</description>
+			<config-property-name>SkipUnmappableALEAUDStatus</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>false</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Delete batch size</description>
+			<config-property-name>DeleteChunkSize</config-property-name>
+			<config-property-type>java.lang.Integer</config-property-type>
+			<config-property-value>100</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Maximum number of entries to be deleted in one session</description>
+			<config-property-name>SelectMaxCountForDelete</config-property-name>
+			<config-property-type>java.lang.Integer</config-property-type>
+			<config-property-value>10000</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Enable default sender party for service in case sender is not Logical System (LS)</description>
+			<config-property-name>EnableDefaultSenderParty</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>false</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Default party name for service in case sender is not Logical System (LS)</description>
+			<config-property-name>DefaultSenderParty</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value></config-property-value>
+		</config-property>
+		<config-property>
+			<description>Enable ordered EOIO processing of multiple XI messages in one transaction</description>
+			<config-property-name>OrderedEOIOEnabled</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>false</config-property-value>
+		</config-property>	
+		<config-property>
+			<description>Use parent queue id from DynamicConfiguration header ParentSequenceId as queue name</description>
+			<config-property-name>UseParentQueueId</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>false</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Skips the control record check for sender and recipient partner type and number in the receiver channel</description>
+			<config-property-name>SkipControlRecordCheck</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>false</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Skips the initial ping to test the connection to the target/repository system for the receiver channels</description>
+			<config-property-name>SkipInitialConnectionCheck</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>false</config-property-value>
+		</config-property>
+		<config-property>
+              <description>Maximum connections that can be kept in the pool </description>
+              <config-property-name>CFPoolMaxConnections</config-property-name>
+              <config-property-type>java.lang.Integer</config-property-type>
+              <config-property-value>-1</config-property-value>
+        </config-property>
+        <config-property>
+              <description>The time interval in seconds, for which the channel can wait to obtain a free connection if all connections are busy(in sec.)</description>
+              <config-property-name>CFPoolMaxWaitTime</config-property-name>
+              <config-property-type>java.lang.Integer</config-property-type>
+              <config-property-value>-1</config-property-value>
+        </config-property>
+        <config-property>
+              <description>The time interval in seconds, in which a connection cleanup job is triggered (in sec.)</description>
+              <config-property-name>CFPoolCleanupInterval</config-property-name>
+              <config-property-type>java.lang.Integer</config-property-type>
+              <config-property-value>-1</config-property-value>
+        </config-property>
+        <config-property>
+              <description>Time interval in seconds, for which a connection can stay idle in the pool before it is removed by the connection cleanup job (in sec.)</description>
+              <config-property-name>CFPoolConnLifetime</config-property-name>
+              <config-property-type>java.lang.Integer</config-property-type>
+              <config-property-value>-1</config-property-value>
+        </config-property>
+	<config-property>
+              <description>Enforce usage of SAP Release configured in Receiver adapter</description>
+              <config-property-name>EnforceSAPRelease</config-property-name>
+              <config-property-type>java.lang.Boolean</config-property-type>
+              <config-property-value>false</config-property-value>
+        </config-property>
+   
+    <outbound-resourceadapter>
+      <connection-definition>
+        <managedconnectionfactory-class>com.sap.aii.af.idoc.ra.IDOCManagedConnectionFactory</managedconnectionfactory-class>        
+        <connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+        <connectionfactory-impl-class>com.sap.aii.af.idoc.ra.IDocConnectionFactoryImpl</connectionfactory-impl-class>
+        <connection-interface>javax.resource.cci.Connection</connection-interface>
+        <connection-impl-class>com.sap.aii.af.idoc.ra.IDOCConnectionImpl</connection-impl-class>
+      </connection-definition>
+      <transaction-support>NoTransaction</transaction-support>
+      <authentication-mechanism>
+        <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+        <credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+      </authentication-mechanism>
+      <reauthentication-support>false</reauthentication-support>
+    </outbound-resourceadapter> 
+  </resourceadapter>
+</connector>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.idoc.ra.rar/ra.xml -->

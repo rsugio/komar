@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SDA>
+  <SoftwareType>J2EE</SoftwareType>
+  <engine-deployment-descriptor version="3.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/GWJPO32_0-80000651.zip/igw~ea~gwear.sda/j2ee-dd.xml -->

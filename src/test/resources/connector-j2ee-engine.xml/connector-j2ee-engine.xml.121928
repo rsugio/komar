@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="connector-j2ee-engine.xsd">
+<resourceadapter>
+<outbound-resourceadapter>
+			<connection-definition>
+				<connectionfactory-interface>
+					javax.resource.cci.ConnectionFactory
+				</connectionfactory-interface>
+				<jndi-name>SDK_BPM</jndi-name>
+			</connection-definition>
+		</outbound-resourceadapter>
+		<loader-references>			
+			<loader-name strength="hard">library:com.sap.ip.bi.sdk</loader-name>
+			<loader-name strength="hard">library:engine.application.lib.facade</loader-name>
+			<loader-name strength="hard">library:engine.jee5.facade</loader-name>			
+			<loader-name strength="hard">library:tc/bl/exception/lib</loader-name>
+			<loader-name strength="hard">library:tc/bl/logging/api</loader-name>
+			<loader-name strength="hard">library:tc/epbc/connectivityfw/api</loader-name>
+			<loader-name strength="hard">library:tc/bpem/base/lib</loader-name>
+			<loader-name strength="hard">library:tc/bpem/bl/lib</loader-name>
+			<loader-name strength="hard">library:tc/je/sdo21/api</loader-name>
+			<loader-name strength="hard">library:tc/je/usermanagement/api</loader-name>
+			<loader-name strength="hard">library:com.sap.glx.base.lib</loader-name>
+			<loader-name strength="hard">service:com.sap.glx.rrhandlermanager.svc</loader-name>
+			<loader-name strength="hard">sap.com/tc~bpem~tm~ear</loader-name>
+			<loader-name strength="hard">sap.com/tc~bpem~index~ear</loader-name>
+			<loader-name strength="hard">sap.com/com.sap.glx.contextcontainer.app</loader-name>
+			<loader-name strength="hard">sap.com/com.sap.glx.process.ear</loader-name>			
+			<loader-name strength="hard">sap.com/tc~bpem~bi~connector~ear</loader-name>
+		</loader-references>
+</resourceadapter>
+
+</connector>
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMPP32_0-80000588.zip/sap.com~tc~bpem~bi~connector.rar/connector-j2ee-engine.xml -->

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<connector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="connector-j2ee-engine.xsd">-->
+<connector>
+   <resourceadapter>
+   	  <ra-jndi-name>SAPContentStoreJava</ra-jndi-name>
+      <outbound-resourceadapter>
+         <connection-definition>
+            <connectionfactory-interface>com.sap.ecm.spi.repository.RepositoryService</connectionfactory-interface>
+            <jndi-name>ecm/default</jndi-name>
+            <pool-params>
+               <max-connections-number>20000</max-connections-number>
+               <max-time-to-wait-connection>5</max-time-to-wait-connection>
+               <expiration-control>
+                  <connection-lifetime>3600</connection-lifetime>
+                  <run-cleanup-thread-interval>5</run-cleanup-thread-interval>
+               </expiration-control>
+            </pool-params>
+         </connection-definition>
+      </outbound-resourceadapter>
+   </resourceadapter>
+</connector>
+<!-- from D:\distr\SAP_PO\PO75sp32/ECMSTORE32_0-80000616.zip/sap.com~tc~kmc~spi.ear/sap.com~tc~kmc~spi~conn.rar/connector-j2ee-engine.xml -->

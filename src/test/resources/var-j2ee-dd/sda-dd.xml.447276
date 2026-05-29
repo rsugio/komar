@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA name="com.sap.portal.fpn.service">
+  <SoftwareType>primary-service</SoftwareType>
+  <engine-deployment-descriptor version="2.0">
+</engine-deployment-descriptor>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/EPRUNTIME32_0-80000495.zip/com.sap.portal.fpn.service.sda/sda-dd.xml -->

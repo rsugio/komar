@@ -1,0 +1,8 @@
+<job-definitions>
+    <job-definition name="EcmStoreCleanupJob" description="Searches for and removes inconsistent entries from the EcmStore persistence">
+    <job-definition-parameter name="TestMode" data-type="Boolean" data-default="true" 
+    	description="When set to true, nothing will be changed on the database. Inconsistencies are only reported but not fixed."
+    	display="Y" direction="IN"/>
+    </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/ECMSTORE32_0-80000616.zip/sap.com~tc~ecm~store~jobs~app.ear/sap.com~tc~ecm~store~jobs~impl.jar/job-definition.xml -->

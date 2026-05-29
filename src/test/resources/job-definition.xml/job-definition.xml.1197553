@@ -1,0 +1,5 @@
+<job-definitions>
+   <job-definition name="UddiAsynchSubsriptionJob" description="Sends asynchronous notify_subscriptionListener requests to all subsribed uddi users">
+   </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/UDDI32_0-80000499.zip/tc~uddi.sda/tc~esi~uddi~server~ejb~ejbm.jar/job-definition.xml -->

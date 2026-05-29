@@ -1,0 +1,13 @@
+<?xml version="1.0" ?> 
+<SDA>
+<SoftwareType>FS</SoftwareType> 
+<fs-deployment-descriptor version="0.01">
+<display-name>PCD Support tools</display-name> 
+<fileset id="Fileset_1">
+<display-name>PCD Support tools fileset</display-name> 
+<description /> 
+<default-deployment-dir>${com.sap.engine.installdir}/pcdToolsV2</default-deployment-dir> 
+</fileset>
+</fs-deployment-descriptor>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/EPADMIN32_0-80000619.zip/com.sap.portal.pcd.supporttools.sda/sda-dd.xml -->

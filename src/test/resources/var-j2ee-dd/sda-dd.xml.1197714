@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>UDDI JUP swutch migration configurations</display-name>
+    <fileset id="uddi_jup_switch_configurations">
+      <display-name>UDDI_JUP swutch migration configurations</display-name>
+      <description>UDDI JUP swutch migration configurations</description>
+      <default-deployment-dir>${com.sap.engine.installdir}/migration/jup</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/UDDI32_0-80000499.zip/uddi_jup_switch_configurations.sda/sda-dd.xml -->

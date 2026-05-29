@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>library</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIGUILIB32_0-80000688.zip/com.sap.xi.gui3.lib.sda/javalib-dd.xml -->

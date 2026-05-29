@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>Service Properties Migration</display-name>
+    <fileset id="Fileset_1">
+      <display-name>Service Properties Migration</display-name>
+      <description></description>
+      <default-deployment-dir>${com.sap.engine.installdir}/migration/services</default-deployment-dir>
+	   <substitute>
+	   </substitute>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SERVERCORE32_0-80000485.zip/sap.com~servercore_services_propmigration.sda/sda-dd.xml -->

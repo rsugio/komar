@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+	<log-formatters>
+		<log-formatter 
+			name="traceformatter" 
+			type="TraceFormatter" 
+			pattern="%24d %-80l [%t] %s: %m"/>
+		<log-formatter 
+			name="listformatter" 
+			type="ListFormatter"/>
+		<log-formatter 
+			name="xmlformatter" 
+			type="XMLFormatter"/>
+	</log-formatters>
+	<log-destinations>
+		<log-destination 
+			name="vclocation" 
+			type="FileLog" 
+			pattern="./log/vcserver/vc.trc" 
+			effective-severity="ALL" 
+			count="10" 
+			limit="10485760">
+			<formatter-ref 
+				name="traceformatter"/>
+		</log-destination>
+		<log-destination 
+			name="vccategory" 
+			type="FileLog" 
+			pattern="./log/vcserver/vc.log" 
+			effective-severity="ALL" 
+			count="10" 
+			limit="10485760">
+			<formatter-ref 
+				name="listformatter"/>
+		</log-destination>
+	</log-destinations>
+	<log-controllers>
+		<log-controller 
+			name="com.sap.vc.server05" 
+			effective-severity="ALL" 
+			maximum-severity="NONE">
+			<associated-destinations>
+				<destination-ref 
+					name="vclocation" 
+					association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller 
+			name="/System/Server" 
+			effective-severity="ALL" 
+			maximum-severity="NONE">
+			<associated-destinations>
+				<destination-ref 
+					name="vccategory" 
+					association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/VCBASE32_0-80000725.zip/VisualComposerServerEar05.ear/log-configuration.xml -->

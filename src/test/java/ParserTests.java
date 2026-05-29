@@ -1,3 +1,8 @@
+import adaptermetadata.AdapterTypeMetaData;
+import adaptermetadata.Attribute;
+import adaptermetadata.AttributeReference;
+import adaptermetadata.Outbound;
+import io.rsug.komar.AdapterMetaData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -12,6 +17,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class ParserTests {
@@ -44,10 +50,11 @@ public class ParserTests {
         String name = path.getFileName().toString();
         try {
             Document doc = db.parse(path.toFile());
+            if (name.startsWith("ra.xml")) {
+                resourceAdapter(doc);
+            }
+
             switch (name) {
-                case "ra.xml":
-                    resourceAdapter(doc);
-                    break;
                 case "connector-j2ee-engine.xml":
                     connectorj2eeengine(doc);
                     break;
@@ -125,4 +132,29 @@ public class ParserTests {
         StringWriter sw = new StringWriter();
         marshaller.marshal(jaxbResult, sw);
     }
+
+    @Test
+    void adapterTypeMetaData() throws Exception {
+        AdapterTypeMetaData idoc = AdapterMetaData.unmarshall(Objects.requireNonNull(getClass().getResourceAsStream("/adaptermetadata/IDoc_AAE.xml")));
+        AdapterMetaData.marshall(idoc);
+        AdapterTypeMetaData sftp = AdapterMetaData.unmarshall(Objects.requireNonNull(getClass().getResourceAsStream("/adaptermetadata/SFTPAdapterMetadata.xml")));
+        AdapterMetaData.marshall(sftp);
+        AdapterTypeMetaData sample = AdapterMetaData.unmarshall(Objects.requireNonNull(getClass().getResourceAsStream("/adaptermetadata/SampleRA.xml")));
+        AdapterMetaData.marshall(sample);
+
+        AdapterTypeMetaData my = AdapterMetaData.makeStub("Echo", "1", "Echo adapter");
+        Attribute adapterStatus = AdapterMetaData.adapterStatus();
+        my.getAttributeOrAttributeTableOrDynamicAttributes().add(adapterStatus);
+        Attribute text64 = AdapterMetaData.text("text64", 64);
+        my.getAttributeOrAttributeTableOrDynamicAttributes().add(text64);
+        Outbound out = AdapterMetaData.outbound(my, "NoProtocol");
+        AttributeReference ar = new AttributeReference();
+        ar.setReferenceName(text64.getName());
+        out.getGlobalChannelAttributes().getTab().getAttributeReferenceOrAttributeGroup().add(ar);
+        my.setOutbound(out);
+        String s = AdapterMetaData.marshall(my);
+        System.out.println(s);
+        Objects.requireNonNull(s);
+    }
+
 }

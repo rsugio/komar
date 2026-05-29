@@ -1,0 +1,11 @@
+<job-definitions>
+   <job-definition name="IGWArchiveJob"
+               description="Archives the Message Processing Logs and Messages">
+                <job-definition-parameter name="olderThanOrEqualDays" data-type="Integer" data-default = "30" direction="IN" description ="Message Processing Logs and Messages older than the given days will be archived. Default is 30 days."/>		 
+</job-definition>
+  <!--  <job-definition name="IGWArchiveCleanUpJob"
+               description="Cleans up archived data">
+		 
+</job-definition>-->
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIIGWAPPL32_0-70000705.zip/com.sap.aii.igw.archive.app.sda/com.sap.aii.igw.archive.ejb.jar/job-definition.xml -->

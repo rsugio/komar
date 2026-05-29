@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+		<fs-deployment-descriptor version="2.0">
+			<display-name>Web Container Service Migration Controller</display-name>
+				<fileset id="tc~je~servlet_jsp_migration">
+					<display-name>Complete</display-name>
+					<description>Web Container Service Migration Controller</description>
+					<default-deployment-dir>${com.sap.engine.installdir}/migration</default-deployment-dir>
+				</fileset>
+		</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/ENGINEAPI32_0-80000618.zip/servlet_jsp_migration.sda/sda-dd.xml -->

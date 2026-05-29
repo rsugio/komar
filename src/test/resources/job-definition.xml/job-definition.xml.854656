@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+	<job-definition name="RestSenderExpiredTokensDeleteJob" description="Deletes the expired OAuth 2.0 tokens from the REST sender adapter database.">
+		
+														
+	</job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.rest.app.sda/com.sap.aii.adapter.rest.ejb.jar/job-definition.xml -->

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE connector PUBLIC '-//Sun Microsystems, Inc.//DTD Connector 1.0//EN' 'http://java.sun.com/dtd/connector_1_0.dtd'>
+
+<connector>
+  <display-name>BI_SAP_QUERY_CONNECTOR</display-name>
+  <vendor-name>SAP</vendor-name>
+  <spec-version>1.0</spec-version>
+  <eis-type>SAP R/3 operational applications</eis-type>
+  <description>SAP Business Intelligence Connector for SAP Query (ABAP function module API)</description>
+  <version>1.0</version>
+  <resourceadapter>
+     <managedconnectionfactory-class>
+		com.sap.ip.bi.sdk.dac.connector.sapq.SapqManagedConnectionFactory
+     </managedconnectionfactory-class>
+
+     <connectionfactory-interface>
+      	javax.resource.cci.ConnectionFactory
+     </connectionfactory-interface>
+
+     <connectionfactory-impl-class>
+		com.sap.ip.bi.sdk.dac.connector.sapq.SapqConnectionFactory
+     </connectionfactory-impl-class>
+
+     <connection-interface>
+      	 javax.resource.cci.Connection
+     </connection-interface>
+
+     <connection-impl-class>
+		com.sap.ip.bi.sdk.dac.connector.sapq.SapqConnection
+     </connection-impl-class>
+
+     <transaction-support>NoTransaction</transaction-support>
+
+       <config-property>
+	    <description>User name</description>
+            <config-property-name>UserName</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+        <config-property>
+	    <description>Password</description>
+            <config-property-name>Password</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description>example: en</description>
+            <config-property-name>Language</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description>example: 000</description>
+            <config-property-name>Client</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description>example: &quot; &quot; for client-dependent and &quot;X&quot; for client-independent SAPQuery objects</description>
+            <config-property-name>QueryArea</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description>example: messageserver.company.com</description>
+            <config-property-name>MessageServer</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description>example: bwserver.company.com</description>
+            <config-property-name>ApplicationServer</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description>example: 01</description>
+            <config-property-name>SystemNumber</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description></description>
+            <config-property-name>ServerGroup</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description></description>
+            <config-property-name>R3Name</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description></description>
+            <config-property-name>RFCTrace</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description></description>
+            <config-property-name>SNCMode</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description></description>
+            <config-property-name>SNCPartner</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+
+        <config-property>
+	    <description></description>
+            <config-property-name>SNCLevel</config-property-name>
+            <config-property-type>java.lang.String</config-property-type>
+            <config-property-value></config-property-value>
+        </config-property>
+         
+        <authentication-mechanism>
+            <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+            <credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+        </authentication-mechanism>
+        <reauthentication-support>false</reauthentication-support>
+
+   </resourceadapter>
+</connector>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BIUDI32_0-80000573.zip/com.sap.ip.bi.sdk.dac.connector.sapq.rar/ra.xml -->

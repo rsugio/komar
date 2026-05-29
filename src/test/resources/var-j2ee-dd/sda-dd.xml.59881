@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="2.0">
+    <display-name>JMS switch tables</display-name>
+    <fileset id="com.sap.jms.jup.table">
+      <display-name>JMS migration tables</display-name>
+      <description>JMS migration tables</description>
+      <default-deployment-dir>${com.sap.engine.installdir}/migration/jms</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/BASETABLES32_0-80000577.zip/jms_switch_tables.sda/sda-dd.xml -->

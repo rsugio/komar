@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SDA>
+  <SoftwareType>J2EE</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMCONTENT32_0-80000582.zip/sap.com~tc~bpem~content~predefs~internal.sda/sda-dd.xml -->

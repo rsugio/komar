@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SDA>
+  <SoftwareType>CONTENT</SoftwareType>
+  <sl-sda-deployment-descriptor>
+    <sl-sda-logical-type>CR-SDA</sl-sda-logical-type>
+      <model-file>cimmodel.zip</model-file>
+      <cr-files>
+        <cr-file>cr-content.zip</cr-file>
+      </cr-files>
+      <ld-files>
+        <ld-file>ld-content.zip</ld-file>
+      </ld-files>
+  </sl-sda-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMMODELNW32_0-80000674.zip/sap.com~product~lm-model-nw.sda/sda-dd.xml -->

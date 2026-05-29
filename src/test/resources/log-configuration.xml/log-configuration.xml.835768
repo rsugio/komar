@@ -1,0 +1,54 @@
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+   <log-formatters>
+		<!-- This formatter produces human readable messages. -->
+		<log-formatter name="ISpeakTrcFmt" pattern="%26d %150l [%t] %10s: %m" type="TraceFormatter"/>
+  </log-formatters>
+  <log-destinations>
+	<!-- Traces -->
+	<log-destination name="ISpeakAdapterTrace"
+		type="FileLog"
+		pattern="./log/services/com.sap.aii.adapter.ispeak.svc/ispeak_trc_%g.trc" 
+		count="3" 
+		limit="1000000">
+		<formatter-ref name="ISpeakTrcFmt"/>
+	</log-destination>
+  </log-destinations>
+  <log-controllers>
+	<!-- Traces -->
+
+     <log-controller name="com.sap.aii.af.protocol.ispeak" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="ISpeakAdapterTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.aii.af.sdk.rnif.impl" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="ISpeakAdapterTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.aii.af.sdk.cidx.impl" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="ISpeakAdapterTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.aii.adapter.cidx.ms" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="ISpeakAdapterTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.aii.adapter.rnif.ms" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="ISpeakAdapterTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+  </log-controllers>
+</log-configuration>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.ispeak.svc.sda/log-configuration.xml -->

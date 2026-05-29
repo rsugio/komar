@@ -1,0 +1,5 @@
+<job-definitions>
+    <job-definition name="IGWCollectOverdueJmsMessagesJob" description="Collect overdue messages from JMS Queues">
+    </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIIGWAPPL32_0-70000705.zip/com.sap.aii.igw.esb.messaging.app.sda/com.sap.aii.igw.esb.messaging.ejb.jar/job-definition.xml -->

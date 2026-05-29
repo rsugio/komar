@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SDA>
+<SoftwareType>CONTENT</SoftwareType>
+<sl-sda-deployment-descriptor>
+     <sl-sda-logical-type>LD-SDA</sl-sda-logical-type>
+   <ld-files>
+     <ld-file>ld-content.zip</ld-file>
+   </ld-files>
+  </sl-sda-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/COMPBUILDT32_0-80000600.zip/sc~comp_buildt.sda/slcontent-dd.xml -->

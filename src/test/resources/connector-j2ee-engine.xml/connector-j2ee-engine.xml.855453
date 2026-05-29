@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE connector-j2ee-engine SYSTEM 'connector-j2ee-engine.dtd'>
+  <connector-j2ee-engine>
+    <loader-references>
+       <!-- Typically these SAP J2EE libs, etc. are used -->
+       <loader-name strength="hard">service:engine.service.facade</loader-name>
+       <loader-name strength="hard">service:engine.application.facade</loader-name>
+       <loader-name strength="hard">service:engine.security.facade</loader-name>
+       <loader-name strength="hard">library:engine.j2ee14.facade</loader-name>
+       <loader-name strength="hard">library:com.sap.base.technology.facade</loader-name>
+       <!-- AII references -->
+       <loader-name>library:com.sap.aii.af.lib</loader-name>
+       <loader-name>library:com.sap.aii.af.sdk.lib</loader-name>
+       <loader-name>library:com.sap.aii.sec.lib</loader-name>
+       <loader-name>library:com.sap.aii.adapter.lib</loader-name>
+	   <loader-name strength="hard">application:com.sap.aii.adapter.axis</loader-name>
+       <loader-name>application:com.sap.aii.af.app</loader-name>
+       <loader-name>service:com.sap.aii.sec.svc</loader-name>
+       <loader-name>service:com.sap.aii.af.cpa.svc</loader-name>
+       <loader-name>service:com.sap.aii.af.svc</loader-name>
+    </loader-references>
+ </connector-j2ee-engine>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.soap.lib.rar/connector-j2ee-engine.xml -->

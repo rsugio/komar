@@ -1,0 +1,7 @@
+<job-definitions>
+  <job-definition name="bpm_update_value_cache" description="Update Local Value Cache">
+    <job-definition-parameter name="URI" direction="in" data_type="String" nullable="Y"/>
+    <job-definition-parameter name="UPDATE_ALL_CACHE_VALUES" direction="in" data_type="Boolean" nullable="Y"/>
+    </job-definition>  
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMACC32_0-80000568.zip/sap.com~tc~bpem~valuehelp~ear.ear/sap.com~tc~bpem~valuehelp~ejb.jar/job-definition.xml -->

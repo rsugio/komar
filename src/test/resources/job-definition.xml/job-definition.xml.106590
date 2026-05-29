@@ -1,0 +1,121 @@
+<job-definitions>
+  <job-definition name="bpm_proc_write_session" description="Write phase job for Galaxy Processes archiving set">
+    <job-definition-parameter name="Completion_Time_Period" direction="in" data_type="Integer" nullable="Y" group="Common"
+    	description="The period of time a process had stayed in final state." />
+    <job-definition-parameter name="Error_Status" direction="in" data_type="Boolean" nullable="Y" group="Common"/>
+    <job-definition-parameter name="Process_IDs" direction="in" data_type="String" nullable="Y" group="Common" />
+    <job-definition-parameter name="System_Log_Only" direction="in" data_type="Boolean" nullable="Y" group="SystemLog" />
+    <job-definition-parameter name="SkipOnError" direction="in" data_type="Boolean" nullable="Y" group="Error" />
+    <job-definition-parameter name="Process_Definition_ID" direction="in" data_type="String" nullable="Y" group="Common"></job-definition-parameter>
+	<job-definition-parameter name="Completed" direction="in" data_type="Boolean" nullable="Y" group="Common"  />
+	<job-definition-parameter name="Cancelled" direction="in" data_type="Boolean" nullable="Y" group="Common" />
+	<job-definition-parameter name="Completed_From" direction="in" data_type="date" nullable="Y" group="Common" />
+	
+	<job-definition-parameter name="Completed_To" direction="in" data_type="date" nullable="Y" group="Common" />
+    
+    <job-definition-parameter name="xmlparse" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="wduser" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="collection" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="simulation" direction="in" data_type="Boolean" nullable="N"/>
+    <job-definition-parameter name="useindexprops" direction="in" data_type="Boolean" data_default="true"/>
+    <job-definition-parameter name="SessionName" direction="in" data_type="String" nullable="Y" group="Common" />
+    <job-definition-parameter name="sessioncomment" direction="in" data_type="String" nullable="Y"/>
+    <job-definition-parameter name="auto_deletephase" direction="in" data_type="Boolean" nullable="Y" />
+  </job-definition>
+  
+  <job-definition name="bpm_delete_only" description="Delete only job for Galaxy Processes set">
+    <job-definition-parameter name="System_Log_Only" direction="in" data_type="Boolean" nullable="Y" group="SystemLog" />
+    <job-definition-parameter name="Process_Instance_ID" direction="in" data_type="String" nullable="Y" group="Common" />
+    <job-definition-parameter name="Completion_Time_Period" direction="in" data_type="Integer" nullable="Y" group="Common"
+    	description="The period of time a process had stayed in final state." />
+    <job-definition-parameter name="Error_Status" direction="in" data_type="Boolean" nullable="Y" group="Common"/>
+    <job-definition-parameter name="Process_Definition_ID" direction="in" data_type="String" nullable="Y" group="Common"></job-definition-parameter>
+	<job-definition-parameter name="Completed" direction="in" data_type="Boolean" nullable="Y" group="Common"  />
+	<job-definition-parameter name="Cancelled" direction="in" data_type="Boolean" nullable="Y" group="Common" />
+	<job-definition-parameter name="Completed_From" direction="in" data_type="date" nullable="Y" group="Common" />
+	<job-definition-parameter name="Completed_To" direction="in" data_type="date" nullable="Y" group="Common" />
+	
+	<!-- Output group -->
+	<job-definition-parameter name="NoScheduledSeries" direction="out" data_type="integer" nullable="Y" group="Output" description="Number of series being scheduled."  />
+	<job-definition-parameter name="NoScheduledProcesses" direction="out" data_type="integer" nullable="Y" group="Output" description="Number of processes being scheduled."  />
+  </job-definition>
+  
+  <job-definition name="bpm_proc_delete" description="Delete phase job for Galaxy Processes  archiving set">
+    <job-definition-parameter name="wduser" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="collection" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="simulation" direction="in" data_type="Boolean" nullable="N"/>
+    <job-definition-parameter name="useindexprops" direction="in" data_type="Boolean" data_default="true"/>
+  </job-definition>
+  <job-definition name="bpm_proc_write"
+		description="Job to start Parallel Archiving">
+		<job-definition-parameter name="Completion_Time_Period"
+			direction="in" data_type="Integer" nullable="Y" group="Common"
+			description="The period of time a process had stayed in final state." />
+		<job-definition-parameter name="Error_Status"
+			direction="in" data_type="Boolean" nullable="Y" group="Common" />
+		<job-definition-parameter name="Process_IDs"
+			direction="in" data_type="String" nullable="Y" group="Common" />
+		<job-definition-parameter name="System_Log_Only"
+			direction="in" data_type="Boolean" nullable="Y" group="SystemLog" />
+		<job-definition-parameter name="SkipOnError"
+			direction="in" data_type="Boolean" nullable="Y" group="Error" />
+		<job-definition-parameter name="Process_Definition_ID"
+			direction="in" data_type="String" nullable="Y" group="Common"></job-definition-parameter>
+		<job-definition-parameter name="Completed"
+			direction="in" data_type="Boolean" nullable="Y" group="Common" />
+		<job-definition-parameter name="Cancelled"
+			direction="in" data_type="Boolean" nullable="Y" group="Common" />
+		<job-definition-parameter name="Completed_From"
+			direction="in" data_type="date" nullable="Y" group="Common" />
+			
+		<job-definition-parameter name="Completed_To"
+			direction="in" data_type="date" nullable="Y" group="Common" />
+			
+		<job-definition-parameter name="xmlparse"
+			direction="in" data_type="String" nullable="N" />
+		<job-definition-parameter name="wduser"
+			direction="in" data_type="String" nullable="N" />
+		<job-definition-parameter name="collection"
+			direction="in" data_type="String" nullable="N" />
+		<job-definition-parameter name="simulation"
+			direction="in" data_type="Boolean" nullable="N" />
+		<job-definition-parameter name="useindexprops"
+			direction="in" data_type="Boolean" data_default="true" />
+		<job-definition-parameter name="sessioncomment"
+			direction="in" data_type="String" nullable="Y" />
+		<job-definition-parameter name="auto_deletephase"
+			direction="in" data_type="Boolean" nullable="Y" />
+			
+		<!-- Output group -->
+		<job-definition-parameter name="NoScheduledSeries"
+			direction="out" data_type="integer" nullable="Y" group="Output" description="Number of series being scheduled."  />
+		<job-definition-parameter name="NoScheduledSessions"
+			direction="out" data_type="integer" nullable="Y" group="Output" description="Number of sessions being scheduled."  />
+		<job-definition-parameter name="NoScheduledProcesses"
+			direction="out" data_type="integer" nullable="Y" group="Output" description="Number of processes being scheduled."  />
+		<job-definition-parameter name="NoProcessesSelected"
+			direction="out" data_type="integer" nullable="Y" group="Output" description="Number of processes eligible for archiving as per the selection criteria."  />
+			
+	</job-definition>
+  <job-definition name="bpm_arch_coll_delete" description="Permanent deletion job for entire archiving collections">
+    <job-definition-parameter name="Simulation"
+  		direction="in" data_type="Boolean" nullable="N" group="Simulation"
+  		description="If simulation mode is enabled no actual deletion will be performed.">
+  	</job-definition-parameter>
+  	<job-definition-parameter name="Older_Than_Days"
+  		direction="in" data_type="Integer" nullable="Y" group="Common"
+  		description="Days since the collection was created">
+  	</job-definition-parameter>
+  	<job-definition-parameter name="Creation_Date_From" direction="in"
+  		data_type="date" nullable="Y" group="Common">
+  	</job-definition-parameter>
+  	<job-definition-parameter name="Creation_Date_To" direction="in"
+  		data_type="date" nullable="Y" group="Common">
+  	</job-definition-parameter></job-definition>
+  	<job-definition name="bpm_batch_delete_syslog_entries" description="Permanent deletion of system log entries in BPEM_EL_ENTRY* tables. Used only in context of bpm_delete_only">
+  	<job-definition-parameter name="Completed_To" direction="in" data_type="date" nullable="Y" group="Common" />
+  	<job-definition-parameter name="CheckString" description="Check parameter, verifying that the job is started from bpm_delete_only job" direction="in" data_type="String" display="N" nullable="N" >
+  	</job-definition-parameter>
+  </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMCORE32_0-80000583.zip/sap.com~tc~bpem~arch~ear.ear/sap.com~tc~bpem~arch~jobs~ejb.jar/job-definition.xml -->

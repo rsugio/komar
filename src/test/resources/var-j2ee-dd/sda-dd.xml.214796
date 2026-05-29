@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<SDA name="tc~di~cr~service.sda">
+  <SoftwareType>primary-service</SoftwareType>
+	<engine-deployment-descriptor version="2.0"/>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/DICLIENTS32_0-80000608.zip/tc~di~cr~service.sda/sda-dd.xml -->

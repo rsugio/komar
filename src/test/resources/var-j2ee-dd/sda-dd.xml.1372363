@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE SDA SYSTEM "users.dtd">
+<SDA>
+<SoftwareType>CONTENT</SoftwareType>
+<display-name>ESR Content</display-name>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/XICNTSAPBASIS32_0-80000745.zip/com.sap.xi.content.sda/XI7_1_SAP_BASIS_7.50_SP_32.tpz/sda-dd.xml -->

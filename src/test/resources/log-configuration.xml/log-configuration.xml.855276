@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+
+<log-configuration>
+
+	<log-formatters>
+
+		<!-- This formatter produces human readable messages. -->
+
+		<log-formatter name="trc" pattern="%26d %150l [%t] %10s: %m"
+			type="TraceFormatter" />
+
+	</log-formatters>
+
+	<log-destinations>
+
+		<!-- Destination for Trace Information of this ra com.sap.aii.adapter.sftp -->
+
+		<log-destination count="1" effective-severity="INFO"
+			limit="5000000" name="sftp.trc"
+			pattern="./log/applications/com.sap.aii.adapter.sftp/jca_sftp.trc"
+			type="FileLog">
+
+			<formatter-ref name="trc" />
+
+		</log-destination>
+
+	</log-destinations>
+
+	<log-controllers>
+
+		<!-- Trace Location com.sap.aii.adapter.sftp -->
+
+		<log-controller name="com.sap.aii.adapter.sftp"
+			effective-severity="INFO">
+			<associated-destinations>
+				<destination-ref association-type="LOG" name="sftp.trc" />
+			</associated-destinations>
+		</log-controller>
+
+		<!-- Logging Category: none, use the default XILog -->
+
+	</log-controllers>
+
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.sftp.app.sda/log-configuration.xml -->

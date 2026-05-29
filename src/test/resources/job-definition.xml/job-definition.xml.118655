@@ -1,0 +1,7 @@
+<job-definitions>
+  <job-definition name="cup_bpm_daily" description="Post daily usage data for BPM to database" />
+  <job-definition name="cup_bpm_monthly" description="Post monthly usage data for BPM to database" />
+</job-definitions>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMMON32_0-80000587.zip/sap.com~tc~bpem~cup~ear.ear/sap.com~tc~bpem~cup~web.war/sap.com~tc~bpem~cup~ejb.jar/job-definition.xml -->

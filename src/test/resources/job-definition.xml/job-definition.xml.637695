@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+  <job-definition name="CUPCollector" 
+  				  description="Job for the CUP statistics collector process. Performs buffer flush to database daily.">
+		<job-parameter name="FlushBuffer" direction="in" data_type="boolean" data_default="true" nullable="Y" description="Flush the buffer and all collected usage records to database." />
+		<job-parameter name="PullDailyUsage" direction="in" data_type="boolean" data_default="false" nullable="Y" description="Execute daily usage collector in pull scenario. Not supported yet."/>
+		<job-parameter name="PullMonthlyUsage" direction="in" data_type="boolean" data_default="false" nullable="Y" description="Execute monthly usage collector in pull scenario. Not supported yet."/>
+	</job-definition>
+	<job-definition name="CUPOutdatedStatisticsCleaner" 
+  				  description="Job for the CUP statistics clean up process. Deletes outdated statistics from the database."/>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCORE32_0-80000440.zip/cup_rest_app.sda/sap.com~cup_rest_ejb.jar/job-definition.xml -->

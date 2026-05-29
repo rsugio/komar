@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>J2EE</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SEAFACADE32_0-80000710.zip/tc~esi~sea~valuehelp~api.sda/j2ee-dd.xml -->

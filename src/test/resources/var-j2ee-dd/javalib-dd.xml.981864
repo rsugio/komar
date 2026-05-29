@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>library</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIIGWAPPL32_0-70000705.zip/com.sap.aii.igw.iflow.monitor.lib.sda/javalib-dd.xml -->

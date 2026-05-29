@@ -1,0 +1,14 @@
+<job-definitions>
+   	
+	<job-definition name="B2BAckStorageCleanJob" description="Task to repair B2B Acknowledgment report storage. Deletes or archives orphan data based on three different modes: 'delete'- deletes all orphan entries; 'archive' - archives all orphan entries; 'check'- check whether orphan entries are related to messages that are previously archived or deleted. For more information, see Note 2515397" retention-period="30">	
+		<job-definition-parameter 	name="repairMode" 
+									description="Available modes: ('delete', 'archive', 'check')." 
+									data-type="String"  
+									direction="IN"
+									data-default=""
+									nullable="N" 
+									group="Lifetime Settings" />	
+																				
+	</job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.af.ackstatus.app.sda/com.sap.aii.af.ackstatus.ejb.jar/job-definition.xml -->

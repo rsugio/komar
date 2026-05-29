@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+	<log-formatters>
+		<log-formatter 
+			name="readable" 
+			pattern="%d [%t] %-70l %8s: %m" 
+			type="TraceFormatter"/>
+	</log-formatters>
+	<log-destinations>
+		<log-destination 
+			count="10" 
+			effective-severity="ALL" 
+			limit="2000000" 
+			name="readable_trc" 
+			pattern="./log/services/tc.di.cr/readable%g.trc" 
+			type="FileLog">
+			<formatter-ref 
+				name="readable"/>
+		</log-destination>
+	</log-destinations>
+	<log-controllers>
+		<log-controller 
+			effective-severity="ERROR" 
+			name="com.sap.tc.cr">
+			<associated-destinations>
+				<destination-ref 
+					association-type="LOG" 
+					name="readable_trc"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+</log-configuration>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/DICLIENTS32_0-80000608.zip/tc~di~cr~service.sda/log-configuration.xml -->

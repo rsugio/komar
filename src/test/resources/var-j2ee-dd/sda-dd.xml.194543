@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="2.0">
+    <display-name>tc/di/cmd_tools/sda</display-name>
+    <fileset id="tc/di/cmd_tools/sda">
+      <display-name>tc/di/cmd_tools/sda</display-name>
+      <description>$dc_caption</description>
+      <default-deployment-dir>${com.sap.systemdir}/di_cmd_tools</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/DICLIENTS32_0-80000608.zip/tc~di~cmd_tools~sda.sda/sda-dd.xml -->

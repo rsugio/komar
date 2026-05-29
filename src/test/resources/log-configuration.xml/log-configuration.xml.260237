@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM 'log-configuration.dtd'>
+<log-configuration>
+	<log-formatters>
+		<log-formatter name="FileFormat" pattern="%24d [%-8s] [%-8t] %-40l: %m" type="TraceFormatter"/>
+	</log-formatters>
+	<log-destinations>
+		<log-destination name="LogFile" pattern="./log/libraries/ddic/DDIC.log" type="FileLog" count="5" limit="1000000">
+		</log-destination>
+	</log-destinations>
+	<log-controllers>
+		<log-controller effective-severity="WARNING" name="com.sap.dictionary" db-log="false">
+			<associated-destinations>
+				<destination-ref association-type="LOG" name="LogFile"/>
+			</associated-destinations>
+		</log-controller>		
+	</log-controllers>
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/ENGFACADE32_0-80000438.zip/jddi~internal.sda/log-configuration.xml -->

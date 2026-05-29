@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>Flex Commons</display-name>
+    <fileset id="Fileset_1">
+      <display-name>webadmin flex - flex commons</display-name>
+      <description />
+      <default-deployment-dir>${com.sap.engine.installdir}/servicehttp</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCORE32_0-80000440.zip/tc~lm~webadmin~flex~flexcommons.sda/sda-dd.xml -->

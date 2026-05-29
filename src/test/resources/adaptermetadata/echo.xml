@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AdapterTypeMetaData version="1">
+    <Type>Echo</Type>
+    <GuiLabels>
+        <Label language="EN">Echo adapter</Label>
+    </GuiLabels>
+    <Outbound>
+        <TransportProtocol>
+            <Name>NoProtocol</Name>
+            <Version>1</Version>
+            <GuiLabels>
+                <Label language="EN">NoProtocol</Label>
+            </GuiLabels>
+            <ValidMessageProtocols>
+                <ProtocolIdentifier>
+                    <Name>NoProtocol</Name>
+                    <Version>1</Version>
+                </ProtocolIdentifier>
+            </ValidMessageProtocols>
+        </TransportProtocol>
+        <MessageProtocol>
+            <Name>NoProtocol</Name>
+            <Version>1</Version>
+            <GuiLabels>
+                <Label language="EN">NoProtocol</Label>
+            </GuiLabels>
+            <ModuleProcessorAttributes>
+                <ModuleSequence>
+                    <ModuleSequenceItem>
+                        <Name>localejbs/ModuleProcessorExitBean</Name>
+                        <Type>local</Type>
+                        <Key>exit</Key>
+                    </ModuleSequenceItem>
+                </ModuleSequence>
+            </ModuleProcessorAttributes>
+        </MessageProtocol>
+        <GlobalChannelAttributes>
+            <Tab id="main">
+                <AttributeReference>
+                    <ReferenceName>adapterStatus</ReferenceName>
+                </AttributeReference>
+                <AttributeReference>
+                    <ReferenceName>text64</ReferenceName>
+                </AttributeReference>
+            </Tab>
+        </GlobalChannelAttributes>
+    </Outbound>
+    <Attribute isPassword="false">
+        <Name>adapterStatus</Name>
+        <Usage>optional</Usage>
+        <Default>active</Default>
+        <DataType>xsd:string</DataType>
+        <Length>0</Length>
+        <GuiLabels>
+            <Label language="EN">Adapter status</Label>
+        </GuiLabels>
+        <FixedValue>
+            <value>active</value>
+            <GuiLabels>
+                <Label language="EN">Active</Label>
+            </GuiLabels>
+        </FixedValue>
+        <FixedValue>
+            <value>inactive</value>
+            <GuiLabels>
+                <Label language="EN">Inactive</Label>
+            </GuiLabels>
+        </FixedValue>
+    </Attribute>
+    <Attribute isPassword="false">
+        <Name>text64</Name>
+        <Usage>optional</Usage>
+        <Flag>nonTransportable</Flag>
+        <Default>default value</Default>
+        <DataType>xsd:string</DataType>
+        <Length>64</Length>
+        <GuiLabels>
+            <Label language="EN">text64</Label>
+        </GuiLabels>
+    </Attribute>
+</AdapterTypeMetaData>

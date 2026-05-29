@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<connector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="connector-j2ee-engine.xsd">-->
+<connector>
+   <resourceadapter>
+   <ra-jndi-name>jdbcConnector</ra-jndi-name>
+      <outbound-resourceadapter>
+         <connection-definition>
+            <connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+            <jndi-name>JDBCFactory</jndi-name>
+            <pool-params>
+               <max-connections-number>100</max-connections-number>
+               <max-time-to-wait-connection>60</max-time-to-wait-connection>
+               <expiration-control>
+                  <connection-lifetime>3600</connection-lifetime>
+                  <run-cleanup-thread-interval>5</run-cleanup-thread-interval>
+               </expiration-control>
+            </pool-params>
+         </connection-definition>
+      </outbound-resourceadapter>
+      	<loader-references>
+      	  <loader-name strength="hard">library:tc~epbc~connectivityfw~api</loader-name>
+      	  <loader-name strength="hard">library:com.sap.base.technology.facade</loader-name>
+      	  <loader-name>library:com.sap.portal.jdbcdrivers</loader-name>
+      	</loader-references>
+   </resourceadapter>
+</connector>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/EPCONNECTIVITY32_0-80000493.zip/com.sapportals.connectors.database.sda/connector-j2ee-engine.xml -->

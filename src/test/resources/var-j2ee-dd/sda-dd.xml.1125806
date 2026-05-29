@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+		<fs-deployment-descriptor version="2.0">
+			<display-name>Deploy Service Migration Controller</display-name>
+				<fileset id="tc~je~deploy_migration">
+					<display-name>Complete</display-name>
+					<description>Deploy Service Migration Controller</description>
+					<default-deployment-dir>${com.sap.engine.installdir}/migration</default-deployment-dir>
+				</fileset>
+		</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SERVERCORE32_0-80000485.zip/deploy_migration.sda/sda-dd.xml -->

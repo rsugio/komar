@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>Java Statistics</display-name>
+    <fileset id="Fileset_1">
+      <display-name>webadmin flex - java statistics</display-name>
+      <description />
+      <default-deployment-dir>${com.sap.engine.installdir}/../exe/servicehttp/rsd</default-deployment-dir>
+    </fileset>
+    <fileset id="Fileset_2">
+      <display-name>webadmin flex - java statistics</display-name>
+      <description />
+      <default-deployment-dir>${com.sap.engine.installdir}/servicehttp/rsd</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCORE32_0-80000440.zip/tc~lm~webadmin~flex~javastatistics.sda/sda-dd.xml -->

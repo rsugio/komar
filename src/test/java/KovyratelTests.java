@@ -1,6 +1,5 @@
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
-import sun.nio.ch.IOUtil;
 
 import java.io.*;
 import java.nio.file.DirectoryStream;
@@ -9,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -26,10 +24,26 @@ class FileInfo {
 
 public class KovyratelTests {
     Path extractDir = Paths.get("D:\\temp");
+    static String[] whitelist = {
+            "*adapter*",
+            "application-*",
+            "application.xml",
+            "application_*",
+            "connector-*",
+            "connector_*",
+            "ra.*",
+            "j2ee-*",
+            "j2ee_*",
+            "*-dd.xml",
+            "sap.application.global.properties",
+            "",
+    };
+
+
     @Test
     public void extractDistr() throws IOException {
         List<FileInfo> result = new ArrayList<>(16384 * 256);
-        Path root = Paths.get("D:\\distr\\SAP_PO\\PO75sp32");
+        Path root = Paths.get("D:\\distr\\SAP_PO\\PO75sp35");
 //        root = Paths.get("D:\\workspace\\demoechoadapter\\tmp\\lib");
         DirectoryStream<Path> ds = Files.newDirectoryStream(root);
 
@@ -42,8 +56,13 @@ public class KovyratelTests {
                 InputStream is = Files.newInputStream(p);
                 walk(fi, is, result);
             }
-//            break;
         }
+        Path rez = Paths.get("tests.txt");
+        PrintWriter wr = new PrintWriter(Files.newBufferedWriter(rez));
+        for (FileInfo fi : result) {
+            wr.println(fi.path + "|" + fi.filename);
+        }
+        wr.close();
     }
 
     void walk(FileInfo fileInfo, InputStream is, List<FileInfo> result) throws IOException {
@@ -74,7 +93,7 @@ public class KovyratelTests {
                     result.add(childInfo);
 
                     // Читаем содержимое entry
-                    byte[] content =  IOUtils.toByteArray(zis);
+                    byte[] content = IOUtils.toByteArray(zis);
 
                     // Рекурсивно обрабатываем (если внутри ещё архив)
                     try (ByteArrayInputStream childStream = new ByteArrayInputStream(content)) {

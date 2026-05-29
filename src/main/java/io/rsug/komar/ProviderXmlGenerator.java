@@ -12,10 +12,6 @@ import java.util.Objects;
 
 public class ProviderXmlGenerator {
 
-    public ProviderXmlGenerator() {
-
-    }
-
     public String generateProviderXml(String displayName,
                                       String componentName,
                                       String providerName,
@@ -44,12 +40,6 @@ public class ProviderXmlGenerator {
             jars.getJarName().add(jn);
         }
 
-        JAXBContext ctx = JAXBContext.newInstance(ProviderDescriptor.class);
-        Marshaller marshaller = ctx.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-        StringWriter sw = new StringWriter();
-        marshaller.marshal(pd, sw);
-        return sw.toString();
+        return Komar.marshaller(JAXBContext.newInstance(ProviderDescriptor.class), pd);
     }
 }

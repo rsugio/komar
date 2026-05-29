@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connector xmlns="http://java.sun.com/xml/ns/j2ee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd"
+version="1.5">
+	<description>JMS resource adapter.</description>
+	<display-name>SAPJMS Resource Adapter.</display-name>
+	<vendor-name>SAP</vendor-name>
+	<eis-type>JMS Provider</eis-type>
+	<resourceadapter-version>1.0</resourceadapter-version>
+    <resourceadapter><resourceadapter-class>com.sap.jms.resourceadapter.ResourceAdapterImpl</resourceadapter-class>
+	<inbound-resourceadapter>
+		<messageadapter>
+			<messagelistener>
+				<messagelistener-type>javax.jms.MessageListener</messagelistener-type>
+				<activationspec>
+					<activationspec-class>com.sap.jms.resourceadapter.ActivationSpecBean</activationspec-class>
+					<!--
+                                        The destination property should be mandatory as required in the JCA 1.5 spec. However as discussed we will support both destination AND destinationName mapping to the same property. If destinationName is used, we will issue a warning and use this. Thus the validation will be performed entirely in the java file (standard validate() method and not by defining the destination as required-config-property
+                                         <required-config-property>
+						<config-property-name>destination</config-property-name>
+					</required-config-property>
+                                        -->   
+					<required-config-property>
+						<config-property-name>destinationType</config-property-name>
+					</required-config-property>
+					<!--
+					<config-property>
+		                <config-property-name>
+			                destinationName
+		                </config-property-name>
+		                <config-property-type>
+			                java.lang.String
+		                </config-property-type>
+	                </config-property>
+	                <config-property>
+		                <config-property-name>
+                            destinationType
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                    </config-property>
+                    <config-property>
+                        <config-property-name>
+                            messageSelector
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                    </config-property>
+                    <config-property>
+                        <config-property-name>
+                            acknowledgeMode
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                        <config-property-value>
+                            Auto-acknowledge
+                        </config-property-value>
+                    </config-property>
+                    <config-property>
+                        <config-property-name>
+                            subscriptionName
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                    </config-property>
+                    <config-property>
+                        <config-property-name>
+                            subscriptionDurability
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                    </config-property>
+                    <config-property>
+                        <config-property-name>
+                            clientId
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                    </config-property>
+                    <config-property>
+                        <config-property-name>
+                            serverInstance
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                        <config-property-value>
+                            default
+                        </config-property-value>
+                    </config-property>
+                    <config-property>
+                        <config-property-name>
+                            noLocal
+                        </config-property-name>
+                        <config-property-type>
+                            java.lang.String
+                        </config-property-type>
+                    </config-property>
+                    -->
+				</activationspec>
+			</messagelistener>
+		</messageadapter>
+	</inbound-resourceadapter>
+</resourceadapter>
+</connector>
+
+
+
+
+
+
+
+
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEFRMW32_0-80000439.zip/jms_provider.sda/sap.com~tc~je~jms_provider~impl.jar/ra.xml -->

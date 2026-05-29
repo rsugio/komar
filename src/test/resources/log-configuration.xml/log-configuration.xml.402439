@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+
+<log-configuration>
+
+  <log-formatters>
+    <log-formatter name="trc" type="TraceFormatter"  pattern="%d %l [%t] %10s %m"/>
+    <log-formatter name="audit_log_formatter" type="TraceFormatter"  pattern="%30d %m"/>
+  </log-formatters>
+
+  <log-destinations>
+    <log-destination name="trcInfoWarning" type="FileLog" pattern="./log/services/com.sap.portal.prt.sapj2ee/infoAndWarning.default.trc"
+                     effective-severity="ALL" count="5" limit="10000000"/>
+    <log-destination name="readable_trcInfoWarning" type="FileLog" pattern="./log/services/com.sap.portal.prt.sapj2ee/infoAndWarning.readable.trc"
+                     effective-severity="ALL" count="5" limit="10000000">
+       <formatter-ref name="trc"/>
+    </log-destination>
+    <log-destination name="portalTrace" type="FileLog" pattern="./log/applications/portal/portal.trc"
+                     effective-severity="ALL" count="5" limit="10000000"/>
+    <log-destination name="trcError" type="FileLog" pattern="./log/services/com.sap.portal.prt.sapj2ee/error.default.trc"
+                     effective-severity="ALL" count="5" limit="10000000"/>
+    <log-destination name="readable_trcError" type="FileLog" pattern="./log/services/com.sap.portal.prt.sapj2ee/error.readable.trc"
+                     effective-severity="ALL" count="5" limit="10000000">
+       <formatter-ref name="trc"/>
+    </log-destination>
+  </log-destinations>
+
+  <log-controllers>
+    <log-controller name="com.sap.portal.prt.sapj2ee.infoWarning" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="trcInfoWarning" association-type="LOG"/>
+        <destination-ref name="readable_trcInfoWarning" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.sapj2ee.error" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="trcError" association-type="LOG"/>
+        <destination-ref name="readable_trcError" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.pcd" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Notification" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.SoftCache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.BasicRoleFactory" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.BasicTransport" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Access" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Admin" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Aspect" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+	<log-controller name="com.sap.portal.pcd.Gl.Acl" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Notification.Basic" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.EventHandling" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Notification.Engine" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Notification.Object" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Transport" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Xfs.Cache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Xfs.Cache.Optimizer" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Xfs.Search" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Notification.Xfs" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Gl.Pl.Access" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Lock" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.PlConnectionPool" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.SoftCache.Access" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+	<log-controller name="com.sap.portal.pcd.Gl.AclCache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.SoftCache.CleanUp" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.SoftCache.CrossServer" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pcd.Acl" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.roles" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.roles.RoleNavigation" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.roles.RoleService" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.roles.SAPAuthAdmin" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.prt" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.request" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.request.hooks" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.request.pom" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.request.events" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.request.async" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.request.cache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.request.cache.persistency" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.runtime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.runtime.broker" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.runtime.loader" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.runtime.services" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.runtime.services.facilities" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.runtime.servlet_jsp" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.runtime.deployment" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.naming" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.notification" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.prt.statemonitor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    
+
+    <log-controller name="com.sap.portal.connectors" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectors.R3" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectors.ESF" effective-severity="ERROR">
+              <associated-destinations>
+                <destination-ref name="portalTrace" association-type="LOG"/>
+              </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectors.BW" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectors.CRM" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectors.JDBC" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectors.WebServices" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.businessObject" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.businessObject.SL" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.controller" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.relationResolving" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.relationHandler" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.OBN" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.OBN.service" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.linkParsers" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.dragAndRelateService" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.HRNPKit" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.tools" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.relationshipCache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.unifier5In6" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.componentHook" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.designTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.contentTagging" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.unification.obn.redirector" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+	<log-controller name="com.sap.portal.unification.R3" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.OBN.designTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectorBaseContent" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectorBaseContent.functionWizard" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.connectorBaseContent.queryWizard" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.httpConnectivity.transformationService" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.contentprovidersframework" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>    
+    <log-controller name="com.sap.portal.httpConnectivity.xmlIViewsRuntime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.xmlIViewsDesignTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.urlFetcherService" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.urlIViewDesignTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.urlIViewRunTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.webTargetsDesignTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.webTargetsRunTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.httpAuthentication" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.iviewCatcher" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.iviewCatcher.render" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.httpConnectivity.iviewCatcher.editor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.ui" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.navigation" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.navigation.cache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.navigation.iviews" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.navigation.services" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.desktop" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.pagebuilder" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.appcache.cache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.appcache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.fpm" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.webreport" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.ivs.massEditor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.unitTesting" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.wsrp.consumer" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.wsrp.producer" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.httpService" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.semantic.systemLandscape" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.semantic.systemLandscape.bwc" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.semantic.producerPortal" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.semantic.iViewService" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.semantic.relatedItems" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.systemConnectionTests" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.aliasEditor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.connectorService" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.genericCreator" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.globalPortal" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.ivs.globalPortal.GPCache" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.vc.HTMLBRunTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.vc.connector" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.vc.HTMLBDesignTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+    <log-controller name="com.sap.portal.vc.BIKitRunTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.vc.BIKitDesignTime" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    
+    <log-controller name="com.sap.portal.applicationFramework" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.iview" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.page" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.system" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.layout" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.folder" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+        <log-controller name="com.sap.portal.applicationFramework.wizards.producerportal" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.yahoo" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.templateselectionwizard" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.wizards.pcmobjectwizardtoolkit" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.editors" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.editors.acleditor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.editors.relateditemseditor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.editors.ruleeditor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.editors.desktopeditor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.tools" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.tools.deltalinkoriginstracer" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.tools.mirrortree" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.editorframework" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.wizardframework" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.contentcatalog" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.appdesgnerframework" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.propertyeditor" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.util" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.statelesssession" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+    <log-controller name="com.sap.portal.applicationFramework.adminstudio.advancedoperations" effective-severity="ERROR">
+         <associated-destinations>
+           <destination-ref name="portalTrace" association-type="LOG"/>
+         </associated-destinations>
+     </log-controller>
+
+
+    <log-controller name="com.sap.portal.supportability.reporting" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+
+	<log-controller name="com.sap.portal.pcm.admin.nwdiservice" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+
+	<log-controller name="com.sap.portal.admin.nwdi" effective-severity="ERROR">
+      <associated-destinations>
+        <destination-ref name="portalTrace" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+
+
+  </log-controllers>
+
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/EPBASISAPI32_0-80000702.zip/com.sapportals.prt.portalruntime.sda/log-configuration.xml -->

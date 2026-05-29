@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+	<job-definition name="CTCSchedulerJob" description="Executes a CPROC Task">
+		<job-definition-parameter name="library" data-type="String" direction="IN" />
+		<job-definition-parameter name="path" data-type="String" direction="IN" />
+		<job-definition-parameter name="referenceid" data-type="String" direction="IN" data-default='NO_REFERENCE_ID'/>
+		<job-definition-parameter name="outputparam" data-type="String" direction="OUT"/>
+	</job-definition>
+	<job-definition name="CTCStoreCleanJob" description="Cleans the CTC stores of one CTC session">
+		<job-definition-parameter name="sessionID" data-type="String" direction="IN" />
+		<job-definition-parameter name="description" data-type="String" direction="IN" />
+	</job-definition>
+</job-definitions>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCTC32_0-80000670.zip/sap.com~tc~lm~ctc~scheduler_app.ear/sap.com~tc~lm~ctc~scheduler.jar/job-definition.xml -->

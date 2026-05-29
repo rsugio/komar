@@ -1,0 +1,23 @@
+<job-definitions>
+  <job-definition name="bc_xmla_sbook_write" description="Write phase job for SBOOK sample archiving set">
+    <job-definition-parameter name="Carrier" direction="in" data_type="String" nullable="Y"/>
+    <job-definition-parameter name="From_Booking_Number" direction="in" data_type="Long" nullable="Y"/>
+    <job-definition-parameter name="From_Flight_Date" direction="in" data_type="Date" nullable="Y"/>
+    <job-definition-parameter name="To_Booking_Number" direction="in" data_type="Long" nullable="Y"/>
+    <job-definition-parameter name="To_Flight_Date" direction="in" data_type="Date" nullable="Y"/>
+    <job-definition-parameter name="xmlparse" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="wduser" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="collection" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="simulation" direction="in" data_type="Boolean" nullable="N"/>
+    <job-definition-parameter name="useindexprops" direction="in" data_type="Boolean" data_default="true"/>
+    <job-definition-parameter name="sessioncomment" direction="in" data_type="String" nullable="Y"/>
+    <job-definition-parameter name="auto_deletephase" direction="in" data_type="Boolean" nullable="Y"/>
+  </job-definition>
+  <job-definition name="bc_xmla_sbook_delete" description="Delete phase job for SBOOK sample archiving set">
+    <job-definition-parameter name="wduser" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="collection" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="simulation" direction="in" data_type="Boolean" nullable="N"/>
+    <job-definition-parameter name="useindexprops" direction="in" data_type="Boolean" data_default="true"/>
+  </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/LMTOOLS32_0-80000668.zip/sap.com~tc~archtech~sbook_j2ee.ear/sap.com~tc~archtech~sbook_ejb.jar/job-definition.xml -->

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>j2ee-template</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/CFGZA32_0-80000741.zip/sap.com~zatpl_aio.sda/sda-dd.xml -->

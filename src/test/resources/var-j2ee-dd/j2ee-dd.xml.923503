@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SDA>
+  <SoftwareType>J2EE</SoftwareType>
+  <engine-deployment-descriptor version="3.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIIGWAPPL32_0-70000705.zip/com.sap.aii.igw.datastore.cleanup.app.sda/j2ee-dd.xml -->

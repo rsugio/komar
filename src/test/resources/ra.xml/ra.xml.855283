@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE connector PUBLIC '-//Sun Microsystems, Inc.//DTD Connector 1.0//EN' 'http://java.sun.com/dtd/connector_1_0.dtd'>
+
+  <connector>
+    <display-name>com.sap.aii.adapter.sftp.app</display-name>
+    <vendor-name>sap.com</vendor-name>
+    <spec-version>1.0</spec-version>
+    <eis-type>SFTP Adapter</eis-type>
+    <version>1.4</version>
+    <resourceadapter>
+      <managedconnectionfactory-class>com.sap.aii.adapter.sftp.ra.rar.jca.SPIManagedConnectionFactory</managedconnectionfactory-class>
+      <connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+      <connectionfactory-impl-class>com.sap.aii.adapter.sftp.ra.rar.jca.CCIConnectionFactory</connectionfactory-impl-class>
+      <connection-interface>javax.resource.cci.Connection</connection-interface>
+      <connection-impl-class>com.sap.aii.adapter.sftp.ra.rar.jca.CCIConnection</connection-impl-class>
+      <transaction-support>NoTransaction</transaction-support>
+      <config-property>
+        <config-property-name>addressMode</config-property-name>
+        <config-property-type>java.lang.String</config-property-type>
+        <config-property-value>CPA</config-property-value>
+      </config-property>
+      <config-property>
+        <config-property-name>adapterType</config-property-name>
+        <config-property-type>java.lang.String</config-property-type>
+        <config-property-value>SFTP</config-property-value>
+      </config-property>
+      <config-property>
+        <config-property-name>adapterNamespace</config-property-name>
+        <config-property-type>java.lang.String</config-property-type>
+        <config-property-value>http://sap.com/xi/XI/SFTP</config-property-value>
+      </config-property>
+	  <config-property>
+	  	<description>Instructs the SFTP adapter to use configured fingerprint hash at runtime</description>
+        <config-property-name>fingerprintHash</config-property-name>
+        <config-property-type>java.lang.String</config-property-type>
+        <config-property-value>SHA256</config-property-value> 
+      </config-property>
+	  <config-property>
+	  	<description>Instructs the SFTP adapter to use configured keytype value at runtime</description>
+        <config-property-name>preferredKeyType</config-property-name>
+        <config-property-type>java.lang.String</config-property-type>
+        <config-property-value>ssh-rsa</config-property-value>
+      </config-property>
+      <authentication-mechanism>
+        <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+        <credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+      </authentication-mechanism>
+      <reauthentication-support>false</reauthentication-support>
+    </resourceadapter>
+  </connector>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.sftp.app.sda/com.sap.aii.adapter.sftp.ra.rar/ra.xml -->

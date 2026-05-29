@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connector xmlns="http://java.sun.com/xml/ns/j2ee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+           http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd"
+           version="1.5">
+
+  <description>J2EE Connector Architecture 1.5 based Resource Adapter to and from SAP's System.
+               Required Properties (All of type String):
+                Either the property DestinationName or the set of properties (SAPClient, UserName,
+                    Password) should be always defined.
+                If DestinationName was not defined, then additionally one of the sets (ServerName,
+                PortNumber) or (Local) or (MessageServer, SystemID, Group) should be defined.
+                These default-values are internally used by Resource Adapter.
+                Properties (UserName, Password) will be overridden when creating
+                 the actual connection if UserManagement maintained and
+                your application uses Container managed authentication.
+                Examples:
+                 a) connection to single App. Server: SAPClient=000, UserName=tester,
+                    Password=***,ServerName=us7400,PortNumber=01.
+                 b) connection to cluster: SAPClient=000, UserName=tester, Password=***,
+                    MessageServer=b20main.wdf.sap-ag.de, SystemID=B20, Group=PUBLIC.
+                 c) connection to add-on R/3 System: Local=true, SAPClient=000,
+                    UserName=tester, Password=***. When used Local=true the ServerName
+                    and PortNumber from the locally installed ABAP Server are taken.
+                 d) connection to Application server or cluster as defined in the Destination service:
+                    DestinationName=B20
+                    The destination configuration is used then for JRA repository.
+                    If additionally the properties UserName, Password, Client and/or Language defined,
+                    then these properties override the destination configurations. The host names defined
+                    over Destination have higher priority than host names defined over above JRA specific
+                    properties
+
+               Optional Properties (All of type Boolean):
+                Trace      - Enable/disable highest trace level on all middleware layers(true or false).
+                             On default is false. VM Scope.
+                TraceCPIC  - Enable/disable CPIC trace (0 for none, 3 for highest level).
+                             On default 0. Type Integer. VM Scope.
+                TraceJRFC  - Enable/disable JRFC trace (true or false). On default is false.
+                             VM Scope.
+                TraceRFC   - Enable/disable RFC trace (true or false). On default is false.
+                             ConnectionFactory configuration scope.
+                TraceJCO   - Enable/disable JCO trace (0 for none, 10 for highest level).
+                             On default 0. Type Integer. VM Scope.
+                TraceJRA   - Enable/disable JRA trace (0 for none, 10 for highest level).
+                             On default 0. Type Integer. VM Scope.
+                AutoCommit - Enable/disable automatic commit for non-transactional
+                             calls (true or false). On default is true. Setting on false
+                             improves performance for reading accesses on DB.
+                GatewayServer  - This may be configured, if Java->ABAP communication should
+                             go via gateway other then application server gateway.
+                GatewayService - The service number according to configured GatewayServer.
+
+               SNC Properties:
+                SNC        - Enable/disable the SNC communication (true or false).
+                             On default is false. Type Boolean.
+                SNCPartnerName - The SNC partner name. E.g.
+                                 "p/secude:CN=B20, O=SAP-AG, C=DE". Type String.
+                SNCLevel   - Optional. The level of security for SNC connection (1 to 9).
+                             Default: 8. Type String.
+                SNCMyName  - Optional. It overrides default SNC caller name.
+                             E.g. "p:CN=I0XXXXX, O=SAP-AG, C=DE". Type String.
+                SNCLibPath - Optional. Path and file name of the SNC library.
+                             Default: system defined library. Type String.
+
+               Properties used only for inbound communication:
+                ProgramID  - Program ID of the listening server. On default is JRASERVER.
+                             A destination with this ProgramID should be configured
+                             over R/3 transaction sm59. Type String.
+                MaxReaderThreadCount - Maximum and initial count of listening servers.
+                             On default is 0. Type Integer.
+
+                If started server should receive calls from different ABAP App. Servers
+                then the property GatewayServer should be set to the name of one of the
+                Application Servers. Please set in sm59 the same name for Gateway-Host
+                and also set in sm59 that Application Server GatewayService, e.g. sapgw00.
+                If the GatewayServer and ServerName are same, then you don't need to configure
+                GatewayServer and GatewayService
+
+                CallerValidation - Enable/disable (true or false). On false doesn't prevent calls
+                                   from other external systems. Type Boolean.
+                BindingKey - Adding this property for resource adapter and for MessageDrivenBeanEnable with the same value results in binding of this resource adapter instance and the MessageDrivenBean. Thus this MessageDrivenBean will be registered only this resource adapter
+
+  </description>
+  <display-name>sapjra15template</display-name>
+  <vendor-name>SAP</vendor-name>
+  <eis-type>R/3</eis-type>
+  <resourceadapter-version>7.50.32</resourceadapter-version>
+  <resourceadapter>
+    <resourceadapter-class>com.sap.mw.jco.jra.JRA$ResourceAdapterImpl</resourceadapter-class>
+    <config-property>
+      <description>servers Program ID as defined in sm59</description>
+      <config-property-name>ProgramID</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property>
+    <config-property>
+      <description>Maximum count of listening servers</description>
+      <config-property-name>MaxReaderThreadCount</config-property-name>
+      <config-property-type>java.lang.Integer</config-property-type>
+      <config-property-value>0</config-property-value>
+    </config-property>
+    <config-property>
+      <description>Gateway-Host as configured in sm59, e.g. binmain</description>
+      <config-property-name>GatewayServer</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property>
+    <config-property>
+      <description>GatewayService, e.g. sapgw53</description>
+      <config-property-name>GatewayService</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property>
+    <config-property>
+      <description>Destination name as configured in Destination service</description>
+      <config-property-name>DestinationName</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property>
+
+    <outbound-resourceadapter>
+      <connection-definition>
+        <managedconnectionfactory-class>com.sap.mw.jco.jra.JRA$ManagedConnectionFactory15Impl</managedconnectionfactory-class>
+        <config-property>
+          <description>Destination name as configured in Destination service</description>
+          <config-property-name>DestinationName</config-property-name>
+          <config-property-type>java.lang.String</config-property-type>
+          <config-property-value></config-property-value>
+        </config-property>
+        <connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+        <connectionfactory-impl-class>com.sap.mw.jco.jra.JRA$ConnectionFactoryImpl</connectionfactory-impl-class>
+        <connection-interface>javax.resource.cci.Connection</connection-interface>
+        <connection-impl-class>com.sap.mw.jco.jra.JRA$ConnectionImpl</connection-impl-class>
+      </connection-definition>
+      <!--transaction-support>XATransaction</transaction-support-->
+      <transaction-support>LocalTransaction</transaction-support>
+      <authentication-mechanism>
+        <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+        <credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+      </authentication-mechanism>
+      <!-- used on SAP WEBAS for SAP Logon Tickets -->
+      <authentication-mechanism>
+        <authentication-mechanism-type>SAPAssertionTicket</authentication-mechanism-type>
+        <credential-interface>javax.resource.spi.security.GenericCredential</credential-interface>
+      </authentication-mechanism>
+      <reauthentication-support>false</reauthentication-support>
+    </outbound-resourceadapter>
+
+    <inbound-resourceadapter>
+      <messageadapter>
+        <messagelistener>
+          <messagelistener-type>javax.resource.cci.MessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$StandardActivationSpec</activationspec-class>
+            <required-config-property>
+              <config-property-name>FunctionName</config-property-name>
+            </required-config-property>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.IDocMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$IDocActivationSpec</activationspec-class>
+            <required-config-property>
+              <config-property-name>FunctionName</config-property-name>
+            </required-config-property>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.IDocQueueMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$IDocActivationSpec</activationspec-class>
+            <required-config-property>
+              <config-property-name>FunctionName</config-property-name>
+            </required-config-property>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.QueuedIDocMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$IDocActivationSpec</activationspec-class>
+            <required-config-property>
+              <config-property-name>FunctionName</config-property-name>
+            </required-config-property>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.SynchronousMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$SynchronousActivationSpec</activationspec-class>
+            <required-config-property>
+              <config-property-name>FunctionName</config-property-name>
+            </required-config-property>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.AsynchronousMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$AsynchronousActivationSpec</activationspec-class>
+            <required-config-property>
+              <config-property-name>FunctionName</config-property-name>
+            </required-config-property>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.StatefulSynchronousMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$StatefulSynchronousActivationSpec</activationspec-class>
+            <required-config-property>
+              <config-property-name>FunctionName</config-property-name>
+            </required-config-property>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.JmsMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$JmsActivationSpec</activationspec-class>
+          </activationspec>
+        </messagelistener>
+        <messagelistener>
+          <messagelistener-type>com.sap.mw.jco.jra.TransactionalMessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>com.sap.mw.jco.jra.JRA$TransactionalActivationSpec</activationspec-class>
+          </activationspec>
+        </messagelistener>
+      </messageadapter>
+    </inbound-resourceadapter>
+
+  </resourceadapter>
+</connector>
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEAPPS32_0-80000576.zip/sap.com~tc~sapjra~temp.sda/jratemp.rar/ra.xml -->

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.0 U (http://www.xmlspy.com) by Barbara Stortz (SAP Portals Europe Walldorf) -->
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+	<log-destinations>
+		<log-destination name="trc" type="FileLog" pattern="./log/libraries/com.sap.km.trex.client/default.trc" effective-severity="ALL" count="5" limit="10000000"/>
+	</log-destinations>
+	<log-controllers>
+		<log-controller name="com.sapportals.trex.TrexConfigManager" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller name="com.sapportals.trex.core" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller name="com.sapportals.trex.admin" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller name="com.sapportals.trex.tns" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller name="com.sapportals.trex.util" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller name="com.sapportals.trex.queueserver" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+</log-configuration>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/FRAMEWORK32_0-80000661.zip/com.sap.km.trex.client.sda/log-configuration.xml -->

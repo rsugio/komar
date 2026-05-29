@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+	<log-destinations>
+		<log-destination 
+			count="10" 
+			limit="10000000" 
+			name="dideploymentLog" 
+			pattern="./log/applications/dideployment/DIDeployment.log" 
+			type="FileLog"/>
+		<log-destination 
+			count="10" 
+			limit="10000000" 
+			name="dideploymentTrace" 
+			pattern="./log/applications/DIDeploymentTrace.log" 
+			type="FileLog"/>
+	</log-destinations>
+	<log-controllers>
+		<log-controller 
+			effective-severity="INFO" 
+			name="/Applications/DIDeployment">
+			<associated-destinations>
+				<destination-ref 
+					association-type="LOG" 
+					name="dideploymentLog"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller 
+			effective-severity="ERROR" 
+			name="com.sap.di.cts.imp.autodepl.beans.core">
+			<associated-destinations>
+				<destination-ref 
+					association-type="LOG" 
+					name="dideploymentTrace"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCTS32_0-80000671.zip/sap.com~tc~di~cts~deployment~appl.ear/log-configuration.xml -->

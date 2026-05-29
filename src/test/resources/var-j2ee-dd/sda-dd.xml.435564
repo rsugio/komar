@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+
+<SDA name="ffpodata.ear">
+	<SoftwareType>J2EE</SoftwareType>
+	<j2ee-deployment-descriptor version="1.0">
+		<display-name>FFP Odata</display-name>
+	</j2ee-deployment-descriptor>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/EPFLP32_0-70000893.zip/com.sap.portal.navigation.odatamediator.ear/sda-dd.xml -->

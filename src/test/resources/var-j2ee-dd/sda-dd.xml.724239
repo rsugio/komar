@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>BI MMR jup configurations</display-name>
+    <fileset id="bi_mmr_jup_configurations">
+      <display-name>BI MMR jup configurations</display-name>
+      <description>BI MMR jup configurations</description>
+      <default-deployment-dir>${com.sap.engine.installdir}/migration/ume</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/MMRSERVER32_0-80000683.zip/bi_mmr_jup_configurations.sda/sda-dd.xml -->

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<SDA >
+  <SoftwareType>CONTENT</SoftwareType>
+  <fs-deployment-descriptor version="2.0">
+    <display-name>content~classification</display-name>
+    <fileset id="J2EE_Engine_deploy_view">
+      <display-name>Windows binaries</display-name>
+      <description>Windows bundle</description>
+      <default-deployment-dir>${com.sap.engine.installdir}/configtool/deployView</default-deployment-dir>
+      <substitute>
+	<file>WS/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sap.ide.eclipse.j2ee.engine.prefs</file>
+      </substitute>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/ESREGSERVICES32_0-80000498.zip/classificationContent.sda/sda-dd.xml -->

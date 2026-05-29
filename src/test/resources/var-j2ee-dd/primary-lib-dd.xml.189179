@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>primary-library</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/DATAMAPPING32_0-80000605.zip/com.sap.glx.common.rt.lib.sda/primary-lib-dd.xml -->

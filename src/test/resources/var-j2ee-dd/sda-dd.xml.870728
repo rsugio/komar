@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>XPI Content Files</display-name>
+    <fileset id="Fileset_1">
+      <display-name>XPI Content Files</display-name>
+      <description></description>
+      <default-deployment-dir>${com.sap.systemdir}</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.af.core.migration.sda/sda-dd.xml -->

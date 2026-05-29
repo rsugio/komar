@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE connector PUBLIC '-//Sun Microsystems, Inc.//DTD Connector 1.0//EN' 'http://java.sun.com/dtd/connector_1_0.dtd' >
+
+<connector>
+  <display-name>SAPJDO</display-name>
+  <vendor-name>SAP</vendor-name>
+  <spec-version>1.0</spec-version>
+  <eis-type>JDO datastore</eis-type>
+  <version>1.0</version>
+  <resourceadapter>
+    <managedconnectionfactory-class>com.sap.jdo.jca.spi.SAPJDOManagedConnectionFactory</managedconnectionfactory-class>
+    <connectionfactory-interface>javax.jdo.PersistenceManagerFactory</connectionfactory-interface>
+    <connectionfactory-impl-class>com.sap.jdo.jca.cci.SAPJDOConnectionFactory</connectionfactory-impl-class>
+    <connection-interface>javax.jdo.PersistenceManager</connection-interface>
+    <connection-impl-class>com.sap.jdo.jca.cci.SAPJDOConnection</connection-impl-class>
+    <transaction-support>NoTransaction</transaction-support>
+    
+    <config-property>
+      <config-property-name>ConnectionFactoryName</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value>jdbc/SAP/BC_JDO</config-property-value>
+    </config-property>
+    
+    <authentication-mechanism>
+      <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+      <credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+    </authentication-mechanism>
+    <reauthentication-support>false</reauthentication-support>
+  </resourceadapter>
+</connector>
+
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEAPPS32_0-80000576.zip/sap.com~com.sap.jdo.sda/sapjdojca.rar/ra.xml -->

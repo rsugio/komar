@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+		<fs-deployment-descriptor version="2.0">
+			<display-name>J2EE Engine Object Profiler tool</display-name>
+				<fileset id="J2EE_RMIC_tool_fileset">
+					<display-name>Complete</display-name>
+					<description>Files for J2EE Object Profioler tool</description>
+					<default-deployment-dir>${com.sap.engine.installdir}/objectProfilerTool</default-deployment-dir>					
+					<substitute>
+						<file substitute="yes">opv.bat</file>
+						<file substitute="yes" permissions="755">opv.sh</file>
+					</substitute>
+				</fileset>
+		</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/CORETOOLS32_0-80000437.zip/sap.com~tc~tool~objectProfiler.sda/sda-dd.xml -->

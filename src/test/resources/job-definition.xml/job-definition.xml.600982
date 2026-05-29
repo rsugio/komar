@@ -1,0 +1,12 @@
+<job-definitions>
+    <job-definition name="LogJobBean" description="extracts latest logs for ETD">
+    </job-definition>
+    <job-definition name="ContextJobBean" description="extracts system context and user context for ETD (if context has changed)">
+    </job-definition>
+    <job-definition name="TestLogJobBean" description="creates one test log for ETD">
+    </job-definition>
+    <job-definition name="TestContextJobBean" description="extracts system context and one user context for ETD">
+    </job-definition>
+</job-definitions>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEAPPS32_0-80000576.zip/etd_logextraction.sda/etd_logextractionejb.jar/job-definition.xml -->

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SDA>
+<SoftwareType>J2EE</SoftwareType>
+<engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SWLIFECYCL32_0-80000716.zip/sap.com~tc~slm~interfaces.ear/sda-dd.xml -->

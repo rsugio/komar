@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<SDA name="sap.com~tc~epbc~pcd~gl~srv.sda">
+  <SoftwareType>primary-service</SoftwareType>
+	<engine-deployment-descriptor version="2.0"/>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/EPBASISAPI32_0-80000702.zip/sap.com~tc~epbc~pcd~gl~srv.sda/sda-dd.xml -->

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+	<job-definition name="GalaxyCoreJob" description="Galaxy Timer"
+		retention-period="1">
+		<job-definition-parameter name="UserData"
+			data-type="String" direction="IN" />
+		<job-definition-parameter name="RetryCount"
+			data-type="Integer" direction="IN" />
+	</job-definition>
+	<job-definition name="GalaxyTimerJob" description="Galaxy Chronometer tick handling"
+		retention-period="1">
+		<job-definition-parameter name="UserData"
+			data-type="String" direction="IN" />
+		<job-definition-parameter name="RetryCount"
+			data-type="Integer" direction="IN" />
+		<job-definition-parameter name="Origin"
+			data-type="String" nullable="Y" direction="IN" />
+	</job-definition>
+	<job-definition name="GalaxyRecoveryJob"
+		description="Recovers failed Galaxy job executions" retention-period="1" />
+</job-definitions>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMCORE32_0-80000583.zip/sap.com~com.sap.glx.timer.ear.ear/sap.com~tc~bpem~adapter~timer~ejb.jar/job-definition.xml -->

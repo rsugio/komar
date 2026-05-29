@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="connector-j2ee-engine.xsd">
+  <resourceadapter>
+    <ra-jndi-name>com.sap.aii.adapter.idoc.raclonetemplateRAR</ra-jndi-name>
+    <outbound-resourceadapter>
+      <connection-definition>
+        <connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+        <jndi-name>pi/idoc/raclonetemplate</jndi-name>
+        <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+        <authentication-type>caller impersonation</authentication-type>
+      </connection-definition>
+    </outbound-resourceadapter>
+  </resourceadapter>
+  <template/>
+</connector>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.idoc.raclonetemplate.sda/com.sap.aii.adapter.idoc.raclonetemplateRAR.rar/connector-j2ee-engine.xml -->

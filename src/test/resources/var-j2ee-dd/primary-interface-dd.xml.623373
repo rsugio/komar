@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>primary-interface</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEFRMW32_0-80000439.zip/tc~je~webcontainer~api.sda/primary-interface-dd.xml -->

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM 'log-configuration.dtd'>
+
+<log-configuration>
+	<log-destinations>
+		<log-destination name="trc" type="FileLog" pattern="./log/applications/sap.com/tc.je.trace/trace.trc" effective-severity="ERROR" count="5" limit="1000000"/>
+	</log-destinations>
+	<log-controllers>
+		<log-controller name="com.sap.engine.trace.jarm" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller name="com.sap.engine.trace.apptrace" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller name="com.sap.engine.trace.activity_trace" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref name="trc" association-type="LOG"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMNWABASICMBEAN32_0-80000676.zip/sap.com~tc~je~trace~app.ear/log-configuration.xml -->

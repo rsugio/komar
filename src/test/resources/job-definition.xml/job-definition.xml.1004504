@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job-definitions>
+	<job-definition 
+		name="JobHandlerJob" 
+		description="PI Regression Test Tool Job Handler">
+		<job-definition-parameter name="MAX_JOBS" data-type="Integer" direction="IN" />
+	</job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIPIT32_0-80004326.zip/com.sap.aii.pit.app.sda/com.sap.aii.pit.jpa.ejb.jar/job-definition.xml -->

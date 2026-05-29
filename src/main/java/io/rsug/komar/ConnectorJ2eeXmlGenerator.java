@@ -5,58 +5,36 @@ import connectorj2eeengine.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.StringWriter;
 import java.lang.String;
-import java.util.Map;
-import java.util.Objects;
+import java.util.List;
 
 public class ConnectorJ2eeXmlGenerator {
     // see https://help.sap.com/docs/SAP_NETWEAVER_750/c591e2679e104fcdb8dc8e77771ff524/4ac4eebebcfb22aee10000000a42189b.html?locale=en-US
-    final Map<String,Object> constants;
 
-    public ConnectorJ2eeXmlGenerator(Map<String,Object> constants) {
-        this.constants = constants;
-    }
-
-    private String $(String key) {
-        return Objects.requireNonNull(constants.get(key), key).toString();
-    }
-
-    private String[] $$(String key) {
-        return (String[]) Objects.requireNonNull(constants.get(key), key);
-    }
-
-    public String generateConnectorXml() throws JAXBException {
+    public static String generateConnectorXml(String description, String resourceAdapterJNDI, List<DeployReference> drefList) throws JAXBException {
         ConnectorType con = new ConnectorType();
-        con.setDescription($("kolhoz"));
+        con.setDescription(description);
         ResourceadapterType ra = new ResourceadapterType();
-        ra.setRaJndiName($("raName"));
+        ra.setRaJndiName(resourceAdapterJNDI);
         OutboundResourceadapterType ora = new OutboundResourceadapterType();
         ConnectionDefinitionType cd = new ConnectionDefinitionType();
         cd.setConnectionfactoryInterface("javax.resource.cci.ConnectionFactory");   //PO const
-        cd.setJndiName($("raName"));
+        cd.setJndiName(resourceAdapterJNDI);
         ora.getConnectionDefinition().add(cd);
         ra.setOutboundResourceadapter(ora);
         con.setResourceadapter(ra);
+
         LoaderReferencesType lr = new LoaderReferencesType();
-        for (String link: $$("connectorLoaderReferences")) {
+        for (DeployReference link : drefList) {
             LoaderReferencesType.LoaderName ln = new LoaderReferencesType.LoaderName();
-            ln.setStrength("hard");
-            ln.setValue(link);
+            ln.setStrength(link.referenceType);
+            ln.setValue(link.target);
             lr.getLoaderName().add(ln);
         }
         ra.setLoaderReferences(lr);
 
-        ObjectFactory cof = new ObjectFactory();
         JAXBContext ctx = JAXBContext.newInstance(ConnectorType.class);
-        JAXBElement<ConnectorType> jaxbElement = cof.createConnector(con);
-
-        Marshaller marshaller = ctx.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-        StringWriter sw = new StringWriter();
-        marshaller.marshal(jaxbElement, sw);
-        return sw.toString();
+        JAXBElement<ConnectorType> jaxbElement = new ObjectFactory().createConnector(con);
+        return Komar.marshaller(ctx, jaxbElement);
     }
 }

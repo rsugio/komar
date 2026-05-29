@@ -1,0 +1,7 @@
+<job-definitions>
+  <job-definition name="cup_pi_daily" description="Post daily usage data for PI to database"  />
+  <job-definition name="cup_pi_monthly" description="Post monthly usage data for PI to database" />
+</job-definitions>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SOAMON32_0-80000714.zip/sap.com~tc~pi~cup~ear.ear/sap.com~tc~pi~cup~web.war/sap.com~tc~pi~cup~ejb.jar/job-definition.xml -->

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector>
+	<display-name>Gateway</display-name>
+	<vendor-name>SAP</vendor-name>
+	<spec-version>1.5</spec-version>
+	<eis-type>Gateway</eis-type>
+	<version>3.9</version>
+	<resourceadapter>
+		<managedconnectionfactory-class>com.sap.portal.gwconnector.connection.GWManagedConnectionFactory</managedconnectionfactory-class>
+		<connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+		<connectionfactory-impl-class>com.sap.portal.gwconnector.connection.GWCCIConnectionFactory</connectionfactory-impl-class>
+		<connection-interface>javax.resource.cci.Connection</connection-interface>
+		<connection-impl-class>com.sap.portal.gwconnector.connection.GWCCIConnection</connection-impl-class>
+		<transaction-support>NoTransaction</transaction-support>
+		<authentication-mechanism>
+			<authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+			<credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+		</authentication-mechanism>
+		<reauthentication-support>false</reauthentication-support>
+	</resourceadapter>
+</connector>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/EPCONNECTIVITY32_0-80000493.zip/com.sap.portal.connectors.gw.sda/gwConnector.rar/ra.xml -->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SDA>
+<SoftwareType>FS</SoftwareType>
+<fs-deployment-descriptor version="2.0">
+<display-name>tc/bpem/migration</display-name>
+<fileset id="tc/bpem/migration">
+<display-name>tc/bpem/migration</display-name>
+<default-deployment-dir>${com.sap.engine.installdir}/migration/</default-deployment-dir>
+</fileset>
+</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMBASE32_0-80000569.zip/sap.com~tc~bpem~migration.sda/sda-dd.xml -->

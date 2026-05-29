@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SDA>
+	<SoftwareType>primary-library</SoftwareType>
+	<engine-deployment-descriptor version="2.0">
+		<substitution-variable>
+        		<variable-name>com.sap.datasource.default</variable-name>
+		</substitution-variable>
+	</engine-deployment-descriptor>
+
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/MESSAGING32_0-80000682.zip/com.sap.aii.sec.lib.sda/primary-lib-dd.xml -->

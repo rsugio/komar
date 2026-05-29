@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<job-definitions>
+	<job-definition name="DeleteExpiredTokensJob" description="Delete the tokens that have already expired from the data base" />
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEAPPS32_0-80000576.zip/tc~je~oauth~app.sda/tc~je~sec~oauth~ejb.jar/job-definition.xml -->

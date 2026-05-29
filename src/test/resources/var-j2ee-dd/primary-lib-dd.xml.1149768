@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>primary-library</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SERVERCORE32_0-80000485.zip/tc~bl~base_webservices_lib.sda/primary-lib-dd.xml -->

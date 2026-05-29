@@ -1,0 +1,33 @@
+<job-definitions>
+   <job-definition name="AlertConsumerJob" description="Simple alert consuming solution for generation of emails following an aggregation principal based on particular alert fields like component, rule ID, scenario ID and error label">
+<!-- <job-definition-parameter name="SMTPServer" data-type="String" direction="IN"/>
+ 	 <job-definition-parameter name="SMTPUser" data-type="String" nullable="Y" direction="IN"/>
+	 <job-definition-parameter name="SMTPPassword" data-type="String" nullable="Y" direction="IN"/>
+     <job-definition-parameter name="SSLEnabled" data-type="Boolean" direction="IN"/> -->
+     <job-definition-parameter name="MailTo" data-type="String" direction="IN"/>
+     <job-definition-parameter name="MailFrom" data-type="String" direction="IN"/>
+     <job-definition-parameter name="AlertsToMailLimit" data-type="Integer" nullable="Y" direction="IN"/>
+     <job-definition-parameter name="Consumer" data-type="String" nullable="Y" direction="IN"/>
+     <job-definition-parameter name="SupressAlerts" data-type="Boolean" direction="IN"/>   
+     <job-definition-parameter name="AggregateAlerts" data-type="Boolean" direction="IN"/>
+   </job-definition>
+
+   <job-definition name="AlertConsumerJobV2" description="Simple alert consuming solution for generation of emails. Enhances and replaces the job AlertConsumerJob. It offers additional parameters and the possibility to use an email template.">
+     <job-definition-parameter name="MailTo" data-type="String" direction="IN"/>
+     <job-definition-parameter name="MailFrom" data-type="String" direction="IN"/>
+     <job-definition-parameter name="AlertsToMailLimit" data-type="Integer" nullable="Y" direction="IN" data-default="20"/>
+     <job-definition-parameter name="Consumer" data-type="String" nullable="Y" direction="IN"/>
+     <job-definition-parameter name="SupressAlerts" data-type="Boolean" direction="IN"/>   
+     <job-definition-parameter name="AggregateAlerts" data-type="Boolean" direction="IN"/>
+     <job-definition-parameter name="Priority" data-type="String" nullable="Y" direction="IN" description="Email priority. Possible values: High, Normal, Low" data-default="Normal" />
+     <job-definition-parameter name="Sensitivity" data-type="String" nullable="Y" direction="IN" description="Email sensitivity. Possible values: Normal, Confidential, Private, Personal" data-default="Normal" />
+     <job-definition-parameter name="EmailTemplateFile" data-type="String" nullable="Y" direction="IN" description="Path to Email template file." data-default="" />
+     <job-definition-parameter name="Language" data-type="String" nullable="Y" direction="IN" description="Language code for system generated texts. Possible values: en, de, ja, cn, ..." data-default="" />
+     <job-definition-parameter name="Additional" data-type="String" nullable="Y" direction="IN" description="Additional properties. For internal use only." data-default="" />
+   </job-definition>
+
+   <job-definition name="AlertStuckMessagesJob" description="Check the Adapter Engine for hanging/stuck PI messages and trigger alerts for them if matching Alert Rules exist.">
+	 <job-definition-parameter name="Additional" data-type="String" nullable="Y" direction="IN" description="Additional properties. For internal use only." data-default="" />
+   </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/MESSAGING32_0-80000682.zip/com.sap.aii.af.service.alert.app.sda/com.sap.aii.af.alert.ejb3.jar/job-definition.xml -->

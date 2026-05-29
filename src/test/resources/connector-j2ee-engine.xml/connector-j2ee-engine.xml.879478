@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<connector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="connector-j2ee-engine.xsd">
+	<resourceadapter>
+		<loader-references>
+			<loader-name strength="hard">interface:appcontext</loader-name>
+			<loader-name strength="hard">library:engine.j2ee14.facade</loader-name>
+			<loader-name strength="hard">library:com.sap.base.technology.facade</loader-name>
+			<loader-name strength="hard">library:com.sap.aii.af.lib.facade</loader-name>
+			<loader-name strength="hard">interface:com.sap.aii.af.ifc.facade</loader-name>
+			<loader-name strength="hard">service:com.sap.aii.af.svc.facade</loader-name>
+			<loader-name strength="hard">library:tc~bl~httpclient~lib</loader-name>
+			<loader-name strength="hard">service:tc/je/appconfiguration/api</loader-name>
+		</loader-references>
+	</resourceadapter>
+</connector>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAFCON32_0-70006599.zip/com.sap.aii.adapter.odata.app.sda/com.sap.aii.adapter.odata.ra.rar/connector-j2ee-engine.xml -->

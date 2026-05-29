@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector-j2ee-engine>
+	<jndi-name>GWFactory</jndi-name>
+	<pool-params>
+		<max-connections-number>100</max-connections-number>
+		<max-time-to-wait-connection>60</max-time-to-wait-connection>
+		<expiration-control>
+			<connection-lifetime>3600</connection-lifetime>
+			<run-cleanup-thread>300</run-cleanup-thread>
+		</expiration-control>
+	</pool-params>
+</connector-j2ee-engine>
+<!-- from D:\distr\SAP_PO\PO75sp32/EPCONNECTIVITY32_0-80000493.zip/com.sap.portal.connectors.gw.sda/gwConnector.rar/connector-j2ee-engine.xml -->

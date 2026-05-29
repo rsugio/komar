@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+
+<log-configuration>
+
+	<log-controllers>
+		<log-controller name="/System/Security/CertRevoc" />
+		<log-controller name="com.sap.security.core.certrevoc" effective-severity="ERROR"/>
+	</log-controllers>
+
+</log-configuration>
+<!-- from D:\distr\SAP_PO\PO75sp32/SERVERCORE32_0-80000485.zip/tc~sec~certrevoc~service.sda/log-configuration.xml -->

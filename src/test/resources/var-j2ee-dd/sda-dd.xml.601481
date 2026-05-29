@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>rfcengine migration</display-name>
+    <fileset id="Fileset_1">
+      <display-name>rfcengine migration files</display-name>
+      <description></description>
+      <default-deployment-dir>${com.sap.systemdir}</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEAPPS32_0-80000576.zip/rfcengine.migration.sda/sda-dd.xml -->

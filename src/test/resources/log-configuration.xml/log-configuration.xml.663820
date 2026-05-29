@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+	<log-destinations>
+		<log-destination 
+			name="DefaultDestination" 
+			type="FileLog"/>
+	</log-destinations>
+	<log-controllers>
+		<log-controller 
+			effective-severity="ERROR" 
+			name="com.sap.cts">
+			<associated-destinations>
+				<destination-ref 
+					association-type="LOG" 
+					name="DefaultDestination"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCTS32_0-80000671.zip/sap.com~tc~cts~appl.ear/log-configuration.xml -->

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+	<fs-deployment-descriptor version="2.0">
+		<display-name>Remote Debug Proxy</display-name>
+		<fileset id="rdbg.proxy">
+			<display-name>Remote Debug files</display-name>
+			<description>Remote Debug Files</description>
+			<default-deployment-dir>${com.sap.engine.installdir}/rdbg.proxy</default-deployment-dir>
+			<substitute>
+			<file>cfg/kernel/backend.properties</file>
+			</substitute>
+
+		</fileset>
+	</fs-deployment-descriptor>
+</SDA>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/FRAMEWORK32_0-80000661.zip/RemoteDebugProxy.sda/sda-dd.xml -->

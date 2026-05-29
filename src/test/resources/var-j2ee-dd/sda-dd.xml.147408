@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA name="orpersistence.standalone">
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="2.0">
+    <display-name>JPA stand alone usage</display-name>
+    <fileset id="JPA">
+      <display-name>JPA</display-name>
+      <description>JPA stand alone usage</description>
+      <default-deployment-dir>${com.sap.engine.installdir}/jpa</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/CORETOOLS32_0-80000437.zip/orpersistence.standalone.sda/sda-dd.xml -->

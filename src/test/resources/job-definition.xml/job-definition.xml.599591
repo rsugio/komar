@@ -1,0 +1,17 @@
+<job-definitions>
+    <job-definition name="IVCollectionJob"
+               description="Collects PI Messages and matches them against existing subscriptions, generating events for the matched PI messages">
+    </job-definition>	
+    
+	<job-definition name="IVDHStorageRepairJob" description="Task to repair IV dynamic headers storage. Deletes or archives  orphan  headers data based on three different modes: 'delete'- deletes all orphan entries; 'archive_all' - archives all orphan entries; 'check'- check if orphan entries are related to messages that are previously archived or deleted. Based on the result, orphan entries are deleted or archived; For more information, please check Note: 2401951" retention-period="30">	
+		<job-definition-parameter 	name="repairMode" 
+									description="Available modes: ('delete', 'archive_all', 'check')." 
+									data-type="String"  
+									direction="IN"
+									data-default=""
+									nullable="N" 
+									group="Lifetime Settings" />	
+																				
+	</job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/INTGVISDCJ32_0-80000642.zip/sap.com~tc~iv~dc~pi~ear.ear/sap.com~tc~iv~dc~pi.jar/job-definition.xml -->

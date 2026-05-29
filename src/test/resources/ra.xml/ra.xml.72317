@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE connector PUBLIC '-//Sun Microsystems, Inc.//DTD Connector 1.0//EN' 'http://java.sun.com/dtd/connector_1_0.dtd'>
+
+<connector>
+	<display-name>BI_JDBC_CONNECTOR</display-name>
+	<vendor-name>SAP AG</vendor-name>
+	<spec-version>1.0</spec-version>
+	<eis-type>JDBC-compliant relational data sources</eis-type>
+	<description>
+		SAP Business Intelligence Java Connector for JDBC (Java Database
+		Connectivity)
+	</description>
+	<version>1.0</version>
+	<resourceadapter>
+		<managedconnectionfactory-class>
+			com.sap.ip.bi.sdk.dac.connector.jdbc.JdbcManagedConnectionFactory
+		</managedconnectionfactory-class>
+
+		<connectionfactory-interface>
+			javax.resource.cci.ConnectionFactory
+		</connectionfactory-interface>
+
+		<connectionfactory-impl-class>
+			com.sap.ip.bi.sdk.dac.connector.jdbc.JdbcConnectionFactory
+		</connectionfactory-impl-class>
+
+		<connection-interface>
+			javax.resource.cci.Connection
+		</connection-interface>
+
+		<connection-impl-class>
+			com.sap.ip.bi.sdk.dac.connector.jdbc.JdbcConnection
+		</connection-impl-class>
+
+		<transaction-support>NoTransaction</transaction-support>
+
+		<config-property>
+			<description>example: sa</description>
+			<config-property-name>UserName</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value></config-property-value>
+		</config-property>
+		<config-property>
+			<description>example: password</description>
+			<config-property-name>Password</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value></config-property-value>
+		</config-property>
+		<config-property>
+			<description>example: com.microsoft.sqlserver.jdbc.SQLServerDriver </description>
+			<config-property-name>DriverName</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value>
+			</config-property-value>
+		</config-property>
+		<config-property>
+			<description>example: jdbc:sqlserver://localhost;databaseName=Northwind </description>
+			<config-property-name>URL</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value>
+			</config-property-value>
+		</config-property>
+		<config-property>
+			<description>example: Northwind</description>
+			<config-property-name>FixedCatalog</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value></config-property-value>
+		</config-property>
+		<config-property>
+			<description>example: dbo</description>
+			<config-property-name>FixedSchema</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value></config-property-value>
+		</config-property>
+		<authentication-mechanism>
+			<authentication-mechanism-type>
+				BasicPassword
+			</authentication-mechanism-type>
+			<credential-interface>
+				javax.resource.spi.security.PasswordCredential
+			</credential-interface>
+		</authentication-mechanism>
+		<reauthentication-support>false</reauthentication-support>
+
+	</resourceadapter>
+</connector>
+<!-- from D:\distr\SAP_PO\PO75sp32/BIUDI32_0-80000573.zip/com.sap.ip.bi.sdk.dac.connector.jdbc.rar/ra.xml -->

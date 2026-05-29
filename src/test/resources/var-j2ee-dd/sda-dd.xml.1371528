@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+		<fs-deployment-descriptor version="2.0">
+			<display-name>WebDynpro migration controller</display-name>
+				<fileset id="webdynpro~migration">
+					<display-name>Complete</display-name>
+					<description>WebDynpro migration contoller</description>
+					<default-deployment-dir>${com.sap.engine.installdir}/migration/com.sap.engine.services.webdynpro.migration.switchbase.SwitchMigrator</default-deployment-dir>
+				</fileset>
+		</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/WDRUNTIME32_0-80000736.zip/webdynpro~migration.sda/sda-dd.xml -->

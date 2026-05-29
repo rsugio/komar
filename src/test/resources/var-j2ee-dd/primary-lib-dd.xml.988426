@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>primary-library</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIIGWCORE32_0-70000704.zip/com.sap.aii.igw.event.lib.sda/primary-lib-dd.xml -->

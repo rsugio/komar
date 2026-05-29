@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+	<job-definition name="WSAdapterDBTableCleanupPeriodic" description="Task which cleans up the WS_AAE adapter database according to the specified retention period" retention-period="30">
+		<job-definition-parameter 	name="Retention_period" 
+									description="Entries older than this period (in days will be removed" 
+									data-type="long"  
+									direction="IN"
+									data-default="30"
+									nullable="N" 
+									group="Lifetime Settings" />	
+		<job-definition-parameter 	name="Consistency_check" 
+									description="Check against Messaging System tables" 
+									data-type="Boolean"  
+									direction="IN"
+									data-default="true"
+									nullable="N" 
+									group="Lifetime Settings" />												
+	</job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.ws.app.sda/com.sap.aii.adapter.ws.ejb.jar/job-definition.xml -->

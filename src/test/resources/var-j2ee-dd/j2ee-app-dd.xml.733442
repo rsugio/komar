@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SDA>
+   <SoftwareType>J2EE</SoftwareType>
+   <engine-deployment-descriptor version="2.0">
+   </engine-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/MMRSERVER32_0-80000683.zip/bi~mmr~mini_md_ear.sda/j2ee-app-dd.xml -->

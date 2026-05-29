@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job-definitions>
+	<job-definition name="PITExtractorJob"
+		description="Job extracting PI messages from source system">
+		<job-definition-parameter name="JOB_PARAM_ID"
+			data-type="String" direction="IN" />
+	</job-definition>
+	<job-definition name="PITExecutorJob"
+		description="Job executing a PIT TestRun">
+		<job-definition-parameter name="JOB_PARAM_ID"
+			data-type="String" direction="IN" />
+	</job-definition> 
+	<job-definition name="PITVerificationJob"
+		description="Job verifying outcome of test run">
+		<job-definition-parameter name="JOB_PARAM_ID"
+			data-type="String" direction="IN" />
+	</job-definition>
+	<job-definition name="PitTaskRunnerJob" description="Job to run generic PIT-related tasks">
+		<job-definition-parameter name="Configuration" data-type="Properties" direction="IN" />		
+	</job-definition>
+	<job-definition name="PITDeletionJob" description="Job for deletion of old and expired PIT data"/>	
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIPIT32_0-80004326.zip/com.sap.aii.pit.app.sda/com.sap.aii.pit.server.ejb.jar/job-definition.xml -->

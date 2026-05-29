@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+		<fs-deployment-descriptor version="2.0">
+			<display-name>JST Light Debugger</display-name>
+				<fileset id="JST_Light_Debugger_tool_fileset">
+					<display-name>Complete</display-name>
+					<description>Files for JST Light Debugger tool</description>
+					<default-deployment-dir>${com.sap.engine.installdir}/support/lightdebugger</default-deployment-dir>
+					<substitute>
+					<file substitute="yes">debugger.bat</file>
+					<file substitute="yes" permissions="755">debugger.sh</file>
+				    </substitute>
+				</fileset>
+		</fs-deployment-descriptor>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/SUPPORTTOOLS32_0-80000707.zip/sap.com~tc~lightdebugger_sda.sda/sda-dd.xml -->

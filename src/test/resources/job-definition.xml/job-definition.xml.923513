@@ -1,0 +1,9 @@
+<job-definitions>
+    <job-definition name="IGWCleanUpJobs" description="Cleanup expired or outdated messages in the Data Store and Message Store">
+        <job-definition-parameter name="DataStore" direction="IN" data-type="Boolean" data-default="true" description="Select this option to delete expired entries from the Data Store"/>
+        <job-definition-parameter name="MessageStore" direction="IN" data-type="Boolean" data-default="true" description="Select this option to delete entries from the Message Store"/>
+        <job-definition-parameter name="olderThanOrEqualDays" direction="IN" data-type="Integer" data-default="90" description="Defines retention time for entries in the Message Store"/>
+        <job-definition-parameter name="IDMapper" direction="IN" data-type="Boolean" data-default="true" description="Select this option to delete expired entries from the ID Mapper"/>
+    </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIIGWAPPL32_0-70000705.zip/com.sap.aii.igw.datastore.cleanup.app.sda/com.sap.aii.igw.datastore.cleanup.ejb.jar/job-definition.xml -->

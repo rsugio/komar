@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM 'log-configuration.dtd'>
+<log-configuration>
+	<log-formatters>
+		<log-formatter name="FileFormat" pattern="%24d [%-8s] [%-8t] %-40l: %m" type="TraceFormatter"/>
+	</log-formatters>
+	<log-destinations>
+		<log-destination name="LogFile" pattern="./log/services/webdynpro/WDR.log" type="FileLog" count="5" limit="1000000">
+		</log-destination>
+	</log-destinations>
+	<log-controllers>
+		<log-controller effective-severity="ERROR" name="com.sap.tc.webdynpro" db-log="false">
+			<associated-destinations>
+				<destination-ref association-type="LOG" name="LogFile"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller effective-severity="ERROR" name="com.sap.engine.services.webdynpro" db-log="false">
+			<associated-destinations>
+				<destination-ref association-type="LOG" name="LogFile"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller effective-severity="NONE" name="com.sap.tc.webdynpro.server.session.ServerSession" db-log="false"/>
+		<log-controller effective-severity="NONE" name="com.sap.tc.webdynpro.services.session.WatchDog" db-log="false"/>
+	</log-controllers>
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/WDRUNTIME32_0-80000736.zip/tc~wd~webdynpro.sda/log-configuration.xml -->

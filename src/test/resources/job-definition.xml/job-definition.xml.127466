@@ -1,0 +1,18 @@
+<job-definitions>
+  <job-definition name="brm_rules_write" description="Write phase job for archiving set brm_rules">
+    <job-definition-parameter name="FromDate" direction="in" data_type="Date" nullable="Y"/>
+    <job-definition-parameter name="ToDate" direction="in" data_type="Date" nullable="Y"/>
+    <job-definition-parameter name="xmlparse" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="wduser" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="collection" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="simulation" direction="in" data_type="Boolean" nullable="N"/>
+    <job-definition-parameter name="sessioncomment" direction="in" data_type="String" nullable="Y"/>
+    <job-definition-parameter name="auto_deletephase" direction="in" data_type="Boolean" nullable="Y"/>
+  </job-definition>
+  <job-definition name="brm_rules_delete" description="Delete phase job for archiving set brm_rules">
+    <job-definition-parameter name="wduser" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="collection" direction="in" data_type="String" nullable="N"/>
+    <job-definition-parameter name="simulation" direction="in" data_type="Boolean" nullable="N"/>
+  </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/BRMSCORE32_0-80000593.zip/sap.com~tc~brms~arch~jobs~ear.ear/sap.com~tc~brms~arch~jobs~ejb.jar/job-definition.xml -->

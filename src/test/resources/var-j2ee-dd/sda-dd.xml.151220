@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<SDA name="SAPJ2EEEngineClient.sda">
+	<SoftwareType>FS</SoftwareType>
+	<fs-deployment-descriptor version="2.0">
+		<display-name>Runtime libraries for Remote Client</display-name>
+		<fileset id="J2EEClient">
+			<display-name>Complete</display-name>
+			<description>Runtime libraries for Remote Client</description>
+			<default-deployment-dir>${com.sap.engine.installdir}/j2eeclient</default-deployment-dir>
+			<substitute>
+		 		<file substitute="yes">run.bat</file>
+		 		<file substitute="yes" permissions="777">run.sh</file>
+			</substitute>			
+		</fileset>
+	</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/CORETOOLS32_0-80000437.zip/sap.com~com.sap.engine.client.lib.sda/sda-dd.xml -->

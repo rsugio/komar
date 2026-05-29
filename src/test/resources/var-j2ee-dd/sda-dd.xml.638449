@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!--DOCTYPE SDA SYSTEM "/sapmnt/home1/d022181/sda-dd.dtd"-->
+<SDA name="lcrwork.sda">
+  <SoftwareType>FS</SoftwareType>
+  <SoftwareTypeSpecificFactory>
+    <Class>com.sap.sdm.deployment.fs.FSSpecificFactory</Class>
+  </SoftwareTypeSpecificFactory>
+  <ServerDependent ServerType="Java-FS">
+    <ServerTypeSpecificFactory>
+      <Class>com.sap.sdm.deployment.fs.fsjava.FSJavaSpecificFactory</Class>
+    </ServerTypeSpecificFactory>
+  </ServerDependent>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>Filesets for SLD</display-name>
+    <fileset id="SAP_LCR_Model_Data">
+      <display-name>SAP SLD Model Data</display-name>
+      <default-deployment-dir>${com.sap.systemdir}/sld</default-deployment-dir>
+    </fileset>
+</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCORE32_0-80000440.zip/sap.com~tc~sld~data.sda/sda-dd.xml -->

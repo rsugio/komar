@@ -1,0 +1,8 @@
+<job-definitions>
+    <job-definition 
+    		name="BPMMailReaderJob"
+            description="Reads the emails with attached forms from a dedicated mailbox for BPM processing"
+       		retention-period="1">
+    </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMBASE32_0-80000569.zip/sap.com~tc~bpem~base~ear.ear/sap.com~tc~bpem~base~ejb.jar/job-definition.xml -->

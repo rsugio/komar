@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+	<SoftwareType>FS</SoftwareType>
+	<fs-deployment-descriptor version="2.0">
+		<display-name>UME Migration controller</display-name>
+		<fileset id="ume_jspm_migration">
+			<display-name>Complete</display-name>
+			<description>UME Migration controller</description>
+			<default-deployment-dir>${com.sap.engine.installdir}/migration</default-deployment-dir>
+		</fileset>
+	</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SERVERCORE32_0-80000485.zip/com.sap.security.spmigration.sda/sda-dd.xml -->

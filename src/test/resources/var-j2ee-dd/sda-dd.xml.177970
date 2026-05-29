@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+		<fs-deployment-descriptor version="2.0">
+			<display-name>J2EE Engine Console</display-name>
+				<fileset id="J2EE_Engine_console_fileset">
+					<display-name>Complete</display-name>
+					<description>Files for J2EE Engine console</description>
+					<default-deployment-dir>${com.sap.engine.installdir}/console</default-deployment-dir>
+					<substitute>
+		 			    <file substitute="yes">guiconsole.bat</file>
+		 			    <file substitute="yes" permissions="755">guiconsole.sh</file>
+						<file substitute="yes">textconsole.bat</file>
+		 			    <file substitute="yes" permissions="755">textconsole.sh</file>
+						<file substitute="yes">console.properties</file>
+				    </substitute>					
+				</fileset>
+		</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/CORETOOLS32_0-80000437.zip/sap.com~com.sap.engine.console.sda/sda-dd.xml -->

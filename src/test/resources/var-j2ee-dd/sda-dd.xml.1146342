@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<SDA>
+  <SoftwareType>j2ee-template</SoftwareType>
+  <engine-deployment-descriptor version="2.0"/>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/SERVERCORE32_0-80000485.zip/sap.com~template_javaone.sda/sda-dd.xml -->

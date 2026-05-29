@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<SDA name="com.sap.aii.adapter.odata.app">
+	<SoftwareType>J2EE</SoftwareType>
+	<engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAFCON32_0-70006599.zip/com.sap.aii.adapter.odata.app.sda/sda-dd.xml -->

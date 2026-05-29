@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SDA> 
+  <SoftwareType>primary-service</SoftwareType>
+  <engine-deployment-descriptor version="2.0">
+  </engine-deployment-descriptor>
+</SDA>
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/MESSAGING32_0-80000682.zip/com.sap.aii.utilxi.cfg.svc.sda/primary-service-dd.xml -->

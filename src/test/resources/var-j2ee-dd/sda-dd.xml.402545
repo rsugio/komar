@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<SDA >
+	<SoftwareType>FS</SoftwareType>
+		<fs-deployment-descriptor version="2.0">
+			<display-name>PRTC service properties migration controller</display-name>
+				<fileset id="prtc_service_properties_migration">
+					<display-name>PRTC service properties</display-name>
+					<description>PRTC service properties migration contoller</description>
+					<default-deployment-dir>${com.sap.engine.installdir}/migration</default-deployment-dir>
+				</fileset>
+		</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/EPBASISAPI32_0-80000702.zip/prtc_properties_migration_controller.sda/sda-dd.xml -->

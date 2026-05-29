@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+	<job-definition name="GalaxyRRTimerJob" description="Galaxy Timer"
+		retention-period="1">
+		<job-definition-parameter name="LockType" data-type="String"
+			direction="IN" />
+		<job-definition-parameter name="SessionId" data-type="String"
+			direction="IN" />
+		<job-definition-parameter name="DcId" data-type="String"
+			direction="IN" />
+		<job-definition-parameter name="NodeId" data-type="String"
+			direction="IN" />
+	</job-definition>
+</job-definitions>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BPEMBASE32_0-80000569.zip/sap.com~tc~bpem~base~rr~timer~ear.ear/sap.com~tc~bpem~base~rr~timer~ejb.jar/job-definition.xml -->

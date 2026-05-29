@@ -1,0 +1,15 @@
+<job-definitions>
+   <job-definition name="RegistryCleanUpJob" description="Cleans up the SAP Services Registry (SR) from entities containing WSDL files, that are not reachable">
+     <job-definition-parameter name="SMTPServer" data-type="String" direction="IN"/>
+	 <job-definition-parameter name="SMTPUser" data-type="String" nullable="Y" direction="IN"/>
+	 <job-definition-parameter name="SMTPPassword" data-type="String" nullable="Y" direction="IN"/>
+     <job-definition-parameter name="SSLEnabled" data-type="Boolean" direction="IN"/>
+     <job-definition-parameter name="MailTo" data-type="String" direction="IN"/>
+     <job-definition-parameter name="MailFrom" data-type="String" direction="IN"/>
+     <job-definition-parameter name="HTTPSocketTimeOut_ms" data-type="Integer" nullable="Y" direction="IN"/>
+   </job-definition>
+   <job-definition name="PermissionTemplateApplierJob" description="Re-applies all permission templates to existing service definitions">
+  
+   </job-definition>
+</job-definitions>
+<!-- from D:\distr\SAP_PO\PO75sp32/ESREGSERVICES32_0-80000498.zip/tc~esi~uddi~sr~ear.sda/tc~esi~uddi~sr~impl~ejbm.jar/job-definition.xml -->

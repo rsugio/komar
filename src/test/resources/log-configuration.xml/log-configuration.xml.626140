@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+	<log-controllers>
+		<log-controller name="/Applications/KW" effective-severity="INFO"></log-controller>
+		<log-controller name="com.sap.kw" effective-severity="ERROR"></log-controller>
+	</log-controllers>
+</log-configuration>
+<!-- from D:\distr\SAP_PO\PO75sp32/KMKWJIKS32_0-80000624.zip/tc~km_tc.sda/log-configuration.xml -->

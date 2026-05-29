@@ -1,0 +1,12 @@
+<SDA><SoftwareType>FS</SoftwareType>
+<fs-deployment-descriptor version="2.0">
+<display-name>640 compat client libs for 720 connectivity</display-name>
+<fileset id="640 compat client libs for 720 connectivity">
+<display-name>640 compat client libs for 720 connectivity</display-name>
+<description>640 compat client libs for 720 connectivity</description>
+<default-deployment-dir>${com.sap.engine.installdir}/j2eeclient</default-deployment-dir>
+</fileset>
+</fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/CORETOOLS32_0-80000437.zip/tc~je~compat~clients.sda/sda-dd.xml -->

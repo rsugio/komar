@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+	<job-definition description="This job deletes the cached data from WebDav" name="DeleteWebDavCacheJob" retention-period="30">
+		<job-definition-parameter name="retentionInDays" 
+								direction="in" 
+								data_type="Integer" 
+								nullable="N" 
+								data-default="30" 
+								description="The number of days after which the files in cache are deleted."/>
+	</job-definition>
+</job-definitions>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/J2EEAPPS32_0-80000576.zip/sap.com~tc~TechSrv~XML_DAS.sda/sap.com~tc~archtech~daservice_ejb.jar/job-definition.xml -->

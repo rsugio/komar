@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<job-definitions>
+	<job-definition
+		description="Job Definition Bean which encapsulates the business logic for cleaning the SLD Change log."
+		name="ChangeLogCleanupJob">
+	<job-definition-parameter 
+		name="ThresholdDays" 
+        data-type="integer" 
+        direction="IN"/>
+	<job-definition-parameter 
+		name="User" 
+        data-type="string" 
+        direction="IN"/>
+	</job-definition>
+</job-definitions>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCORE32_0-80000440.zip/com.sap.lcr.sda/sap.com~tc~sld~clcleanup_ejb.jar/job-definition.xml -->

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>NZDM dummy display name. This SDA is only for upgrad SWITCH.</display-name>
+    <fileset id="tc/lm/nzdm/crrmgr_ddic_shd">
+      <display-name>NZDM dummy display name. This SDA is only for upgrad SWITCH.</display-name>
+      <description>NZDM dummy display name. This SDA is only for upgrad SWITCH.</description>
+      <default-deployment-dir>${com.sap.engine.installdir}</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SERVERCORE32_0-80000485.zip/tc~lm~nzdm~crrmgr_ddic_shd.sda/sda-dd.xml -->

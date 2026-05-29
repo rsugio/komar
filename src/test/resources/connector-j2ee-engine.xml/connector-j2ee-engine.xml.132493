@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector>
+	<resourceadapter>
+		<outbound-resourceadapter>
+			<connection-definition>
+				<connectionfactory-interface>
+					javax.resource.cci.ConnectionFactory
+				</connectionfactory-interface>
+				<jndi-name>SDK_CAF</jndi-name>
+			</connection-definition>
+		</outbound-resourceadapter>
+		<loader-references>
+			<loader-name strength="hard">library:com.sap.ip.bi.sdk</loader-name>
+		<!-- 	<loader-name strength="hard">application:com.sap.ip.bi.sdk.dac.connector.java</loader-name> -->
+			<loader-name strength="hard">library:engine.jee5.facade</loader-name>
+			<loader-name strength="hard">service:engine.application.facade</loader-name>
+			<loader-name strength="hard">library:tc/bi/sdk</loader-name>
+			<loader-name strength="hard">library:tc/bl/exception/lib</loader-name>
+			<loader-name strength="hard">library:tc/bl/logging/api</loader-name>
+			<loader-name strength="hard">library:tc/ddic/runtime/facade</loader-name>
+			<loader-name strength="hard">library:tc/epbc/connectivityfw/api</loader-name>
+			<loader-name strength="hard">library:tc/je/opensql/api</loader-name>
+			<loader-name strength="hard">library:tc/je/webservices/lib</loader-name>
+			
+			<loader-name strength="hard">library:caf/cmf/api/lib</loader-name>
+			<loader-name strength="hard">library:caf/cmf/dao/rt/lib</loader-name>
+			<loader-name strength="hard">library:caf/runtime/api/lib</loader-name>
+			<loader-name strength="hard">library:caf/runtime/base/lib</loader-name>
+			<loader-name strength="hard">library:caf/runtime/vf</loader-name>
+		</loader-references>
+	</resourceadapter>
+</connector>
+<!-- from D:\distr\SAP_PO\PO75sp32/CAF32_0-80000705.zip/sap.com~caf~bw~adapter~assembly.rar/connector-j2ee-engine.xml -->

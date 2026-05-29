@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connector-j2ee-engine>
+  <jndi-name>SDK_JDBC</jndi-name>
+  <pool-params>
+    <max-connections-number>25</max-connections-number>
+    <max-time-to-wait-connection>120</max-time-to-wait-connection>
+    <expiration-control>
+    	<connection-lifetime>300</connection-lifetime>
+    	<run-cleanup-thread>300</run-cleanup-thread>
+    </expiration-control>
+  </pool-params>
+  <loader-references>
+    <loader-name>library:com.sap.ip.bi.sdk</loader-name>
+    <loader-name>library:tc/epbc/connectivityfw/api</loader-name>
+  </loader-references>
+</connector-j2ee-engine>
+<!-- from D:\distr\SAP_PO\PO75sp32/BIUDI32_0-80000573.zip/com.sap.ip.bi.sdk.dac.connector.jdbc.rar/connector-j2ee-engine.xml -->

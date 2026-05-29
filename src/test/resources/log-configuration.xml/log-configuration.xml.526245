@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+	<log-formatters/>
+	<log-destinations>
+		<log-destination 
+			count="10" 
+			effective-severity="DEBUG" 
+			limit="10000000" 
+			name="uddi_classification_log" 
+			pattern="./log/uddi_classification.log" 
+			type="FileLog"/>
+		<log-destination 
+			count="100" 
+			effective-severity="DEBUG" 
+			limit="10000000" 
+			name="uddi_classification_trace" 
+			pattern="./log/uddi_classification.trc" 
+			type="FileLog"/>
+	</log-destinations>
+	<log-controllers>
+		<log-controller 
+			effective-severity="INFO" 
+			name="/Applications/UDDI/Classification">
+			<associated-destinations>
+				<destination-ref 
+					association-type="LOG" 
+					name="uddi_classification_log"/>
+			</associated-destinations>
+		</log-controller>
+		<log-controller 
+			effective-severity="ALL" 
+			name="com.sap.classification.util">
+			<associated-destinations>
+				<destination-ref 
+					association-type="LOG" 
+					name="uddi_classification_trace"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/ESREGSERVICES32_0-80000498.zip/tc~classificationService.sda/log-configuration.xml -->

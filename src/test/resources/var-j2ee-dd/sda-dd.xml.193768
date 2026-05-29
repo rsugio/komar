@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="0.01">
+    <display-name>SDIC Content Files</display-name>
+    <fileset id="Fileset_1">
+      <display-name>SDIC Content Files</display-name>
+      <description></description>
+      <default-deployment-dir>${com.sap.engine.installdir}/migration/tc~di~sdic~srv</default-deployment-dir> 
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/DICLIENTS32_0-80000608.zip/tc.di.sdic.migration.sda/sda-dd.xml -->

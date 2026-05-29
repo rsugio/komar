@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<SDA>
+  <SoftwareType>FS</SoftwareType>
+  <fs-deployment-descriptor version="2.0">
+    <display-name>SLD default migration</display-name>
+    <fileset id="Fileset_1">
+      <display-name>SLD migration</display-name>
+      <description>SLD migration files</description>
+      <default-deployment-dir>${com.sap.engine.installdir}/migration/com.sap.lcr</default-deployment-dir>
+    </fileset>
+  </fs-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMCORE32_0-80000440.zip/com.sap.lcr_migration.sda/sda-dd.xml -->

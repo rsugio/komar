@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<SDA>
+	<SoftwareType>single-module</SoftwareType>
+	<engine-deployment-descriptor version="2.0"/>
+</SDA>
+<!-- from D:\distr\SAP_PO\PO75sp32/EPRUNTIME32_0-80000495.zip/com.sap.portal.pcd.transportapplication.sda/com.sap.portal.pcd.transportapplication.war/sapmake_util.zip/single-module-dd.xml -->

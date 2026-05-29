@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE connector PUBLIC '-//Sun Microsystems, Inc.//DTD Connector 1.0//EN' 'http://java.sun.com/dtd/connector_1_0.dtd'>
+
+<connector>
+	<display-name>BI_ODBO_CONNECTOR</display-name>
+	<vendor-name>SAP AG</vendor-name>
+	<spec-version>1.0</spec-version>
+	<eis-type>ODBO-compliant OLAP data sources</eis-type>
+	<description>
+		SAP Business Intelligence Java Connector for ODBO (OLE DB for
+		OLAP)
+	</description>
+	<version>1.0</version>
+
+	<resourceadapter>
+		<managedconnectionfactory-class>
+			com.sap.ip.bi.sdk.dac.connector.odbo.OdboManagedConnectionFactory
+		</managedconnectionfactory-class>
+
+		<connectionfactory-interface>
+			javax.resource.cci.ConnectionFactory
+		</connectionfactory-interface>
+		<connectionfactory-impl-class>
+			com.sap.ip.bi.sdk.dac.connector.odbo.OdboConnectionFactory
+		</connectionfactory-impl-class>
+
+		<connection-interface>
+			javax.resource.cci.Connection
+		</connection-interface>
+		<connection-impl-class>
+			com.sap.ip.bi.sdk.dac.connector.odbo.OdboConnection
+		</connection-impl-class>
+
+		<transaction-support>NoTransaction</transaction-support>
+
+		<config-property>
+			<description>User Name</description>
+			<config-property-name>UserName</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value></config-property-value>
+		</config-property>
+		<config-property>
+			<description>Password</description>
+			<config-property-name>Password</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value></config-property-value>
+		</config-property>
+		<config-property>
+			<description>Connection String</description>
+			<config-property-name>ConnString</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value>
+				Provider=MSOLAP;Data Source=;
+			</config-property-value>
+		</config-property>
+		<config-property>
+			<description>Windows user account name</description>
+			<config-property-name>LogonAsUserID</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value />
+		</config-property>
+		<config-property>
+			<description>Windows user account domain</description>
+			<config-property-name>
+				LogonAsUserDomain
+			</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value />
+		</config-property>
+		<config-property>
+			<description>Windows user account password</description>
+			<config-property-name>
+				LogonAsUserPassword
+			</config-property-name>
+			<config-property-type>
+				java.lang.String
+			</config-property-type>
+			<config-property-value />
+		</config-property>
+
+		<authentication-mechanism>
+			<authentication-mechanism-type>
+				BasicPassword
+			</authentication-mechanism-type>
+			<credential-interface>
+				javax.resource.spi.security.PasswordCredential
+			</credential-interface>
+		</authentication-mechanism>
+		<reauthentication-support>false</reauthentication-support>
+	</resourceadapter>
+</connector>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/BIUDI32_0-80000573.zip/com.sap.ip.bi.sdk.dac.connector.odbo.rar/ra.xml -->

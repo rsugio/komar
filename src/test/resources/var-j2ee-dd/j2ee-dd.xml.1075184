@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<SDA>
+  <SoftwareType>J2EE</SoftwareType>
+  <engine-deployment-descriptor version="2.0">
+
+      <substitution-variable>
+        <variable-name>
+           com.sap.datasource.default
+        </variable-name>
+      </substitution-variable>
+
+  </engine-deployment-descriptor>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXITOOL32_0-80000740.zip/com.sap.xi.directory.sda/j2ee-dd.xml -->

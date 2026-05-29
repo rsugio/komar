@@ -1,0 +1,9 @@
+<job-definitions>
+	<job-definition name="InfrastructureUpdateBean" description="SDIC: Update Infrastructure Store">
+		<job-parameter name="repository_sync" data-default="true" description="Run Repository Sync operation on Infrastructure Store for Default Development Configuration" direction="in" data-type="boolean" nullable="Y" />
+		<job-parameter name="archive_sync" data-default="false" description="Run Archive Sync operation on Infrastructure Store for Default Development Configuration" direction="in" data-type="boolean" nullable="Y"/>
+	</job-definition>
+</job-definitions> 
+
+
+<!-- from D:\distr\SAP_PO\PO75sp32/DICLIENTS32_0-80000608.zip/tc~di~sdic~schedule~mdb~ear.sda/_tc~di~sdic~schedule~mdb.jar/job-definition.xml -->

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector id="Connector_ID" version="1.5" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd"> 
+  <display-name>JCA Ref Store</display-name>
+  <vendor-name>SAP</vendor-name>
+  <eis-type>KMC</eis-type>
+  <resourceadapter-version>0.1</resourceadapter-version>
+  <resourceadapter>
+  <outbound-resourceadapter>
+  <connection-definition>
+    <managedconnectionfactory-class>com.sap.kmc.spi.conn.StoreManagedConnectionFactory</managedconnectionfactory-class>
+     <config-property>
+       <description>Repository content store path on the file system</description>
+       <config-property-name>ContentStorePath</config-property-name>
+       <config-property-type>java.lang.String</config-property-type>
+       <config-property-value>Default</config-property-value>
+     </config-property>
+     <config-property>
+       <description>Super user role allowed to modify ACLs</description>
+       <config-property-name>SuperUserRole</config-property-name>
+       <config-property-type>java.lang.String</config-property-type>
+       <config-property-value>GRUP.PRIVATE_DATASOURCE.un:Administrators</config-property-value>
+     </config-property>
+    <connectionfactory-interface>com.sap.ecm.spi.repository.RepositoryService</connectionfactory-interface>
+    <connectionfactory-impl-class>com.sap.kmc.spi.conn.StoreConnectionHandle</connectionfactory-impl-class>
+    <connection-interface>com.sap.ecm.spi.SessionInfo</connection-interface>
+    <connection-impl-class>com.sap.kmc.spi.conn.StoreSessionHandle</connection-impl-class>
+    </connection-definition>
+    <transaction-support>NoTransaction</transaction-support>
+    <authentication-mechanism>
+      <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+      <credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+    </authentication-mechanism>
+    <reauthentication-support>false</reauthentication-support>
+  </outbound-resourceadapter>
+  </resourceadapter>
+</connector>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/ECMSTORE32_0-80000616.zip/sap.com~tc~kmc~spi.ear/sap.com~tc~kmc~spi~conn.rar/ra.xml -->

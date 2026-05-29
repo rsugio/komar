@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SDA>
+  <SoftwareType>primary-service</SoftwareType>
+	<engine-deployment-descriptor version="2.0"/>
+</SDA>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/LMTOOLS32_0-80000668.zip/sap.com~tc~lm~ctc~confs~service_sda.sda/sda-dd.xml -->

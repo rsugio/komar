@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+
+<log-configuration>
+
+  <log-formatters>
+    <log-formatter name="trc" type="TraceFormatter"/>
+  </log-formatters>
+
+  <log-destinations>
+    <log-destination name="trc" type="FileLog" pattern="./log/services/healthChecks/default.trc"
+                     effective-severity="ALL" count="5" limit="10000000"/>
+    <log-destination name="readable_trc" type="FileLog" pattern="./log/services/healthChecks/readable.trc"
+                     effective-severity="ALL" count="5" limit="10000000">
+        <formatter-ref name="trc"/>
+    </log-destination>
+  </log-destinations>
+
+  <log-controllers>
+    <log-controller name="com.sap.engine.services.healthChecks" effective-severity="PATH">
+      <associated-destinations>
+        <destination-ref name="trc" association-type="LOG"/>
+        <destination-ref name="readable_trc" association-type="LOG"/>
+      </associated-destinations>
+    </log-controller>
+  </log-controllers>
+
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/EPRUNTIME32_0-80000495.zip/com.sap.portal.healthChecks.sda/log-configuration.xml -->

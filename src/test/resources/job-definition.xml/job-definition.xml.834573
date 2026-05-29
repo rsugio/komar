@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-definitions>
+	<job-definition name="IdocTransactionCleanup" description="Cleans up the IDoc Outbound Message Table for given XI Message IDs" retention-period="7">
+		<job-definition-parameter 	name="Messages" 
+									description="XI Message IDs separated by #" 
+									data-type="string"  
+									direction="IN"
+									data-default=""
+									nullable="N" 
+									group="Lifetime Settings" />									
+	</job-definition>
+	<job-definition name="IdocDBTableCleanup" description="Task which cleans up the IDoc_AAE database according to the specified timeframe" retention-period="30">
+		<job-definition-parameter 	name="Start_date" 
+									description="Start timestamp of time interval for IDoc table entries deletion" 
+									data-type="date"  
+									direction="IN"
+									data-default=""
+									nullable="N" 
+									group="Lifetime Settings" />	
+		<job-definition-parameter 	name="End_date" 
+									description="End timestamp of time interval for IDoc table entries deletion" 
+									data-type="date"  
+									direction="IN"
+									data-default=""
+									nullable="N" 
+									group="Lifetime Settings" />
+		<job-definition-parameter 	name="Consistency_check" 
+									description="Check against Messaging System tables" 
+									data-type="Boolean"  
+									direction="IN"
+									data-default="true"
+									nullable="N" 
+									group="Lifetime Settings" />												
+	</job-definition>
+	<job-definition name="IdocDBTableCleanupPeriodic" description="Task which cleans up the IDoc_AAE database according to the specified retention period" retention-period="30">
+		<job-definition-parameter 	name="Retention_period" 
+									description="Entries older than this period (in milliseconds) will be removed" 
+									data-type="long"  
+									direction="IN"
+									data-default="86400000"
+									nullable="N" 
+									group="Lifetime Settings" />	
+		<job-definition-parameter 	name="Consistency_check" 
+									description="Check against Messaging System tables" 
+									data-type="Boolean"  
+									direction="IN"
+									data-default="true"
+									nullable="N" 
+									group="Lifetime Settings" />												
+	</job-definition>
+	<job-definition name="IdocDBTableCleanupPeriodicAdvanced" description="Task which cleans up the IDoc_AAE database according to the specified retention period, optimized specifically for ASE DB" retention-period="30">
+		<job-definition-parameter 	name="Retention_period" 
+									description="Entries older than this period (in milliseconds) will be removed" 
+									data-type="long"  
+									direction="IN"
+									data-default="86400000"
+									nullable="N" 
+									group="Lifetime Settings" />	
+		<job-definition-parameter 	name="Consistency_check" 
+									description="Check against Messaging System tables for idoc messages" 
+									data-type="Boolean"  
+									direction="IN"
+									data-default="true"
+									nullable="N" 
+									group="Lifetime Settings" />
+		<job-definition-parameter 	name="Blocking" 
+									description="Entries are deleting in one run which can block the tables for idoc processing" 
+									data-type="Boolean"  
+									direction="IN"
+									data-default="false"
+									nullable="N" 
+									group="Lifetime Settings" />	
+		<job-definition-parameter 	name="Exists_clause" 
+									description="When consistency check is enabled the query is optimized for some DBs such as ASE DB" 
+									data-type="Boolean"  
+									direction="IN"
+									data-default="true"
+									nullable="N" 
+									group="Lifetime Settings" />
+		<job-definition-parameter 	name="ACK_check_against_MS" 
+									description="Check against Messaging System tables for acknowledgements also" 
+									data-type="Boolean"  
+									direction="IN"
+									data-default="false"
+									nullable="N" 
+									group="Lifetime Settings" />			
+		<job-definition-parameter 	name="Delete_chunk_size" 
+									description="Delete batch size" 
+									data-type="Integer"  
+									direction="IN"
+									data-default="100"
+									nullable="N" 
+									group="Lifetime Settings" />
+		<job-definition-parameter 	name="Select_for_delete_size" 
+									description="Maximum number of entries to be deleted in one session" 
+									data-type="Integer"  
+									direction="IN"
+									data-default="10000"
+									nullable="N" 
+									group="Lifetime Settings" />													
+	</job-definition>
+</job-definitions>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/SAPXIAF32_0-80000737.zip/com.sap.aii.adapter.idoc.app.sda/com.sap.aii.adapter.idoc.ejb.jar/job-definition.xml -->

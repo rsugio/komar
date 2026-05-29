@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log-configuration SYSTEM "log-configuration.dtd">
+<log-configuration>
+
+	<log-formatters>
+		<!-- This formatter produces human readable messages. -->
+		<log-formatter name="trc" pattern="%26d %150l [%t] %10s: %m" type="TraceFormatter"/>
+	</log-formatters>
+	
+	<log-destinations>
+		<!-- Destination for Trace Information of this service com.sap.engine.messaging -->
+		<log-destination count="3" effective-severity="DEBUG" limit="1000000" name="MStrc" 
+			pattern="./log/services/com.sap.engine.messaging/default.trc" type="FileLog">
+			<formatter-ref name="trc"/>
+		</log-destination>
+	</log-destinations>
+	
+	<log-controllers>
+		<!-- Tracing Location com.sap.engine.messaging -->
+		<log-controller name="com.sap.engine.messaging" effective-severity="ERROR">
+			<associated-destinations>
+				<destination-ref association-type="LOG" name="MStrc"/>
+			</associated-destinations>
+		</log-controller>
+	</log-controllers>
+	
+</log-configuration>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/MESSAGING32_0-80000682.zip/com.sap.aii.af.ms.svc.sda/log-configuration.xml -->

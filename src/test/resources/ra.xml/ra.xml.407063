@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.5">
+   <!--this is basic metadata of the connector-->
+   <display-name>JDBC</display-name>
+   <vendor-name>SAP</vendor-name>
+   <eis-type>JDBC</eis-type>
+   <resourceadapter-version>2.65</resourceadapter-version>
+   <resourceadapter>
+      <outbound-resourceadapter>
+         <connection-definition>
+            <!--this is the implementation of the managed connection factory interface-->
+            <managedconnectionfactory-class>com.sapportals.jdbcconnector.connection.JDBCManagedConnectionFactory</managedconnectionfactory-class>
+            <!--this is the interface of the connector's connection factory -->
+            <connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+            <!--this is the implementation of the connector's connection factory interface-->
+            <connectionfactory-impl-class>com.sapportals.jdbcconnector.connection.CCIConnectionFactory</connectionfactory-impl-class>
+            <!--this is the interface of the connector's connection -->
+            <connection-interface>javax.resource.cci.Connection</connection-interface>
+            <!--this is the implementation of the connector's connection interface-->
+            <connection-impl-class>com.sapportals.jdbcconnector.connection.CCIConnection</connection-impl-class>
+         </connection-definition>
+         <!--what kind of transaction support this connector offers-->
+         <transaction-support>NoTransaction</transaction-support>
+         <authentication-mechanism>
+            <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+            <credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+         </authentication-mechanism>
+         <reauthentication-support>false</reauthentication-support>
+      </outbound-resourceadapter>
+   </resourceadapter>
+</connector>
+
+<!-- from D:\distr\SAP_PO\PO75sp32/EPCONNECTIVITY32_0-80000493.zip/com.sapportals.connectors.database.sda/ra.xml -->

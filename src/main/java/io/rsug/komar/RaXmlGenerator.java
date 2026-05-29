@@ -5,20 +5,17 @@ import connector15.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.StringWriter;
 import java.lang.String;
 import java.math.BigDecimal;
-import java.util.Map;
 import java.util.Objects;
 
 public class RaXmlGenerator {
-    final Map<String,Object> constants;
-
-    public RaXmlGenerator(Map<String,Object> constants) {
-        this.constants = constants;
-    }
-
+    //    final Map<String,Object> constants;
+//
+//    public RaXmlGenerator(Map<String,Object> constants) {
+//        this.constants = constants;
+//    }
+//
     private static XsdStringType xsdStringType(String s) {
         XsdStringType xst = new XsdStringType();
         xst.setValue(s);
@@ -46,19 +43,52 @@ public class RaXmlGenerator {
         return cp;
     }
 
-    private String $(String key) {
-        return Objects.requireNonNull(constants.get(key), key).toString();
-    }
+//    private String $(String key) {
+//        return Objects.requireNonNull(constants.get(key), key).toString();
+//    }
 
-    public String generateConnectorXml() throws JAXBException {
+//    public String generateConnectorXml() throws JAXBException {
+//        return RaXmlGenerator.generateConnectorXml(
+//                $("adapterType"),
+//                $("adapterNamespace"),
+//                $("adapterVendor"),
+//                $("adapterVersion"),
+//                "Ресурсный адаптер " + $("raName") + " (из ra.xml)",
+//                $("eisType"),
+//                $("raSPIManagedConnectionFactory"),
+//                $("raCCIConnectionFactory"),
+//                $("raCCIConnection"));
+//    }
+
+    public static String generateConnectorXml(
+            String adapterType,
+            String adapterNamespace,
+            String adapterVendor,
+            String adapterVersion,
+            String displayNameType,
+            String eisType,
+            String raSPIManagedConnectionFactory,
+            String raCCIConnectionFactory,
+            String raCCIConnection
+    ) throws JAXBException {
+        Objects.requireNonNull(displayNameType);
+        Objects.requireNonNull(adapterVendor);
+        Objects.requireNonNull(adapterType);
+        Objects.requireNonNull(adapterNamespace);
+        Objects.requireNonNull(adapterVersion);
+        Objects.requireNonNull(eisType);
+        Objects.requireNonNull(raSPIManagedConnectionFactory);
+        Objects.requireNonNull(raCCIConnectionFactory);
+        Objects.requireNonNull(raCCIConnection);
+
         ConnectorType ct = new ConnectorType();
         ct.setVersion(new BigDecimal("1.5"));
         DisplayNameType dnt = new DisplayNameType();
-        dnt.setValue("Ресурсный адаптер " + $("raName") + " (из ra.xml)");
+        dnt.setValue(displayNameType);
         ct.getDisplayName().add(dnt);
-        ct.setVendorName(xsdStringType($("adapterVendor")));
-        ct.setEisType(xsdStringType($("raEis")));
-        ct.setResourceadapterVersion(xsdStringType($("raVersion")));
+        ct.setVendorName(xsdStringType(adapterVendor));
+        ct.setEisType(xsdStringType(eisType));
+        ct.setResourceadapterVersion(xsdStringType(adapterVersion));
 
         ResourceadapterType ra = new ResourceadapterType();
         ct.setResourceadapter(ra);
@@ -66,17 +96,17 @@ public class RaXmlGenerator {
         ra.setOutboundResourceadapter(ora);
         ConnectionDefinitionType cd = new ConnectionDefinitionType();
         ora.getConnectionDefinition().add(cd);
-        cd.setManagedconnectionfactoryClass(fullyQualifiedClassType($("raSPIManagedConnectionFactory")));
+        cd.setManagedconnectionfactoryClass(fullyQualifiedClassType(raSPIManagedConnectionFactory));
         ConfigPropertyType addressMode = configPropertyType(null, "addressMode", "java.lang.String", "CPA");
-        ConfigPropertyType adapterType = configPropertyType(null, "adapterType", "java.lang.String", $("adapterType"));
-        ConfigPropertyType adapterNamespace = configPropertyType(null, "adapterNamespace", "java.lang.String", $("adapterNamespace"));
+        ConfigPropertyType adapterTyp = configPropertyType(null, "adapterType", "java.lang.String", adapterType);
+        ConfigPropertyType adapterNamespac = configPropertyType(null, "adapterNamespace", "java.lang.String", adapterNamespace);
         cd.getConfigProperty().add(addressMode);
-        cd.getConfigProperty().add(adapterType);
-        cd.getConfigProperty().add(adapterNamespace);
+        cd.getConfigProperty().add(adapterTyp);
+        cd.getConfigProperty().add(adapterNamespac);
         cd.setConnectionfactoryInterface(fullyQualifiedClassType("javax.resource.cci.ConnectionFactory"));
-        cd.setConnectionfactoryImplClass(fullyQualifiedClassType($("raCCIConnectionFactory")));
+        cd.setConnectionfactoryImplClass(fullyQualifiedClassType(raCCIConnectionFactory));
         cd.setConnectionInterface(fullyQualifiedClassType("javax.resource.cci.Connection"));
-        cd.setConnectionImplClass(fullyQualifiedClassType($("raCCIConnection")));
+        cd.setConnectionImplClass(fullyQualifiedClassType(raCCIConnection));
         TransactionSupportType ts = new TransactionSupportType();
         ts.setValue("NoTransaction");
         ora.setTransactionSupport(ts);
@@ -90,15 +120,8 @@ public class RaXmlGenerator {
         tf.setValue(false);
         ora.setReauthenticationSupport(tf);
 
-        ObjectFactory cof = new ObjectFactory();
         JAXBContext ctx = JAXBContext.newInstance(ConnectorType.class);
-        JAXBElement<ConnectorType> jaxbElement = cof.createConnector(ct);
-
-        Marshaller marshaller = ctx.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-        StringWriter sw = new StringWriter();
-        marshaller.marshal(jaxbElement, sw);
-        return sw.toString();
+        JAXBElement<ConnectorType> jaxbElement = new ObjectFactory().createConnector(ct);
+        return Komar.marshaller(ctx, jaxbElement);
     }
 }
