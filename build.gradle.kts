@@ -43,7 +43,7 @@ tasks.jar {
         into("src")
     }
     manifest {
-//        attributes["Implementation-Version"] = "7.654321"
+        attributes["Implementation-Version"] = "7.654321"
     }
 }
 

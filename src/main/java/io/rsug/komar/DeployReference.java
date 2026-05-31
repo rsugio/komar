@@ -29,25 +29,38 @@ public class DeployReference {
         this.target = target;
     }
 
-    public static DeployReference libraryHard(String name) {
-        return new DeployReference("hard", "library", "sap.com", name);
+    public static DeployReference applicationHard(String name) {
+        return new DeployReference("hard", "application", "sap.com", name);
+    }
+
+    public static DeployReference applicationWeak(String name) {
+        return new DeployReference("weak", "application", "sap.com", name);
     }
 
     public static DeployReference interfaceHard(String name) {
         return new DeployReference("hard", "interface", "sap.com", name);
     }
 
-    public static DeployReference applicationHard(String name) {
-        return new DeployReference("hard", "application", "sap.com", name);
+    public static DeployReference interfaceWeak(String name) {
+        return new DeployReference("weak", "interface", "sap.com", name);
+    }
+
+    public static DeployReference libraryHard(String name) {
+        return new DeployReference("hard", "library", "sap.com", name);
+    }
+
+    public static DeployReference libraryWeak(String name) {
+        return new DeployReference("weak", "library", "sap.com", name);
     }
 
     public static DeployReference serviceHard(String name) {
         return new DeployReference("hard", "service", "sap.com", name);
     }
 
-    public static DeployReference applicationWeak(String name) {
-        return new DeployReference("weak", "application", "sap.com", name);
+    public static DeployReference serviceWeak(String name) {
+        return new DeployReference("weak", "service", "sap.com", name);
     }
+
 
 
 }

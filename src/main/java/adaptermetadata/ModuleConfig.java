@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}Tab" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}ModuleConfigItem" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,41 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "tab"
+    "moduleConfigItem"
 })
-@XmlRootElement(name = "ChannelAttributes")
-public class ChannelAttributes {
+@XmlRootElement(name = "ModuleConfig")
+public class ModuleConfig {
 
-    @XmlElement(name = "Tab", required = true)
-    protected List<Tab> tab;
+    @XmlElement(name = "ModuleConfigItem", required = true)
+    protected List<ModuleConfigItem> moduleConfigItem;
 
     /**
-     * Gets the value of the tab property.
+     * Gets the value of the moduleConfigItem property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the tab property.
+     * This is why there is not a <CODE>set</CODE> method for the moduleConfigItem property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getTab().add(newItem);
+     *    getModuleConfigItem().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Tab }
+     * {@link ModuleConfigItem }
      * 
      * 
      */
-    public List<Tab> getTab() {
-        if (tab == null) {
-            tab = new ArrayList<Tab>();
+    public List<ModuleConfigItem> getModuleConfigItem() {
+        if (moduleConfigItem == null) {
+            moduleConfigItem = new ArrayList<ModuleConfigItem>();
         }
-        return this.tab;
+        return this.moduleConfigItem;
     }
 
 }

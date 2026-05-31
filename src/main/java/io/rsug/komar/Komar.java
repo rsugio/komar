@@ -1,5 +1,7 @@
 package io.rsug.komar;
 
+import adaptermetadata.AdapterTypeMetaData;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -99,6 +101,14 @@ public class Komar {
     public static String generateApplicationXmlWar(String sdaDescription, String webUri, String contextRoot) {
         try {
             return ApplicationXmlGenerator.generateApplicationXmlWar(sdaDescription, webUri, contextRoot);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String marshallAdapterTypeMetaData(AdapterTypeMetaData atmd) {
+        try {
+            return AdapterMetaData.marshall(atmd);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }

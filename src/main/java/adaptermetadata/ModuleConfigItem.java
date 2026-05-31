@@ -12,10 +12,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
@@ -28,9 +25,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}Name"/>
- *         &lt;element ref="{}Type"/>
- *         &lt;element ref="{}Key"/>
+ *         &lt;element name="Key" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Value" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -41,23 +38,43 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "key",
     "name",
-    "type",
-    "key"
+    "value"
 })
-@XmlRootElement(name = "ModuleSequenceItem")
-public class ModuleSequenceItem {
+@XmlRootElement(name = "ModuleConfigItem")
+public class ModuleConfigItem {
 
-    @XmlElement(name = "Name", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NCName")
-    protected String name;
-    @XmlElement(name = "Type", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NCName")
-    protected String type;
     @XmlElement(name = "Key", required = true)
     protected String key;
+    @XmlElement(name = "Name", required = true)
+    protected String name;
+    @XmlElement(name = "Value", required = true)
+    protected String value;
+
+    /**
+     * Gets the value of the key property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getKey() {
+        return key;
+    }
+
+    /**
+     * Sets the value of the key property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setKey(String value) {
+        this.key = value;
+    }
 
     /**
      * Gets the value of the name property.
@@ -84,51 +101,27 @@ public class ModuleSequenceItem {
     }
 
     /**
-     * Gets the value of the type property.
+     * Gets the value of the value property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getType() {
-        return type;
+    public String getValue() {
+        return value;
     }
 
     /**
-     * Sets the value of the type property.
+     * Sets the value of the value property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setType(String value) {
-        this.type = value;
-    }
-
-    /**
-     * Gets the value of the key property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getKey() {
-        return key;
-    }
-
-    /**
-     * Sets the value of the key property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setKey(String value) {
-        this.key = value;
+    public void setValue(String value) {
+        this.value = value;
     }
 
 }

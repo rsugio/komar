@@ -1,7 +1,4 @@
-import adaptermetadata.AdapterTypeMetaData;
-import adaptermetadata.Attribute;
-import adaptermetadata.AttributeReference;
-import adaptermetadata.Outbound;
+import adaptermetadata.*;
 import io.rsug.komar.AdapterMetaData;
 import io.rsug.komar.Komar;
 import org.junit.jupiter.api.Assertions;
@@ -177,11 +174,19 @@ public class ParserTests {
         Attribute text64 = AdapterMetaData.text("text64", 64);
         my.getAttributeOrAttributeTableOrDynamicAttributes().add(text64);
         Outbound out = AdapterMetaData.outbound(my, "NoProtocol");
+        ModuleConfig mc = new ModuleConfig();
+        ModuleConfigItem mci = new ModuleConfigItem();
+        mci.setKey("exit");
+        mci.setName("JNDIName");
+        mci.setValue("deployedAdapters/_______.ra/shareable/_______.ra");
+        mc.getModuleConfigItem().add(mci);
+        out.getMessageProtocol().get(0).getModuleProcessorAttributes().setModuleConfig(mc);
+
         AttributeReference ar = new AttributeReference();
         ar.setReferenceName(text64.getName());
         out.getGlobalChannelAttributes().getTab().getAttributeReferenceOrAttributeGroup().add(ar);
         my.setOutbound(out);
-        String s = AdapterMetaData.marshall(my);
+        String s = Komar.marshallAdapterTypeMetaData(my);
         System.out.println(s);
         Objects.requireNonNull(s);
     }
