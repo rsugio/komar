@@ -16,7 +16,7 @@ public class AdapterMetaData {
         atmd.setVersion(new BigInteger(adapterVersion));
         atmd.setType(adapterType);
 
-        //во всех хороших адаптерах есть название
+        //обязательно нужно название, для мониторинга
         Label label = new Label();
         label.setLanguage("EN");
         label.setContent(adapterLabelEn);
@@ -82,25 +82,31 @@ public class AdapterMetaData {
     }
 
     public static Attribute adapterStatus() {
+        return fixedValuesString("adapterStatus", "Adapter status", "optional", "active", "inactive");
+    }
+
+    public static Attribute fixedValuesString(String name, String descriptionEn, String usage, String... values) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(usage);
+        Objects.requireNonNull(descriptionEn);
+        Objects.requireNonNull(values);
+        if (values.length == 0) throw new IllegalArgumentException();
+
         Attribute attr = new Attribute();
-        attr.setName("adapterStatus");
-        attr.setUsage("optional");
+        attr.setName(name);
+        attr.setUsage(usage);
         attr.setIsPassword(false);
-        attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("Default"), String.class, "active"));
+        attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("Default"), String.class, values[0]));
         attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("DataType"), String.class, "xsd:string"));
         attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("Length"), BigInteger.class, BigInteger.ZERO));
-        attr.getFlagOrGuiLabelsOrDataType().add(getLabelsEN("Adapter status"));
+        attr.getFlagOrGuiLabelsOrDataType().add(getLabelsEN(descriptionEn));
 
-        FixedValue fv = new FixedValue();
-        fv.setValue("active");
-        fv.setGuiLabels(getLabelsEN("Active"));
-        attr.getFlagOrGuiLabelsOrDataType().add(fv);
-
-        fv = new FixedValue();
-        fv.setValue("inactive");
-        fv.setGuiLabels(getLabelsEN("Inactive"));
-        attr.getFlagOrGuiLabelsOrDataType().add(fv);
-
+        for (String value : values) {
+            FixedValue fv = new FixedValue();
+            fv.setValue(value);
+            fv.setGuiLabels(getLabelsEN(value));
+            attr.getFlagOrGuiLabelsOrDataType().add(fv);
+        }
         return attr;
     }
 
