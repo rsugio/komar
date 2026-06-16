@@ -171,7 +171,7 @@ public class ParserTests {
         AdapterTypeMetaData my = AdapterMetaData.makeStub("Echo", "1", "Echo adapter");
         Attribute adapterStatus = AdapterMetaData.adapterStatus();
         my.getAttributeOrAttributeTableOrDynamicAttributes().add(adapterStatus);
-        Attribute text64 = AdapterMetaData.text("text64", 64);
+        Attribute text64 = AdapterMetaData.text("text64", "Text64", "optional", 64, null);
         my.getAttributeOrAttributeTableOrDynamicAttributes().add(text64);
         Outbound out = AdapterMetaData.outbound(my, "NoProtocol");
         ModuleConfig mc = new ModuleConfig();

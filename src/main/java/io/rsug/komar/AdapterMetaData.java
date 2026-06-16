@@ -39,6 +39,8 @@ public class AdapterMetaData {
         mp.setName(sameProtocol);
         mp.setVersion(version);
         mp.getGuiLabels().getLabel().add(label);
+        mp.setChannelAttributes(new ChannelAttributes());
+        mp.setSecurityAttributes(new SecurityAttributes());
 
         ModuleProcessorAttributes mpa = new ModuleProcessorAttributes();
         mp.setModuleProcessorAttributes(mpa);
@@ -63,16 +65,16 @@ public class AdapterMetaData {
         tp.getGuiLabels().getLabel().add(label);
         tp.setValidMessageProtocols(vmp);
 
-        AttributeReference ar = new AttributeReference();
-        Attribute adapterStatus = (Attribute) atmd.getAttributeOrAttributeTableOrDynamicAttributes().get(0);
-        ar.setReferenceName(adapterStatus.getName());
-
-        Tab tab = new Tab();
-        tab.setId("main");
-        tab.getAttributeReferenceOrAttributeGroup().add(ar);
+//        AttributeReference ar = new AttributeReference();
+//        Attribute adapterStatus = (Attribute) atmd.getAttributeOrAttributeTableOrDynamicAttributes().get(0);
+//        ar.setReferenceName(adapterStatus.getName());
+//
+//        Tab tab = new Tab();
+//        tab.setId("main");
+//        tab.getAttributeReferenceOrAttributeGroup().add(ar);
 
         GlobalChannelAttributes gca = new GlobalChannelAttributes();
-        gca.setTab(tab);
+//        gca.setTab(tab);
 
         Outbound out = new Outbound();
         out.getMessageProtocol().add(mp);
@@ -110,13 +112,15 @@ public class AdapterMetaData {
         return attr;
     }
 
-    public static Attribute text(String name, int length) {
+    public static Attribute text(String name, String descriptionEn, String usage, int length, String defaultValue) {
         Attribute attr = new Attribute();
         attr.setName(name);
         attr.setUsage("optional");
         attr.setIsPassword(false);
         attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("Flag"), String.class, "nonTransportable"));
-        attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("Default"), String.class, "default value"));
+        if (defaultValue!=null) {
+            attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("Default"), String.class, "default value"));
+        }
         attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("DataType"), String.class, "xsd:string"));
         attr.getFlagOrGuiLabelsOrDataType().add(new JAXBElement<>(new QName("Length"), BigInteger.class, BigInteger.valueOf(length)));
         attr.getFlagOrGuiLabelsOrDataType().add(getLabelsEN(name));
